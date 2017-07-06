@@ -1,0 +1,19 @@
+title: Bio
+
+pages: false
+
+files: false
+
+options:
+  delete: false
+  template: false  
+  status: false  
+  
+fields:
+  title:
+    label: Title
+    type: title
+    
+  text:
+    label: Text
+    type: textarea
