@@ -3,7 +3,8 @@ title: Texts
 files:
   sortable: true
 
-pages: false
+pages:
+  template: text
 
 fields:
   title:

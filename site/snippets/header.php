@@ -7,16 +7,37 @@
 
   <title><?= $site->title()->html() ?> | <?= $page->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
-  <?= js(array(
-	  'assets/js/jquery-3.2.1.min.js',
-	  'assets/js/isotope.pkgd.min.js',
-    'assets/js/masonry-horizontal.js',
-	  'assets/js/script.js'
-	) ) ?>
   <?= css('assets/css/style.css') ?>
 
 </head>
 <body>
   <main class="main" role="main">
     <header role="header">
+      <a href="/" class="name">
+        <h1>Kameelah</br>Janan</br>Rasheed</h1>
+      </a>
+      <nav role="navigation">
+        <?php
+        echo '<div class="links">';
+          $links = array( 'bio', 'statement', 'cv', 'contact' );
+          foreach ( $links as $key => $slug ) {
+            if( $page = page( $slug ) ) {
+              echo '<div class="link">';
+                echo '<a href="' . $page->url() . '"><h3>' . $page->title() . '</h3></a>';
+              echo '</div>';
+            }
+          }
+        echo '</div>';
+        echo '<div class="links filters">';
+          $filters = array( 'events', 'artwork', 'texts' );
+          foreach ( $filters as $key => $slug ) {
+            if( $page = page( $slug ) ) {
+              echo '<div class="link filter ' . $slug . ' selected" data-filter="' . $slug . '">';
+                echo '<h3>' . $page->title() . '</h3>';
+              echo '</div>';
+            }
+          }
+        echo '</div>';
+        ?>
+      </nav>
     </header>

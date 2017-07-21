@@ -56,6 +56,14 @@ gulp.task('compile-sass', function() {
 });
 
 gulp.task('compile-coffee', function() {
+  gulp.src('./assets/coffee/carousel.coffee')
+    .pipe(coffee({bare: true}))
+    .pipe(gulpif(argv.prod, rename('carousel.min.js')))
+    .pipe(gulp.dest(dest.js))
+  .on('end', function() {
+    log('Coffee done');
+    if (argv.prod) log('JS minified');
+  });
   return gulp.src('./assets/coffee/script.coffee')
     .pipe(coffee({bare: true}))
     .pipe(gulpif(argv.prod, rename('script.min.js')))

@@ -1,20 +1,22 @@
-<?php snippet('header') ?>
-
-  <main class="main" role="main">
-
-    <header class="wrap">
-      <h1><?= $page->title()->html() ?></h1>
-      <div class="intro text">
-        <?= $page->url() ?>
-        <?= $page->intro()->kirbytext() ?>
-      </div>
-      <hr />
-    </header>
-      
-    <div class="text wrap">
-      <?= $page->text()->kirbytext() ?>
-    </div>
-
-  </main>
-
-<?php snippet('footer') ?>
+<?php
+snippet('header');
+  if( $images = $page->images() ) {
+    echo '<div class="carousel">';
+      echo '<div class="slides">';
+        foreach ( $images as $index => $image ) {
+          echo '<div class="slide">';
+            echo '<div class="image" style="background-image:url(' . $image->url() . ')"></div>';
+            if( $caption = $image->caption() ) {
+              echo '<div class="caption"><div class="inner">' . $caption .  '</div></div>';
+            }
+          echo '</div>';
+        }
+      echo '</div>';
+      if( sizeof( $images ) > 1 ) {
+        echo '<div class="arrow left" data-direction="left"></div>';
+        echo '<div class="arrow right" data-direction="right"></div>';
+      }
+    echo '</div>';
+  }
+snippet('footer');
+?>

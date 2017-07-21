@@ -2,6 +2,10 @@ title: Artwork
 
 files:
   sortable: true
+  fields:
+    caption:
+      label: Caption
+      type: wysiwyg
 
 pages: false
 
@@ -9,3 +13,11 @@ fields:
   title:
     label: Title
     type:  text
+  safeTitle:
+    label: Safe Title
+    type: text
+    help: 'Use &#8203; to allow line breaks and &shy; to allow hyphen.'
+  published:
+    label: Published Date
+    type: date
+    default: now

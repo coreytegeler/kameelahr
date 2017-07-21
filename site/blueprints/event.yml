@@ -1,0 +1,14 @@
+title: Event
+
+pages: false
+
+preview: parent
+
+fields:
+  title:
+    label: Name
+    type: title
+  published:
+    label: Published Date
+    type: date
+    default: now

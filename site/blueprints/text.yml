@@ -9,3 +9,7 @@ fields:
   title:
     label: Title
     type:  text
+  published:
+    label: Published Date
+    type: date
+    default: now
