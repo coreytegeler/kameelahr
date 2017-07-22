@@ -3,6 +3,8 @@ $light: white;
 $medium: #707377;
 $dark: black;
 $border: 1px;
+$padding: 2em;
+$sideWidth: 20em;
 @mixin baseText {
 	font-size: 21px;
 	line-height: 1.3em;
@@ -25,10 +27,12 @@ $border: 1px;
 @mixin largeText {
 	font-size: 2em;
 	line-height: 1.2em;
+	font-weight: 900;
 }
 @mixin xLargeText {
 	font-size: 3em;
 	line-height: 1.2em;
+	font-weight: 900;
 }
 
 $phoneWidth: 480px;

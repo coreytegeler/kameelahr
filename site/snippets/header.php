@@ -14,7 +14,7 @@
   <main class="main" role="main">
     <header role="header">
       <a href="/" class="name">
-        <h1>Kameelah</br>Janan</br>Rasheed</h1>
+        <h1>Kameelah Janan Rasheed</h1>
       </a>
       <nav role="navigation">
         <?php

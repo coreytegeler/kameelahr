@@ -14,11 +14,13 @@ a {
 h1 {
   font-size: 3em;
   line-height: 1.2em;
+  font-weight: 900;
   margin: 0; }
 
 h2 {
   font-size: 2em;
   line-height: 1.2em;
+  font-weight: 900;
   margin: 0; }
 
 h3 {
@@ -34,11 +36,11 @@ header {
   border-bottom: 1px dotted black;
   display: flex; }
   header .name {
-    padding: 1em; }
+    padding: 2em; }
     header .name h1 {
       line-height: .9em; }
   header nav {
-    padding: 1em;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -65,17 +67,16 @@ header {
         cursor: pointer; }
 
 #cells {
-  width: calc(100% - 4em);
+  width: 100%;
   min-height: 90vh;
-  margin: 0 2em;
   overflow: hidden; }
   #cells .cell {
     width: 33.3333%;
     float: left;
     position: relative; }
     #cells .cell .wrap {
-      width: calc(100% - 4em + 1px);
-      padding: calc(2em + 1px); }
+      width: calc(100% - 4em);
+      padding: 2em; }
     #cells .cell a {
       width: 100%;
       display: table; }
@@ -92,21 +93,11 @@ header {
       display: none;
       z-index: 100;
       pointer-events: none; }
-    #cells .cell.top a:hover {
-      border-top: 0; }
-      #cells .cell.top a:hover .wrap {
-        padding-top: calc(2em + 1px); }
-    #cells .cell.left a:hover {
-      border-left: 0; }
-      #cells .cell.left a:hover .wrap {
-        padding-left: calc(2em + 1px); }
+    #cells .cell.top .wrap {
+      padding-top: 1em; }
     #cells .cell.left img {
       left: calc(100% + 2px);
       top: 0; }
-    #cells .cell.right a:hover {
-      border-right: 0; }
-      #cells .cell.right a:hover .wrap {
-        padding-right: calc(2em + 1px); }
     #cells .cell.right img {
       right: calc(100% + 1px);
       top: 0; }
@@ -119,8 +110,6 @@ header {
     #cells .cell:hover img {
       display: block; }
     #cells .cell:hover a {
-      border: 1px dotted black;
-      border: none !important;
       font-weight: 900; }
       #cells .cell:hover a h2 {
         font-weight: 900; }
@@ -131,14 +120,14 @@ header {
       opacity: 1; }
   @media (max-width: 768px) {
     #cells {
-      width: calc(100% - 2em);
-      margin: 0 1em; }
+      width: calc(100% - $padding);
+      margin: 0 2em; }
       #cells .cell {
         width: 50%; } }
     @media (max-width: 768px) and (max-width: 768px) {
       #cells .cell .wrap {
-        width: calc(100% - 2em + 1px);
-        padding: calc(1em + 1px); } }
+        width: calc(100% - $padding);
+        padding: 2em; } }
 
 .carousel {
   width: 100%;
@@ -171,7 +160,7 @@ header {
         background-position: center;
         background-size: contain; }
       .carousel .slides .slide .caption {
-        width: calc(100% - 2em);
+        width: calc(100% - $padding);
         position: absolute;
         top: 100%;
         padding: 1em;

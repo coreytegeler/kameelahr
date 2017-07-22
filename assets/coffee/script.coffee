@@ -48,5 +48,20 @@ $ ->
 		$cells.isotope
 			filter: query
 
+	# $(window).mousemove (e) ->
+	# 	# console.log e.screenX
+	# 	x = e.screenX
+	# 	a = 0
+	# 	b = $(window).innerWidth()
+	# 	c = .2
+	# 	d = 2
+	# 	size = (x-a)/(b-a) * (d-c) + c
+	# 	console.log size
+	# 	$cells.find('.cell').each () ->
+	# 		$(this).css
+	# 			fontSize: size+'em'
+	# 	$cells.isotope 'layout'
+
+
 		
 	    

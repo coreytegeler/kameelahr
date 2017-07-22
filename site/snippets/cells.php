@@ -17,9 +17,9 @@ if( isset( $cells ) ) {
 				$published = $cell->date( 'M d, Y', 'published' );
 				$type = $cell->intendedTemplate();
 				$parent = $cell->parent()->slug();
-				$opacity = rand( 0.01, 0.1 );
-				$background = 'background:rgba(0,0,0,' . $opacity . ')';
-		 		echo '<div class="cell ' . $type . ' ' . $parent . '" data-length="' . $cellWidth . '" style="' . $background . '">';
+				// $opacity = rand( 0.01, 0.1 );
+				// $background = 'background:rgba(0,0,0,' . $opacity . ')';
+		 		echo '<div class="cell ' . $type . ' ' . $parent . '" data-length="' . $cellWidth . '" style="">';
 		 			echo '<a href="' . $cell->url() . '">';
 			 			echo '<div class="wrap">';
 				 			echo '<div class="meta">' . $published . '</div>';

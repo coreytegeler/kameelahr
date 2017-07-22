@@ -13,3 +13,6 @@ fields:
     label: Published Date
     type: date
     default: now
+  body:
+    label: Body
+    type: wysiwyg

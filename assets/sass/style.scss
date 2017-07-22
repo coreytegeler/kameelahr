@@ -30,13 +30,13 @@ header {
 	border-bottom: $border dotted black;
 	display: flex;
 	.name {
-		padding: 1em;
+		padding: $padding;
 		h1 {
 			line-height: .9em;
 		}
 	}
 	nav {
-		padding: 1em;
+		padding: $padding;
 		display: flex;
     flex-direction: column;
 		flex: 1;
@@ -54,7 +54,7 @@ header {
 	.link {
 		float: left;
 		display: table;
-		margin: 0 1em 0 0;
+		margin: 0 #{$padding/2} 0 0;
 		&.filter {
 			opacity: .5;
 			h3 {
@@ -80,17 +80,18 @@ header {
 	}
 }
 #cells {
-	width: calc(100% - 4em);
+	// width: calc(100% - #{$padding*2});
+	width: 100%;
 	min-height: 90vh;
-	margin: 0 2em;
+	// margin: 0 $padding;
 	overflow: hidden;
 	.cell {
 		width: 33.3333%;
 		float: left;
 		position: relative;
 		.wrap {
-			width: calc(100% - 4em + #{$border});
-			padding: calc(2em + #{$border});
+			width: calc(100% - #{$padding*2});
+			padding: $padding;
 		}
 		a {
 			width: 100%;
@@ -113,19 +114,22 @@ header {
 			pointer-events: none;
 		}
 		&.top {
+			.wrap {
+				padding-top: #{$padding/2};
+			}
 			a:hover {
-				border-top: 0;
-				.wrap {
-					padding-top: calc(2em + #{$border});
-				}
+				// border-top: 0;
+				// .wrap {
+				// 	padding-top: calc($padding + #{$border});
+				// }
 			}
 		}
 		&.left {
 			a:hover {
-				border-left: 0;
-				.wrap {
-					padding-left: calc(2em + #{$border});
-				}
+				// border-left: 0;
+				// .wrap {
+				// 	padding-left: calc($padding + #{$border});
+				// }
 			}
 			img {
 				left: calc(100% + 2px);;
@@ -134,10 +138,10 @@ header {
 		}
 		&.right {
 			a:hover {
-				border-right: 0;
-				.wrap {
-					padding-right: calc(2em + #{$border});
-				}
+				// border-right: 0;
+				// .wrap {
+				// 	padding-right: calc($padding + #{$border});
+				// }
 			}
 			img {
 				right: calc(100% + 1px);
@@ -159,20 +163,20 @@ header {
 			}
 		}
 		&:hover {
+			// background: rgba(0,0,0,0.03);
 			img {
 				display: block;
 			}
 			a {
-				border: $border dotted black;
-				border: none !important;
+				// border: $border dotted black;
 				font-weight: 900;
 				h2 {
 					font-weight: 900;
 				}
 			}
 			.wrap {
-				width: calc(100% - 3em);
-				padding-right: 1em;
+				width: calc(100% - #{$padding*1.5});
+				padding-right: #{$padding/2};
 				
 			}
 			.meta {
@@ -181,23 +185,24 @@ header {
 		}
 	}
 	@include tablet {
-		width: calc(100% - 2em);
-		margin: 0 1em;
+		width: calc(100% - $padding);
+		margin: 0 $padding;
 		.cell {
 			width: 50%;
 			.wrap {
 				@include tablet {
-					width: calc(100% - 2em + #{$border});
-					padding: calc(1em + #{$border});
+					width: calc(100% - $padding);
+					padding: $padding;
 				}
 			}
 			&.left {
-
 			}
 			&.right {
 			}
 			&.center {
-				
+				&:hover {
+
+				}
 			}
 		}
 	}
@@ -243,10 +248,10 @@ header {
 					display: table;
 					margin: auto;
 				}
-				width: calc(100% - 2em);
+				width: calc(100% - $padding);
 				position: absolute;
 				top: 100%;
-				padding: 1em;
+				padding: #{$padding/2};
 				display: table;
 				margin: auto;
 				@include smallText;
