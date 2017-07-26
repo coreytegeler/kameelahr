@@ -30,17 +30,34 @@ h3 {
 
 main {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
+  main.artwork {
+    overflow: hidden; }
+
+.texture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: 3px;
+  background-position: center;
+  background-image: url(../../assets/images/texture.png);
+  pointer-events: none; }
 
 header {
+  height: 10vh;
   border-bottom: 1px dotted black;
   display: flex; }
   header .name {
-    padding: 2em; }
+    padding: 0 2em;
+    display: flex;
+    align-items: center; }
     header .name h1 {
       line-height: .9em; }
   header nav {
-    padding: 2em;
+    padding: 0 2em;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -48,9 +65,9 @@ header {
 
 .links {
   width: 100%;
-  height: 50%;
   display: flex;
-  flex-direction: row-reverse; }
+  flex-direction: row-reverse;
+  padding: 0.5em 0; }
   .links.filters {
     align-items: flex-end; }
   .links .link {
@@ -86,29 +103,30 @@ header {
       #cells .cell a .meta {
         opacity: 0;
         text-transform: capitalize; }
-    #cells .cell img {
-      width: calc(100% - 1px);
+    #cells .cell .image {
+      width: 100%;
       height: auto;
       position: absolute;
       display: none;
       z-index: 100;
       pointer-events: none; }
+      #cells .cell .image img {
+        width: 100%;
+        filter: grayscale(1); }
     #cells .cell.top .wrap {
       padding-top: 1em; }
-    #cells .cell.left img {
+    #cells .cell.left .image {
       left: calc(100% + 2px);
       top: 0; }
-    #cells .cell.right img {
+    #cells .cell.right .image {
       right: calc(100% + 1px);
       top: 0; }
-    #cells .cell.center:nth-child(odd) img {
+    #cells .cell.center:nth-child(odd) .image {
       left: calc(100% + 2px);
       top: 0; }
-    #cells .cell.center:nth-child(even) img {
+    #cells .cell.center:nth-child(even) .image {
       right: calc(100% + 1px);
       top: 0; }
-    #cells .cell:hover img {
-      display: block; }
     #cells .cell:hover a {
       font-weight: 900; }
       #cells .cell:hover a h2 {
@@ -131,34 +149,77 @@ header {
 
 .carousel {
   width: 100%;
-  min-height: 80vh;
+  min-height: 90vh;
   display: table;
   margin: auto;
   padding: 0;
   position: relative;
   overflow: visible;
-  content: '80vh'; }
-  .carousel[data-direction="left"] .slide.current {
-    transform: translateX(0.25em); }
-  .carousel[data-direction="right"] .slide.current {
-    transform: translateX(-0.25em); }
+  content: 90vh;
+  border: 0 dotted transparent; }
+  .carousel[data-direction="left"] .slides {
+    left: .25em; }
+  .carousel[data-direction="right"] .slides {
+    left: -.25em; }
   .carousel .slides {
-    height: 80vh;
+    height: 90vh;
     position: absolute;
     left: 0;
-    top: 0; }
+    top: 0;
+    padding-left: 10vw;
+    transition: left 200ms cubic-bezier(0.645, 0.045, 0.355, 1); }
     .carousel .slides .slide {
-      width: auto;
-      height: 100%;
+      width: 80vw;
+      height: 90vh;
       position: relative;
       float: left;
-      transition: transform 200ms ease-in-out; }
-      .carousel .slides .slide .image {
+      mix-blend-mode: none;
+      filter: grayscale(1); }
+      .carousel .slides .slide .border {
+        height: 100%;
+        border: dotted black;
+        border-width: 0 1px;
+        overflow-x: hidden;
+        overflow-y: auto; }
+      .carousel .slides .slide.intro {
+        width: 100%;
+        height: 100%; }
+      .carousel .slides .slide.image .img {
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
         background-position: center;
-        background-size: contain; }
+        background-size: contain;
+        transition: background-position 700ms cubic-bezier(0.645, 0.045, 0.355, 1); }
+      .carousel .slides .slide.current {
+        filter: grayscale(0); }
+        .carousel .slides .slide.current .texture {
+          display: none; }
+      .carousel .slides .slide.right .border, .carousel .slides .slide.left .border {
+        border: 0 dotted transparent; }
+      .carousel .slides .slide.right .border {
+        border-left-color: black; }
+      .carousel .slides .slide.right .img {
+        background-position: left center; }
+      .carousel .slides .slide.left .border {
+        border-right-color: black; }
+      .carousel .slides .slide.left .img {
+        background-position: right center; }
+      .carousel .slides .slide .inner {
+        width: 80%;
+        max-width: 1440px;
+        display: table;
+        margin: 2em auto; }
+        .carousel .slides .slide .inner h2 {
+          width: 100%;
+          text-align: center;
+          font-size: 5em;
+          font-weight: 100; }
+        .carousel .slides .slide .inner .body {
+          width: 100%;
+          max-width: 25em;
+          display: table;
+          margin: auto; }
       .carousel .slides .slide .caption {
         width: calc(100% - $padding);
         position: absolute;
@@ -174,7 +235,7 @@ header {
           display: table;
           margin: auto; }
   .carousel .arrow {
-    width: 33.33%;
+    width: 10%;
     height: 100%;
     position: absolute;
     top: 0;

@@ -5,6 +5,9 @@ $dark: black;
 $border: 1px;
 $padding: 2em;
 $sideWidth: 20em;
+$slideHeight: 90vh;
+$slideWidth: 80vw;
+$ease: cubic-bezier(0.645, 0.045, 0.355, 1);
 @mixin baseText {
 	font-size: 21px;
 	line-height: 1.3em;

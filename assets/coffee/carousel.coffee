@@ -1,135 +1,148 @@
 jQuery ($) ->
-  transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd'
-  resizeCarousel = ->
-    $carousels = $('.carousel')
-    windowWidth = $(window).innerWidth()
-    $carousels.each ->
-      $carousel = $(this)
-      $slides = $carousel.find('.slide')
-      slidesLength = $slides.length
-      $slidesWrapper = $carousel.find('.slides')
-      $currentSlide = $carousel.find('.slide.current')
-      currentIndex = $currentSlide.index()
-      left = -1 * currentIndex * windowWidth
-      # $carousel.css width: windowWidth
-      $slidesWrapper.addClass 'static'
-      $slidesWrapper.css
-        width: slidesLength * windowWidth
-        x: left
-      $slides.each (i, slide) ->
-        imageUrl = $(slide).find('.image').css('backgroundImage')
-        if imageUrl
-          imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '')
-        else 
-          return
-        image = new Image
-        $slide = $(this)
-        image.onload = ->
-          width = image.width
-          height = image.height
-          ratio = width / height
-          if width >= height
-            $slide.addClass 'landscape'
-          else
-            $slide.addClass 'portrait'
-          if !parseInt($slide.css('width'))
-            $slide.css width: 'calc(100%/'+slidesLength+')'
-          if $slide.is('.current')  
-            fixCarouselHeight $slide
-        image.src = imageUrl
+	transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd'
 
-  fixCarouselHeight = ($slide) ->
-    $carousel = $slide.parents('.carousel')
-    $caption = $slide.find('.caption')
-    captionHeight = $caption.innerHeight()
-    minHeight = $carousel.css('content').replace(/['"]+/g,'')
-    height =  'calc('+minHeight+' + '+captionHeight+'px)'
-    $carousel.transition
-      'height': height
-    , 200, 'out'
+	slideWidth = ->
+		return $(window).innerWidth() * .8
 
-  setupCarousel = ->
-    $('.carousel').each (i, carousel) ->
-      $(this).find('.slide:first-child').addClass 'current'
-      $(carousel).imagesLoaded ->
-        $(carousel).addClass 'loaded'
+	resizeCarousel = ->
+		$carousels = $('.carousel')
+		$carousels.each ->
+			$carousel = $(this)
+			$slides = $carousel.find('.slide')
+			slidesLength = $slides.length
+			$slidesWrapper = $carousel.find('.slides')
+			$currentSlide = $carousel.find('.slide.current')
+			$leftSlide = $currentSlide.prev().addClass('left')
+			$rightSlide = $currentSlide.next().addClass('right') 
+			currentIndex = $currentSlide.index()
+			left = currentIndex * -slideWidth()
+			$slidesWrapper.addClass 'static'
+			slidesWidth = slidesLength * slideWidth()
+			$slidesWrapper.css
+				width: slidesWidth
+				x: left
+			$slides.each (i, slide) ->
+				imageUrl = $(slide).find('.img').css('backgroundImage')
+				if imageUrl
+					imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '')
+				else 
+					return fixIntro(slide)
+				image = new Image
+				$slide = $(this)
+				image.onload = ->
+					width = image.width
+					height = image.height
+					ratio = width / height
+					if width >= height
+						$slide.addClass 'landscape'
+					else
+						$slide.addClass 'portrait'
+					if !parseInt($slide.css('width'))
+						$slide.css width: slideWidth()
+				image.src = imageUrl
 
-    $('body').on 'mouseenter', '.carousel.loaded .arrow:not(.no)', ->
-      $arrow = $(this)
-      direction = $arrow.attr('data-direction')
-      $carousel = $arrow.parents('.carousel')
-      $carousel.attr('data-direction', direction)
+	fixIntro = (slide) ->
+		$slides = $(slide).parents('.slides').find('.slide')
+		slidesLength = $slides.length
+		$(slide).css width: 'calc(100%/'+slidesLength+')'
 
-    $('body').on 'mouseleave', '.carousel.loaded .arrow', ->
-      $arrow = $(this)
-      $carousel = $arrow.parents('.carousel')
-      $carousel.attr('data-direction', '')
-
-    $('body').on 'click', '.carousel.loaded .arrow:not(.no)', ->
-      $arrow = $(this)
-      direction = $arrow.attr('data-direction')
-      windowWidth = $(window).innerWidth()
-      $carousel = $arrow.parents('.carousel')
-      $slidesWrapper = $carousel.find('.slides')
-      $currentSlide = $carousel.find('.slide.current')
-      currentIndex = $currentSlide.index()
-      $firstSlide = $carousel.find('.slide').first()
-      $lastSlide = $carousel.find('.slide').last()
-      left = parseInt($slidesWrapper.css('left'))
-      $slidesWrapper.removeClass 'static'
-      switch direction
-        when 'left'
-          $nextSlide = $currentSlide.prev('.slide')
-          left += windowWidth
-        when 'right'
-          $nextSlide = $currentSlide.next('.slide')
-          left -= windowWidth
-      if !$nextSlide.length
-        switch direction
-          when 'left'
-            $lastSlide.insertBefore $firstSlide
-            $nextSlide = $lastSlide
-            $slidesWrapper.addClass 'static'
-            currentIndex = $currentSlide.index()
-            left = -1 * currentIndex * windowWidth
-            $slidesWrapper.css x: left
-            left += windowWidth
-          when 'right'
-            $firstSlide.insertAfter $lastSlide
-            $nextSlide = $firstSlide
-            $slidesWrapper.addClass 'static'
-            currentIndex = $currentSlide.index()
-            left = -1 * currentIndex * windowWidth
-            $slidesWrapper.css x: left
-            left -= windowWidth
-        delay = 100
-      else
-        delay = 0
-      fixCarouselHeight($nextSlide)
-      setTimeout (->
-        $slidesWrapper.removeClass 'static'
-        $arrow.addClass 'no'
-        $slidesWrapper.stop()
-        $currentSlide.removeClass 'current'
-        $nextSlide.addClass 'current'
-        $slidesWrapper.transition { x: left }, ->
-          switch direction
-            when 'left'
-              $lastSlide.insertBefore $firstSlide
-            when 'right'
-              $firstSlide.insertAfter $lastSlide
-          resizeCarousel()
-          $arrow.removeClass 'no'
-      ), delay
-    resizeCarousel()
-
-  $ ->
-    setupCarousel()
-
-  $(window).resize () ->
-    setupCarousel()
+	setupCarousel = ->
+		$('.carousel').each (i, carousel) ->
+			$(this).find('.slide:first-child').addClass 'current'
+			$(carousel).imagesLoaded ->
+				$(carousel).addClass 'loaded'
+		resizeCarousel()
 
 
+	$('body').on 'mouseenter', '.carousel.loaded:not(.sliding) .arrow', ->
+		$arrow = $(this)
+		direction = $arrow.attr('data-direction')
+		$carousel = $arrow.parents('.carousel')
+		$carousel.attr('data-direction', direction)
 
-  # ---
-  # generated by js2coffee 2.2.0
+	$('body').on 'mouseleave', '.carousel.loaded .arrow', ->
+		$arrow = $(this)
+		$carousel = $arrow.parents('.carousel')
+		$carousel.attr('data-direction', '')
+
+	$('body').on 'click', '.carousel.loaded:not(.sliding) .arrow', (e) ->
+		$arrow = $(this)
+		$carousel = $arrow.parents('.carousel')
+		direction = $arrow.attr('data-direction')
+		$carousel.slide(direction)
+
+	$(document).keydown (e) ->
+		$carousel = $('.carousel')
+		if $carousel.is '.sliding'
+			return
+		if e.which == 37
+			e.preventDefault()
+			$carousel.slide('left')
+		else if e.which == 39
+			e.preventDefault()
+			$carousel.slide('right')
+		else
+			return
+
+	$.fn.slide = (direction) ->
+		$carousel = $(this)
+		$arrow = $carousel.find('.arrow.'+direction)
+		# $arrow.addClass 'no'
+		$carousel.addClass 'sliding'
+		direction = $arrow.attr('data-direction')
+		$carousel = $arrow.parents('.carousel')
+		$slidesWrapper = $carousel.find('.slides')
+		$currentSlide = $carousel.find('.slide.current')
+		currentIndex = $currentSlide.index()
+		$firstSlide = $carousel.find('.slide').first()
+		$lastSlide = $carousel.find('.slide').last()
+		left = parseInt($slidesWrapper.css('x'))
+		$slidesWrapper.removeClass 'static'
+		switch direction
+			when 'left'
+				$nextSlide = $currentSlide.prev('.slide')
+				left += slideWidth() + 2
+			when 'right'
+				$nextSlide = $currentSlide.next('.slide')
+				left -= slideWidth() + 2
+		delay = 0
+		setTimeout (->
+			$slidesWrapper.removeClass 'static'
+			$slidesWrapper.stop()
+			$carousel.find('.slide').removeClass 'current left right'
+			$currentSlide.removeClass 'current'
+			$nextSlide.addClass 'current'
+			$leftSlide = $nextSlide.prev().addClass('left')
+			$rightSlide = $nextSlide.next().addClass('right')
+			$slidesWrapper.transition { x: left }, 700, 'easeInOutCubic', () ->
+				if direction == 'right' && !$nextSlide.next().next().length
+					firstSlug = $firstSlide.attr('data-slug')
+					$firstClones = $carousel.find('[data-slug="'+firstSlug+'"]')
+					if $firstClones.length > 1
+						$firstClones.first().remove()
+						$firstSlide = $carousel.find('.slide').first()
+					$firstSlide.clone().insertAfter $lastSlide
+				else if direction == 'left' && !$nextSlide.prev().prev().length
+					lastSlug = $lastSlide.attr('data-slug')
+					$lastClones = $carousel.find('[data-slug="'+lastSlug+'"]')
+					if $lastClones.length > 1
+						$lastClones.last().remove()
+						$lastSlide = $carousel.find('.slide').last()
+					$lastSlide.clone().insertBefore $firstSlide
+				resizeCarousel()
+				# $arrow.removeClass 'no'
+				$carousel.removeClass 'sliding'
+		), delay
+	resizeCarousel()
+		
+
+	$ ->
+		setupCarousel()
+
+	$(window).resize () ->
+		resizeCarousel()
+
+
+
+	# ---
+	# generated by js2coffee 2.2.0

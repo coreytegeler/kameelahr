@@ -25,18 +25,36 @@ h3 {
 main {
 	width: 100%;
 	height: 100%;
+	overflow-x: hidden;
+	&.artwork {
+		overflow: hidden;
+	}
+}
+.texture {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-size: 3px;
+	background-position: center;
+	background-image: url(images/texture.png);
+	pointer-events: none;
 }
 header {
+	height: 10vh;
 	border-bottom: $border dotted black;
 	display: flex;
 	.name {
-		padding: $padding;
+		padding: 0 $padding;
+    display: flex;
+    align-items: center;
 		h1 {
 			line-height: .9em;
 		}
 	}
 	nav {
-		padding: $padding;
+		padding: 0 $padding;
 		display: flex;
     flex-direction: column;
 		flex: 1;
@@ -45,9 +63,9 @@ header {
 }
 .links {
 	width: 100%;
-	height: 50%;
 	display: flex;
 	flex-direction: row-reverse;
+	padding: #{$padding/4} 0;
 	&.filters {
 		align-items: flex-end;
 	}
@@ -105,13 +123,17 @@ header {
 				text-transform: capitalize;
 			}
 		}
-		img {
-			width: calc(100% - 1px);
+		.image {
+			width: 100%;
 			height: auto;
 			position: absolute;
 			display: none;
 			z-index: 100;
 			pointer-events: none;
+			img {
+				width: 100%;
+				filter: grayscale(1);
+			}
 		}
 		&.top {
 			.wrap {
@@ -131,7 +153,7 @@ header {
 				// 	padding-left: calc($padding + #{$border});
 				// }
 			}
-			img {
+			.image {
 				left: calc(100% + 2px);;
 				top: 0;
 			}
@@ -143,20 +165,20 @@ header {
 				// 	padding-right: calc($padding + #{$border});
 				// }
 			}
-			img {
+			.image {
 				right: calc(100% + 1px);
 				top: 0;
 			}
 		}
 		&.center {
 			&:nth-child(odd) {
-				img {
+				.image {
 					left: calc(100% + 2px);
 					top: 0;
 				}
 			}
 			&:nth-child(even) {
-				img {
+				.image {
 					right: calc(100% + 1px);
 					top: 0;
 				}
@@ -164,8 +186,8 @@ header {
 		}
 		&:hover {
 			// background: rgba(0,0,0,0.03);
-			img {
-				display: block;
+			.image {
+				// display: block;
 			}
 			a {
 				// border: $border dotted black;
@@ -207,38 +229,101 @@ header {
 		}
 	}
 }
+
 .carousel {
 	width: 100%;
-	min-height: 80vh;
+	min-height: $slideHeight;
 	display: table;
 	margin: auto;
 	padding: 0;
 	position: relative;
 	overflow: visible;
-	content: '80vh';
-	&[data-direction="left"] .slide.current {
-		transform: translateX(.25em);
+	content: $slideHeight;
+	border: 0 dotted transparent;
+	&[data-direction="left"] .slides {
+		left: .25em;
 	}
-	&[data-direction="right"] .slide.current {
-		transform: translateX(-.25em);
+	&[data-direction="right"] .slides {
+		left: -.25em;
 	}
 	.slides {
-		height: 80vh;
+		height: $slideHeight;
 		position: absolute;
 		left: 0;
 		top: 0;
+		padding-left: 10vw;
+		transition: left 200ms $ease;
 		.slide {
-			width: auto;
-			height: 100%;
+			width: $slideWidth;
+			height: $slideHeight;
 			position: relative;
 			float: left;
-			transition: transform 200ms ease-in-out;
-			.image {
+			mix-blend-mode: none;
+			filter: grayscale(1);
+			// transition: transform 200ms ease-in-out;
+			.border {
+				height: 100%;
+				border: dotted black;
+				border-width: 0 1px;
+				overflow-x: hidden; 
+				overflow-y: auto;
+			}
+			&.intro {
 				width: 100%;
 				height: 100%;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: contain;		
+			}
+			&.image {
+				.img {
+					width: 100%;
+					height: 100%;
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: contain;
+					transition: background-position 700ms $ease;
+				}
+			}
+			&.current {
+				filter: grayscale(0);
+				.texture {
+					display: none;
+				}
+			}	
+			&.right .border, &.left .border {
+				border: 0 dotted transparent;
+			}
+			&.right {
+				.border {
+					border-left-color: black;
+				}
+				.img {
+					background-position: left center;
+				}
+			}
+			&.left {
+				.border {
+					border-right-color: black;
+				}
+				.img {
+					background-position: right center;
+				}
+			}
+			.inner {
+				width: 80%;
+				max-width: $desktopWidth;
+				display: table;
+				margin: 2em auto;
+				h2 {
+					width: 100%;
+					text-align: center;
+					font-size: 5em;
+					font-weight: 100;
+				}
+				.body {
+					width: 100%;
+					max-width: 25em;
+					display: table;
+					margin: auto;
+				}
 			}
 			.caption {
 				// max-width: $tabletWidth;
@@ -259,7 +344,7 @@ header {
 		}
 	}
 	.arrow {
-		width: 33.33%;
+		width: 10%;
 		height: 100%;
 		position: absolute;
 		top: 0;
@@ -268,15 +353,20 @@ header {
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
+		// background-color: rgba(0,0,0,0.04);
 		z-index: 100;
+		// border-style: dotted;
+		// border-color: black;
 		&:hover {
 			cursor: pointer;
 		}
 		&.left {
 			left: 0;
+			// border-width: 0 $border 0 0;
 		}
 		&.right {
 			right: 0;
+			// border-width: 0 0 0 $border;
 		}
 	}
 }

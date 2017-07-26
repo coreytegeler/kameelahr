@@ -1,31 +1,36 @@
 jQuery(function($) {
-  var fixCarouselHeight, resizeCarousel, setupCarousel, transitionEnd;
+  var fixIntro, resizeCarousel, setupCarousel, slideWidth, transitionEnd;
   transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd';
+  slideWidth = function() {
+    return $(window).innerWidth() * .8;
+  };
   resizeCarousel = function() {
-    var $carousels, windowWidth;
+    var $carousels;
     $carousels = $('.carousel');
-    windowWidth = $(window).innerWidth();
     return $carousels.each(function() {
-      var $carousel, $currentSlide, $slides, $slidesWrapper, currentIndex, left, slidesLength;
+      var $carousel, $currentSlide, $leftSlide, $rightSlide, $slides, $slidesWrapper, currentIndex, left, slidesLength, slidesWidth;
       $carousel = $(this);
       $slides = $carousel.find('.slide');
       slidesLength = $slides.length;
       $slidesWrapper = $carousel.find('.slides');
       $currentSlide = $carousel.find('.slide.current');
+      $leftSlide = $currentSlide.prev().addClass('left');
+      $rightSlide = $currentSlide.next().addClass('right');
       currentIndex = $currentSlide.index();
-      left = -1 * currentIndex * windowWidth;
+      left = currentIndex * -slideWidth();
       $slidesWrapper.addClass('static');
+      slidesWidth = slidesLength * slideWidth();
       $slidesWrapper.css({
-        width: slidesLength * windowWidth,
+        width: slidesWidth,
         x: left
       });
       return $slides.each(function(i, slide) {
         var $slide, image, imageUrl;
-        imageUrl = $(slide).find('.image').css('backgroundImage');
+        imageUrl = $(slide).find('.img').css('backgroundImage');
         if (imageUrl) {
           imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '');
         } else {
-          return;
+          return fixIntro(slide);
         }
         image = new Image;
         $slide = $(this);
@@ -40,28 +45,22 @@ jQuery(function($) {
             $slide.addClass('portrait');
           }
           if (!parseInt($slide.css('width'))) {
-            $slide.css({
-              width: 'calc(100%/' + slidesLength + ')'
+            return $slide.css({
+              width: slideWidth()
             });
-          }
-          if ($slide.is('.current')) {
-            return fixCarouselHeight($slide);
           }
         };
         return image.src = imageUrl;
       });
     });
   };
-  fixCarouselHeight = function($slide) {
-    var $caption, $carousel, captionHeight, height, minHeight;
-    $carousel = $slide.parents('.carousel');
-    $caption = $slide.find('.caption');
-    captionHeight = $caption.innerHeight();
-    minHeight = $carousel.css('content').replace(/['"]+/g, '');
-    height = 'calc(' + minHeight + ' + ' + captionHeight + 'px)';
-    return $carousel.transition({
-      'height': height
-    }, 200, 'out');
+  fixIntro = function(slide) {
+    var $slides, slidesLength;
+    $slides = $(slide).parents('.slides').find('.slide');
+    slidesLength = $slides.length;
+    return $(slide).css({
+      width: 'calc(100%/' + slidesLength + ')'
+    });
   };
   setupCarousel = function() {
     $('.carousel').each(function(i, carousel) {
@@ -70,97 +69,108 @@ jQuery(function($) {
         return $(carousel).addClass('loaded');
       });
     });
-    $('body').on('mouseenter', '.carousel.loaded .arrow:not(.no)', function() {
-      var $arrow, $carousel, direction;
-      $arrow = $(this);
-      direction = $arrow.attr('data-direction');
-      $carousel = $arrow.parents('.carousel');
-      return $carousel.attr('data-direction', direction);
-    });
-    $('body').on('mouseleave', '.carousel.loaded .arrow', function() {
-      var $arrow, $carousel;
-      $arrow = $(this);
-      $carousel = $arrow.parents('.carousel');
-      return $carousel.attr('data-direction', '');
-    });
-    $('body').on('click', '.carousel.loaded .arrow:not(.no)', function() {
-      var $arrow, $carousel, $currentSlide, $firstSlide, $lastSlide, $nextSlide, $slidesWrapper, currentIndex, delay, direction, left, windowWidth;
-      $arrow = $(this);
-      direction = $arrow.attr('data-direction');
-      windowWidth = $(window).innerWidth();
-      $carousel = $arrow.parents('.carousel');
-      $slidesWrapper = $carousel.find('.slides');
-      $currentSlide = $carousel.find('.slide.current');
-      currentIndex = $currentSlide.index();
-      $firstSlide = $carousel.find('.slide').first();
-      $lastSlide = $carousel.find('.slide').last();
-      left = parseInt($slidesWrapper.css('left'));
-      $slidesWrapper.removeClass('static');
-      switch (direction) {
-        case 'left':
-          $nextSlide = $currentSlide.prev('.slide');
-          left += windowWidth;
-          break;
-        case 'right':
-          $nextSlide = $currentSlide.next('.slide');
-          left -= windowWidth;
-      }
-      if (!$nextSlide.length) {
-        switch (direction) {
-          case 'left':
-            $lastSlide.insertBefore($firstSlide);
-            $nextSlide = $lastSlide;
-            $slidesWrapper.addClass('static');
-            currentIndex = $currentSlide.index();
-            left = -1 * currentIndex * windowWidth;
-            $slidesWrapper.css({
-              x: left
-            });
-            left += windowWidth;
-            break;
-          case 'right':
-            $firstSlide.insertAfter($lastSlide);
-            $nextSlide = $firstSlide;
-            $slidesWrapper.addClass('static');
-            currentIndex = $currentSlide.index();
-            left = -1 * currentIndex * windowWidth;
-            $slidesWrapper.css({
-              x: left
-            });
-            left -= windowWidth;
-        }
-        delay = 100;
-      } else {
-        delay = 0;
-      }
-      fixCarouselHeight($nextSlide);
-      return setTimeout((function() {
-        $slidesWrapper.removeClass('static');
-        $arrow.addClass('no');
-        $slidesWrapper.stop();
-        $currentSlide.removeClass('current');
-        $nextSlide.addClass('current');
-        return $slidesWrapper.transition({
-          x: left
-        }, function() {
-          switch (direction) {
-            case 'left':
-              $lastSlide.insertBefore($firstSlide);
-              break;
-            case 'right':
-              $firstSlide.insertAfter($lastSlide);
-          }
-          resizeCarousel();
-          return $arrow.removeClass('no');
-        });
-      }), delay);
-    });
     return resizeCarousel();
   };
+  $('body').on('mouseenter', '.carousel.loaded:not(.sliding) .arrow', function() {
+    var $arrow, $carousel, direction;
+    $arrow = $(this);
+    direction = $arrow.attr('data-direction');
+    $carousel = $arrow.parents('.carousel');
+    return $carousel.attr('data-direction', direction);
+  });
+  $('body').on('mouseleave', '.carousel.loaded .arrow', function() {
+    var $arrow, $carousel;
+    $arrow = $(this);
+    $carousel = $arrow.parents('.carousel');
+    return $carousel.attr('data-direction', '');
+  });
+  $('body').on('click', '.carousel.loaded:not(.sliding) .arrow', function(e) {
+    var $arrow, $carousel, direction;
+    $arrow = $(this);
+    $carousel = $arrow.parents('.carousel');
+    direction = $arrow.attr('data-direction');
+    return $carousel.slide(direction);
+  });
+  $(document).keydown(function(e) {
+    var $carousel;
+    $carousel = $('.carousel');
+    if ($carousel.is('.sliding')) {
+      return;
+    }
+    if (e.which === 37) {
+      e.preventDefault();
+      return $carousel.slide('left');
+    } else if (e.which === 39) {
+      e.preventDefault();
+      return $carousel.slide('right');
+    } else {
+
+    }
+  });
+  $.fn.slide = function(direction) {
+    var $arrow, $carousel, $currentSlide, $firstSlide, $lastSlide, $nextSlide, $slidesWrapper, currentIndex, delay, left;
+    $carousel = $(this);
+    $arrow = $carousel.find('.arrow.' + direction);
+    $carousel.addClass('sliding');
+    direction = $arrow.attr('data-direction');
+    $carousel = $arrow.parents('.carousel');
+    $slidesWrapper = $carousel.find('.slides');
+    $currentSlide = $carousel.find('.slide.current');
+    currentIndex = $currentSlide.index();
+    $firstSlide = $carousel.find('.slide').first();
+    $lastSlide = $carousel.find('.slide').last();
+    left = parseInt($slidesWrapper.css('x'));
+    $slidesWrapper.removeClass('static');
+    switch (direction) {
+      case 'left':
+        $nextSlide = $currentSlide.prev('.slide');
+        left += slideWidth() + 2;
+        break;
+      case 'right':
+        $nextSlide = $currentSlide.next('.slide');
+        left -= slideWidth() + 2;
+    }
+    delay = 0;
+    return setTimeout((function() {
+      var $leftSlide, $rightSlide;
+      $slidesWrapper.removeClass('static');
+      $slidesWrapper.stop();
+      $carousel.find('.slide').removeClass('current left right');
+      $currentSlide.removeClass('current');
+      $nextSlide.addClass('current');
+      $leftSlide = $nextSlide.prev().addClass('left');
+      $rightSlide = $nextSlide.next().addClass('right');
+      return $slidesWrapper.transition({
+        x: left
+      }, 700, 'easeInOutCubic', function() {
+        var $firstClones, $lastClones, firstSlug, lastSlug;
+        if (direction === 'right' && !$nextSlide.next().next().length) {
+          firstSlug = $firstSlide.attr('data-slug');
+          $firstClones = $carousel.find('[data-slug="' + firstSlug + '"]');
+          if ($firstClones.length > 1) {
+            $firstClones.first().remove();
+            $firstSlide = $carousel.find('.slide').first();
+          }
+          $firstSlide.clone().insertAfter($lastSlide);
+        } else if (direction === 'left' && !$nextSlide.prev().prev().length) {
+          lastSlug = $lastSlide.attr('data-slug');
+          $lastClones = $carousel.find('[data-slug="' + lastSlug + '"]');
+          if ($lastClones.length > 1) {
+            $lastClones.last().remove();
+            $lastSlide = $carousel.find('.slide').last();
+          }
+          $lastSlide.clone().insertBefore($firstSlide);
+        }
+        resizeCarousel();
+        return $carousel.removeClass('sliding');
+      });
+    }), delay);
+  };
+  resizeCarousel();
   $(function() {
     return setupCarousel();
   });
   return $(window).resize(function() {
-    return setupCarousel();
+    return resizeCarousel();
   });
 });

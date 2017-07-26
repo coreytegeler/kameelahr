@@ -37,7 +37,10 @@ if( isset( $cells ) ) {
 				 			echo '</div>';
 					 	echo '</div>';
 				 	echo '</a>';
-				 	echo $cell->image();
+				 	echo '<div class="image">';
+				 		echo '<div class="texture"></div>';
+					 	echo $cell->image();
+					echo '</div>';	 	
 			 	echo '</div>';
 			}
 		}

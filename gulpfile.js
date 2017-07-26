@@ -20,10 +20,10 @@ var paths = {
 }
 
 var dest = {
-  css: './assets/css',
-  js: './assets/js',
+  css: './assets/css/',
+  js: './assets/js/',
   templates: './site',
-  images: './assets/images'
+  images: '../../assets/images/'
 }
 
 gulp.task('compile-templates', function() {

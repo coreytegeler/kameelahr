@@ -11,10 +11,10 @@
 
 </head>
 <body>
-  <main class="main" role="main">
+  <main class="main <?php echo $page->intendedTemplate(); ?>" role="main">
     <header role="header">
       <a href="/" class="name">
-        <h1>Kameelah Janan Rasheed</h1>
+        <h3>Kameelah Janan Rasheed</h3>
       </a>
       <nav role="navigation">
         <?php

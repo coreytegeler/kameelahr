@@ -7,3 +7,27 @@ Safetitle:
 ----
 
 Published: 2017-07-14
+
+----
+
+Intro: Blending satire and the structure of etiquette guides, this series of public aphoristic large format digital prints explore how suffering, anger, and responses to trauma are policed to ensure that said expressions of suffering do not disrupt or declare accountable oppressive systems. This series examines the choreography and performance of the "angelic negro" who in the face of routinized Black death must display superhuman restraint in repressing anger. This compulsory affective labor of smiling through the pain and performing calculated emotional acrobatics so as not to make others uncomfortable persists as a way to maintain social order. This large-scale public work seeks to make explicit the implicit scripts and norms that make confronting the nuances of oppression "impolite".
+
+----
+
+Slides: 
+
+----
+
+Showings: 
+
+- 
+  gallery: ""
+  location: New York, NY
+  year: "2016"
+  _fieldset: showing
+  space: Jack Shainman Gallery
+- 
+  space: VOLTA
+  location: New York, NY
+  year: "2016"
+  _fieldset: showing

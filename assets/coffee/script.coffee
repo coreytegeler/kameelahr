@@ -61,7 +61,3 @@ $ ->
 	# 		$(this).css
 	# 			fontSize: size+'em'
 	# 	$cells.isotope 'layout'
-
-
-		
-	    
