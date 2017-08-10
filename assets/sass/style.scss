@@ -109,37 +109,56 @@ header {
 		a {
 			width: 100%;
 			display: table;
+			.meta {
+				opacity: 0;
+				text-transform: capitalize;
+				padding: .25em 0;
+				span {
+					margin: 0 1em 0 0;
+					text-transform: capitalize;
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
 			.wrap {
 				width: calc(100% - #{$padding*2});
-				padding: $padding;
+				padding: 0 $padding #{$padding/2} $padding;
 				.event {
 					width: 100%;
 					h2 {
 						font-weight: 100;
 						margin: 0;
 					}
-					.meta {
-						opacity: 0;
-						text-transform: capitalize;
-					}
+					
 				}
 				.artwork {
 					width: 100%;
 					height: auto;
 					pointer-events: none;
+					display: table;
 					img {
 						width: 100%;
 						filter: grayscale(1);
+						display: table;
 					}
 				}
 				.text {
-					width: 100%;
+					width: calc(100% - 2em);
+					padding: 1em;
+					background-color: rgba(0,0,0,.03);
 					height: auto;
-					pointer-events: none;
 					font-size: 11px;
 					line-height: 1em;
-					max-height: 35em;
+					// max-height: 38em;
 					overflow: hidden;
+					p {
+						margin-top: 0;
+						pointer-events: none;
+						&:last-child {
+							margin: 0;
+						}
+					}
 				}
 				&:hover {
 					.body {
@@ -157,6 +176,9 @@ header {
 					// }
 				}
 			}
+		}
+		&.top {
+			padding-top: $padding;
 		}
 		@include tablet {
 			width: calc(100% - $padding);

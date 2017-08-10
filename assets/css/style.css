@@ -16,7 +16,7 @@ a {
 h1 {
   font-size: 3em;
   line-height: 1.2em;
-  font-weight: 900;
+  font-weight: 100;
   margin: 0; }
 
 h2 {
@@ -101,36 +101,51 @@ header {
     #cells .cell a {
       width: 100%;
       display: table; }
+      #cells .cell a .meta {
+        opacity: 0;
+        text-transform: capitalize;
+        padding: .25em 0; }
+        #cells .cell a .meta span {
+          margin: 0 1em 0 0;
+          text-transform: capitalize; }
+          #cells .cell a .meta span:last-child {
+            margin: 0; }
       #cells .cell a .wrap {
         width: calc(100% - 4em);
-        padding: 2em; }
+        padding: 0 2em 1em 2em; }
         #cells .cell a .wrap .event {
           width: 100%; }
           #cells .cell a .wrap .event h2 {
             font-weight: 100;
             margin: 0; }
-          #cells .cell a .wrap .event .meta {
-            opacity: 0;
-            text-transform: capitalize; }
         #cells .cell a .wrap .artwork {
           width: 100%;
           height: auto;
-          pointer-events: none; }
+          pointer-events: none;
+          display: table; }
           #cells .cell a .wrap .artwork img {
             width: 100%;
-            filter: grayscale(1); }
+            filter: grayscale(1);
+            display: table; }
         #cells .cell a .wrap .text {
-          width: 100%;
+          width: calc(100% - 2em);
+          padding: 1em;
+          background-color: rgba(0, 0, 0, 0.03);
           height: auto;
-          pointer-events: none;
           font-size: 11px;
           line-height: 1em;
-          max-height: 35em;
           overflow: hidden; }
+          #cells .cell a .wrap .text p {
+            margin-top: 0;
+            pointer-events: none; }
+            #cells .cell a .wrap .text p:last-child {
+              margin: 0; }
         #cells .cell a .wrap:hover .body {
           color: black !important; }
         #cells .cell a .wrap:hover .meta {
           opacity: 1; }
+    #cells .cell.top {
+      padding-top: 2em; }
     @media (max-width: 768px) {
       #cells .cell {
         width: calc(100% - $padding);

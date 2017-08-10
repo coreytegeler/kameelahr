@@ -26,7 +26,8 @@ if( isset( $cells ) ) {
 								echo '</div>';
 							} else if( $cell->body() && !$cell->body()->empty() ) {
 								echo '<div class="text">';
-									echo $cell->body()->kirbytext();
+									$excerpt = str::excerpt( $cell->body()->kirbytext(), 1800, false );
+									echo $excerpt;
 								echo '</div>';
 							} else {
 								echo '<div class="event">';
@@ -41,11 +42,9 @@ if( isset( $cells ) ) {
 						 			echo '</h2>';
 						 		echo '</div>';
 							}
-							echo '<div class="text">';
-					 			echo '<div class="meta">' . $published . '</div>';
-					 			echo '<div class="meta">';
-					 				echo $type;
-					 			echo '</div>';
+							echo '<div class="meta">';
+					 			echo '<span>' . $published . '</span>';
+					 			echo '<span>' . $type . '</span>';
 					 		echo '</div>';
 					 	echo '</div>';
 				 	echo '</a>';
