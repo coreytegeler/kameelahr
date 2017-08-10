@@ -10,8 +10,6 @@ html, body {
 a {
   color: black;
   text-decoration: none; }
-  a:hover {
-    color: blue; }
 
 h1 {
   font-size: 3em;
@@ -102,7 +100,6 @@ header {
       width: 100%;
       display: table; }
       #cells .cell a .meta {
-        opacity: 0;
         text-transform: capitalize;
         padding: .25em 0; }
         #cells .cell a .meta span {
@@ -111,11 +108,16 @@ header {
           #cells .cell a .meta span:last-child {
             margin: 0; }
       #cells .cell a .wrap {
-        width: calc(100% - 4em);
-        padding: 0 2em 1em 2em; }
-        #cells .cell a .wrap .event {
-          width: 100%; }
-          #cells .cell a .wrap .event h2 {
+        width: calc(100% - 1em);
+        padding: 0 0.5em 1em 0.5em;
+        position: relative; }
+        #cells .cell a .wrap .title {
+          width: calc(100% - 1em);
+          position: absolute;
+          left: 0.5em;
+          top: 0;
+          opacity: 0; }
+          #cells .cell a .wrap .title h2 {
             font-weight: 100;
             margin: 0; }
         #cells .cell a .wrap .artwork {
@@ -140,10 +142,10 @@ header {
             pointer-events: none; }
             #cells .cell a .wrap .text p:last-child {
               margin: 0; }
-        #cells .cell a .wrap:hover .body {
-          color: black !important; }
-        #cells .cell a .wrap:hover .meta {
+        #cells .cell a .wrap:hover .title {
           opacity: 1; }
+        #cells .cell a .wrap:hover .text, #cells .cell a .wrap:hover .artwork {
+          opacity: 0; }
     #cells .cell.top {
       padding-top: 2em; }
     @media (max-width: 768px) {

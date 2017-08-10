@@ -22,7 +22,7 @@ Kirby Configuration
 */
 
 c::set('license', 'put your license key here');
-// c::set('debug', true);
+c::set('debug', true);
 // c::set('panel.install', true);
 
 /*

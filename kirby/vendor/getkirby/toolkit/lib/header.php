@@ -242,7 +242,7 @@ class Header {
   public static function redirect($url, $code = 301, $send = true) {
 
     $status   = static::status($code, false); 
-    $location = 'Location:' . url::unIdn($url);
+    $location = 'Location:' . $url;
 
     if(!$send) {
       return $status . "\r\n" . $location;

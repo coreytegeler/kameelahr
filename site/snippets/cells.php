@@ -29,22 +29,21 @@ if( isset( $cells ) ) {
 									$excerpt = str::excerpt( $cell->body()->kirbytext(), 1800, false );
 									echo $excerpt;
 								echo '</div>';
-							} else {
-								echo '<div class="event">';
-									echo '<h2>';
-							 			$title = $cell->title();
-							 			$safeTitle = $cell->safeTitle();
-							 			if( !$safeTitle || !$safeTitle->empty() ) {
-							 				echo $safeTitle;
-							 			} else {
-							 				echo $title;	
-							 			}
-						 			echo '</h2>';
-						 		echo '</div>';
 							}
-							echo '<div class="meta">';
-					 			echo '<span>' . $published . '</span>';
-					 			echo '<span>' . $type . '</span>';
+							echo '<div class="title">';
+								echo '<h2>';
+						 			$title = $cell->title();
+						 			$safeTitle = $cell->safeTitle();
+						 			if( !$safeTitle || !$safeTitle->empty() ) {
+						 				echo $safeTitle;
+						 			} else {
+						 				echo $title;	
+						 			}
+					 			echo '</h2>';
+					 			echo '<div class="meta">';
+						 			echo '<span>' . $published . '</span>';
+						 			echo '<span>' . $type . '</span>';
+						 		echo '</div>';
 					 		echo '</div>';
 					 	echo '</div>';
 				 	echo '</a>';
