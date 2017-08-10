@@ -9,6 +9,9 @@ html, body {
 a {
 	color: black;
 	text-decoration: none;
+	&:hover {
+		color: blue;
+	}
 }
 h1 {
 	@include xLargeText;
@@ -20,11 +23,13 @@ h2 {
 }
 h3 {
 	@include mediumText;
-	margin: 0;	
+	margin: 0;
+	font-weight: 400;
 }
 main {
 	width: 100%;
 	height: 100%;
+	min-height: 400px;
 	overflow-x: hidden;
 	&.artwork {
 		overflow: hidden;
@@ -42,7 +47,7 @@ main {
 	pointer-events: none;
 }
 header {
-	height: 10vh;
+	height: $headerHeight;
 	border-bottom: $border dotted black;
 	display: flex;
 	.name {
@@ -65,27 +70,18 @@ header {
 	width: 100%;
 	display: flex;
 	flex-direction: row-reverse;
-	padding: #{$padding/4} 0;
-	&.filters {
-		align-items: flex-end;
+	margin: auto;
+	&.about {
+		padding: #{$padding/4} 0 0 0;
 	}
-	.link {
-		float: left;
-		display: table;
-		margin: 0 #{$padding/2} 0 0;
-		&.filter {
+	&.filters {
+		padding: 0 0 #{$padding/4} 0;
+		align-items: flex-end;
+		a {
 			opacity: .5;
 			h3 {
 				float: left;
 			}
-			// &::before {
-			// 	width: 1em;
-			// 	height: 1em;
-			// 	border: 1px solid black;
-			// 	float: left;
-			// 	display: block;
-			// 	content: '';
-			// }
 			&.selected {
 				opacity: 1;
 				&::before {
@@ -96,149 +92,139 @@ header {
 			}
 		}
 	}
+	a {
+		float: left;
+		display: table;
+		margin: 0 #{$padding/2} 0 0;
+	}
 }
 #cells {
-	// width: calc(100% - #{$padding*2});
 	width: 100%;
-	min-height: 90vh;
-	// margin: 0 $padding;
+	min-height: 100%;
 	overflow: hidden;
 	.cell {
 		width: 33.3333%;
 		float: left;
 		position: relative;
-		.wrap {
-			width: calc(100% - #{$padding*2});
-			padding: $padding;
-		}
 		a {
 			width: 100%;
 			display: table;
-			h2 {
-				font-weight: 100;
-				margin: 0;
-			}
-			.meta {
-				opacity: 0;
-				text-transform: capitalize;
-			}
-		}
-		.image {
-			width: 100%;
-			height: auto;
-			position: absolute;
-			display: none;
-			z-index: 100;
-			pointer-events: none;
-			img {
-				width: 100%;
-				filter: grayscale(1);
-			}
-		}
-		&.top {
 			.wrap {
-				padding-top: #{$padding/2};
-			}
-			a:hover {
-				// border-top: 0;
-				// .wrap {
-				// 	padding-top: calc($padding + #{$border});
-				// }
-			}
-		}
-		&.left {
-			a:hover {
-				// border-left: 0;
-				// .wrap {
-				// 	padding-left: calc($padding + #{$border});
-				// }
-			}
-			.image {
-				left: calc(100% + 2px);;
-				top: 0;
-			}
-		}
-		&.right {
-			a:hover {
-				// border-right: 0;
-				// .wrap {
-				// 	padding-right: calc($padding + #{$border});
-				// }
-			}
-			.image {
-				right: calc(100% + 1px);
-				top: 0;
-			}
-		}
-		&.center {
-			&:nth-child(odd) {
-				.image {
-					left: calc(100% + 2px);
-					top: 0;
+				width: calc(100% - #{$padding*2});
+				padding: $padding;
+				.event {
+					width: 100%;
+					h2 {
+						font-weight: 100;
+						margin: 0;
+					}
+					.meta {
+						opacity: 0;
+						text-transform: capitalize;
+					}
 				}
-			}
-			&:nth-child(even) {
-				.image {
-					right: calc(100% + 1px);
-					top: 0;
+				.artwork {
+					width: 100%;
+					height: auto;
+					pointer-events: none;
+					img {
+						width: 100%;
+						filter: grayscale(1);
+					}
 				}
-			}
-		}
-		&:hover {
-			// background: rgba(0,0,0,0.03);
-			.image {
-				// display: block;
-			}
-			a {
-				// border: $border dotted black;
-				font-weight: 900;
-				h2 {
-					font-weight: 900;
+				.text {
+					width: 100%;
+					height: auto;
+					pointer-events: none;
+					font-size: 11px;
+					line-height: 1em;
+					max-height: 35em;
+					overflow: hidden;
 				}
-			}
-			.wrap {
-				width: calc(100% - #{$padding*1.5});
-				padding-right: #{$padding/2};
-				
-			}
-			.meta {
-				opacity: 1;
-			}
-		}
-	}
-	@include tablet {
-		width: calc(100% - $padding);
-		margin: 0 $padding;
-		.cell {
-			width: 50%;
-			.wrap {
-				@include tablet {
-					width: calc(100% - $padding);
-					padding: $padding;
-				}
-			}
-			&.left {
-			}
-			&.right {
-			}
-			&.center {
 				&:hover {
+					.body {
+						color: black !important;
+					}
+					.meta {
+						opacity: 1;
+					}
+					// .wrap {
+						// width: calc(100% - #{$padding*1.5});
+						// padding-right: #{$padding/2};
+						// h2 {
+						// 	font-weight: 900;
+						// }
+					// }
+				}
+			}
+		}
+		@include tablet {
+			width: calc(100% - $padding);
+			margin: 0 $padding;
+			.cell {
+				width: 50%;
+				.wrap {
+					@include tablet {
+						width: calc(100% - $padding);
+						padding: $padding;
+					}
+				}
+				&.left {
+				}
+				&.right {
+				}
+				&.center {
+					&:hover {
 
+					}
 				}
 			}
 		}
 	}
 }
-
+.content {
+	width: 100%;
+	height: calc(100% - #{$headerHeight});
+	display: table;
+	.inner {
+		width: 80%;
+		max-width: 45em;
+		display: table;
+		margin: 2em auto;
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 5em;
+			font-weight: 100;
+		}
+		a {
+			text-decoration: underline;
+		}
+		.meta {
+			width: 100%;
+			@include smallText;
+			// opacity: 0.5;
+			text-align: center;
+		}
+		.intro {
+			width: 100%;
+			@include mediumText;
+			opacity: 0.5;
+		}
+		.body {
+			width: 100%;
+			@include mediumText;
+		}
+	}
+}
 .carousel {
 	width: 100%;
-	min-height: $slideHeight;
+	height: 100%;
 	display: table;
 	margin: auto;
 	padding: 0;
 	position: relative;
 	overflow: visible;
-	content: $slideHeight;
 	border: 0 dotted transparent;
 	&[data-direction="left"] .slides {
 		left: .25em;
@@ -247,7 +233,7 @@ header {
 		left: -.25em;
 	}
 	.slides {
-		height: $slideHeight;
+		height: 100%;
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -255,10 +241,9 @@ header {
 		transition: left 200ms $ease;
 		.slide {
 			width: $slideWidth;
-			height: $slideHeight;
+			height: 100%;
 			position: relative;
 			float: left;
-			mix-blend-mode: none;
 			filter: grayscale(1);
 			// transition: transform 200ms ease-in-out;
 			.border {
@@ -307,39 +292,22 @@ header {
 					background-position: right center;
 				}
 			}
-			.inner {
-				width: 80%;
-				max-width: $desktopWidth;
-				display: table;
-				margin: 2em auto;
-				h2 {
-					width: 100%;
-					text-align: center;
-					font-size: 5em;
-					font-weight: 100;
-				}
-				.body {
-					width: 100%;
-					max-width: 25em;
-					display: table;
-					margin: auto;
-				}
-			}
 			.caption {
 				// max-width: $tabletWidth;
+				width: calc(100% - #{$padding/2});
+				// position: absolute;
+				// top: 100%;
+				padding: #{$padding/4};
+				display: table;
+				margin: auto;
+				text-align: center;
+				@include smallText;
 				.inner {
 					width: 100%;
 					max-width: $tabletWidth;
 					display: table;
 					margin: auto;
 				}
-				width: calc(100% - $padding);
-				position: absolute;
-				top: 100%;
-				padding: #{$padding/2};
-				display: table;
-				margin: auto;
-				@include smallText;
 			}
 		}
 	}

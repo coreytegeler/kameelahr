@@ -1,6 +1,6 @@
 $(function() {
-  var $cells, $filters;
-  $filters = $('.filters .filter');
+  var $cells, $filters, filterCells;
+  $filters = $('.filters a');
   $cells = $('#cells');
   $cells.isotope({
     itemSelector: '.cell',
@@ -31,8 +31,12 @@ $(function() {
       }
     });
   }).resize();
-  return $filters.on('click', function(e) {
-    var $filter, $parent, query;
+  $filters.on('click', function(e) {
+    var $filter, $parent;
+    if (!$cells.length) {
+      return;
+    }
+    e.preventDefault();
     $filter = $(this);
     $parent = $filters.parent();
     if ($parent.is(':not(.filtered)')) {
@@ -44,10 +48,14 @@ $(function() {
     } else {
       $filter.toggleClass('selected');
     }
+    return filterCells();
+  });
+  filterCells = function() {
+    var query;
     query = [];
     $filters.each(function(i, filter) {
       var slug;
-      if ($(filter).is('.selected') && (slug = $(filter).data('filter'))) {
+      if ($(filter).is('.selected') && (slug = $(filter).attr('data-filter'))) {
         return query.push('.' + slug);
       }
     });
@@ -59,5 +67,6 @@ $(function() {
     return $cells.isotope({
       filter: query
     });
-  });
+  };
+  return filterCells();
 });

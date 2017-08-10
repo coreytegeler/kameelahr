@@ -14,27 +14,36 @@
   <main class="main <?php echo $page->intendedTemplate(); ?>" role="main">
     <header role="header">
       <a href="/" class="name">
-        <h3>Kameelah Janan Rasheed</h3>
+        <h1>Kameelah Janan Rasheed</h1>
       </a>
       <nav role="navigation">
         <?php
-        echo '<div class="links">';
+        echo '<div class="links about">';
           $links = array( 'bio', 'statement', 'cv', 'contact' );
           foreach ( $links as $key => $slug ) {
-            if( $page = page( $slug ) ) {
-              echo '<div class="link">';
-                echo '<a href="' . $page->url() . '"><h3>' . $page->title() . '</h3></a>';
-              echo '</div>';
+            if( $link_page = page( $slug ) ) { 
+              echo '<a href="' . $link_page->url() . '"><h3>' . $link_page->title() . '</h3></a>';
             }
           }
         echo '</div>';
-        echo '<div class="links filters">';
+        if( $param = param( 'type' ) ) {
+          $selected = explode( ',', param( 'type' ) );
+        } else {
+          $selected = null;
+        }
+        echo '<div class="links filters' . ( $selected ? ' filtered' : '' ) . '">';
           $filters = array( 'events', 'artwork', 'texts' );
           foreach ( $filters as $key => $slug ) {
-            if( $page = page( $slug ) ) {
-              echo '<div class="link filter ' . $slug . ' selected" data-filter="' . $slug . '">';
-                echo '<h3>' . $page->title() . '</h3>';
-              echo '</div>';
+            if( $filter_page = page( $slug ) ) {
+              $filter_url = $site->url() . '/type:' . $slug;
+              if( !$selected || in_array( $slug, $selected ) ) {
+                $class = 'selected';
+              } else {
+                $class = '';
+              }
+              echo '<a href="' . $filter_url . '" data-filter="' . $slug . '" class="' . $class . '">';
+                echo '<h3>' . $filter_page->title() . '</h3>';
+              echo '</a>';
             }
           }
         echo '</div>';

@@ -1,5 +1,5 @@
 $ ->
-	$filters = $('.filters .filter')
+	$filters = $('.filters a')
 	$cells = $('#cells')
 	$cells.isotope
 	  itemSelector: '.cell',
@@ -27,6 +27,9 @@ $ ->
 	.resize()
 
 	$filters.on 'click', (e) ->
+		if !$cells.length
+			return
+		e.preventDefault()
 		$filter = $(this)
 		$parent = $filters.parent()
 		if $parent.is(':not(.filtered)')
@@ -36,17 +39,21 @@ $ ->
 			$filter.addClass('selected')
 		else
 			$filter.toggleClass('selected')
+		filterCells()
+
+	filterCells = () ->
 		query = []
 		$filters.each (i, filter) ->
-			if $(filter).is('.selected') && slug = $(filter).data('filter')
+			if $(filter).is('.selected') && slug = $(filter).attr('data-filter')
 				query.push('.'+slug)
 		if query.length
 			query = query.join()
 		else
-			# query = '*'
 			query = ''
 		$cells.isotope
 			filter: query
+
+	filterCells()
 
 	# $(window).mousemove (e) ->
 	# 	# console.log e.screenX

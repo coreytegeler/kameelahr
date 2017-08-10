@@ -10,6 +10,8 @@ html, body {
 a {
   color: black;
   text-decoration: none; }
+  a:hover {
+    color: blue; }
 
 h1 {
   font-size: 3em;
@@ -26,11 +28,13 @@ h2 {
 h3 {
   font-size: 1.3em;
   line-height: 1.3em;
-  margin: 0; }
+  margin: 0;
+  font-weight: 400; }
 
 main {
   width: 100%;
   height: 100%;
+  min-height: 400px;
   overflow-x: hidden; }
   main.artwork {
     overflow: hidden; }
@@ -47,7 +51,7 @@ main {
   pointer-events: none; }
 
 header {
-  height: 10vh;
+  height: 5em;
   border-bottom: 1px dotted black;
   display: flex; }
   header .name {
@@ -67,102 +71,123 @@ header {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
-  padding: 0.5em 0; }
+  margin: auto; }
+  .links.about {
+    padding: 0.5em 0 0 0; }
   .links.filters {
+    padding: 0 0 0.5em 0;
     align-items: flex-end; }
-  .links .link {
+    .links.filters a {
+      opacity: .5; }
+      .links.filters a h3 {
+        float: left; }
+      .links.filters a.selected {
+        opacity: 1; }
+      .links.filters a:hover {
+        cursor: pointer; }
+  .links a {
     float: left;
     display: table;
     margin: 0 1em 0 0; }
-    .links .link.filter {
-      opacity: .5; }
-      .links .link.filter h3 {
-        float: left; }
-      .links .link.filter.selected {
-        opacity: 1; }
-      .links .link.filter:hover {
-        cursor: pointer; }
 
 #cells {
   width: 100%;
-  min-height: 90vh;
+  min-height: 100%;
   overflow: hidden; }
   #cells .cell {
     width: 33.3333%;
     float: left;
     position: relative; }
-    #cells .cell .wrap {
-      width: calc(100% - 4em);
-      padding: 2em; }
     #cells .cell a {
       width: 100%;
       display: table; }
-      #cells .cell a h2 {
-        font-weight: 100;
-        margin: 0; }
-      #cells .cell a .meta {
-        opacity: 0;
-        text-transform: capitalize; }
-    #cells .cell .image {
-      width: 100%;
-      height: auto;
-      position: absolute;
-      display: none;
-      z-index: 100;
-      pointer-events: none; }
-      #cells .cell .image img {
-        width: 100%;
-        filter: grayscale(1); }
-    #cells .cell.top .wrap {
-      padding-top: 1em; }
-    #cells .cell.left .image {
-      left: calc(100% + 2px);
-      top: 0; }
-    #cells .cell.right .image {
-      right: calc(100% + 1px);
-      top: 0; }
-    #cells .cell.center:nth-child(odd) .image {
-      left: calc(100% + 2px);
-      top: 0; }
-    #cells .cell.center:nth-child(even) .image {
-      right: calc(100% + 1px);
-      top: 0; }
-    #cells .cell:hover a {
-      font-weight: 900; }
-      #cells .cell:hover a h2 {
-        font-weight: 900; }
-    #cells .cell:hover .wrap {
-      width: calc(100% - 3em);
-      padding-right: 1em; }
-    #cells .cell:hover .meta {
-      opacity: 1; }
-  @media (max-width: 768px) {
-    #cells {
-      width: calc(100% - $padding);
-      margin: 0 2em; }
+      #cells .cell a .wrap {
+        width: calc(100% - 4em);
+        padding: 2em; }
+        #cells .cell a .wrap .event {
+          width: 100%; }
+          #cells .cell a .wrap .event h2 {
+            font-weight: 100;
+            margin: 0; }
+          #cells .cell a .wrap .event .meta {
+            opacity: 0;
+            text-transform: capitalize; }
+        #cells .cell a .wrap .artwork {
+          width: 100%;
+          height: auto;
+          pointer-events: none; }
+          #cells .cell a .wrap .artwork img {
+            width: 100%;
+            filter: grayscale(1); }
+        #cells .cell a .wrap .text {
+          width: 100%;
+          height: auto;
+          pointer-events: none;
+          font-size: 11px;
+          line-height: 1em;
+          max-height: 35em;
+          overflow: hidden; }
+        #cells .cell a .wrap:hover .body {
+          color: black !important; }
+        #cells .cell a .wrap:hover .meta {
+          opacity: 1; }
+    @media (max-width: 768px) {
       #cells .cell {
-        width: 50%; } }
+        width: calc(100% - $padding);
+        margin: 0 2em; }
+        #cells .cell .cell {
+          width: 50%; } }
     @media (max-width: 768px) and (max-width: 768px) {
-      #cells .cell .wrap {
+      #cells .cell .cell .wrap {
         width: calc(100% - $padding);
         padding: 2em; } }
 
+.content {
+  width: 100%;
+  height: calc(100% - 5em);
+  display: table; }
+  .content .inner {
+    width: 80%;
+    max-width: 45em;
+    display: table;
+    margin: 2em auto; }
+    .content .inner h2 {
+      width: 100%;
+      text-align: center;
+      font-size: 5em;
+      font-weight: 100; }
+    .content .inner a {
+      text-decoration: underline; }
+    .content .inner .meta {
+      width: 100%;
+      font-size: 1em;
+      line-height: 1.2em;
+      text-align: center; }
+    .content .inner .intro {
+      width: 100%;
+      font-size: 1.3em;
+      line-height: 1.3em;
+      opacity: 0.5; }
+    .content .inner .body {
+      width: 100%;
+      font-size: 1.3em;
+      line-height: 1.3em; }
+
 .carousel {
   width: 100%;
-  min-height: 90vh;
+  height: 100%;
   display: table;
   margin: auto;
   padding: 0;
   position: relative;
   overflow: visible;
-  content: 90vh;
   border: 0 dotted transparent; }
   .carousel[data-direction="left"] .slides {
     left: .25em; }
   .carousel[data-direction="right"] .slides {
     left: -.25em; }
   .carousel .slides {
-    height: 90vh;
+    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
@@ -170,10 +195,9 @@ header {
     transition: left 200ms cubic-bezier(0.645, 0.045, 0.355, 1); }
     .carousel .slides .slide {
       width: 80vw;
-      height: 90vh;
+      height: 100%;
       position: relative;
       float: left;
-      mix-blend-mode: none;
       filter: grayscale(1); }
       .carousel .slides .slide .border {
         height: 100%;
@@ -205,28 +229,12 @@ header {
         border-right-color: black; }
       .carousel .slides .slide.left .img {
         background-position: right center; }
-      .carousel .slides .slide .inner {
-        width: 80%;
-        max-width: 1440px;
-        display: table;
-        margin: 2em auto; }
-        .carousel .slides .slide .inner h2 {
-          width: 100%;
-          text-align: center;
-          font-size: 5em;
-          font-weight: 100; }
-        .carousel .slides .slide .inner .body {
-          width: 100%;
-          max-width: 25em;
-          display: table;
-          margin: auto; }
       .carousel .slides .slide .caption {
-        width: calc(100% - $padding);
-        position: absolute;
-        top: 100%;
-        padding: 1em;
+        width: calc(100% - 1em);
+        padding: 0.5em;
         display: table;
         margin: auto;
+        text-align: center;
         font-size: 1em;
         line-height: 1.2em; }
         .carousel .slides .slide .caption .inner {

@@ -1,6 +1,5 @@
 <?php
 if( isset( $cells ) ) {
-  echo '</div>';
 	echo '<div id="cells">';
 		$cells = $cells->sortBy( 'published', 'desc' );
 		if( sizeof( $cells ) ) {
@@ -17,30 +16,39 @@ if( isset( $cells ) ) {
 				$published = $cell->date( 'M d, Y', 'published' );
 				$type = $cell->intendedTemplate();
 				$parent = $cell->parent()->slug();
-				// $opacity = rand( 0.01, 0.1 );
-				// $background = 'background:rgba(0,0,0,' . $opacity . ')';
 		 		echo '<div class="cell ' . $type . ' ' . $parent . '" data-length="' . $cellWidth . '" style="">';
 		 			echo '<a href="' . $cell->url() . '">';
 			 			echo '<div class="wrap">';
-				 			echo '<div class="meta">' . $published . '</div>';
-				 			echo '<h2>';
-					 			$title = $cell->title();
-					 			$safeTitle = $cell->safeTitle();
-					 			if( !$safeTitle || !$safeTitle->empty() ) {
-					 				echo $safeTitle;
-					 			} else {
-					 				echo $title;	
-					 			}
-				 			echo '</h2>';
-				 			echo '<div class="meta">';
-				 				echo $type;
-				 			echo '</div>';
+			 				if( $cell->image() ) {
+				 				echo '<div class="artwork">';
+								 	echo $cell->image();
+							 		// echo '<div class="texture"></div>';
+								echo '</div>';
+							} else if( $cell->body() && !$cell->body()->empty() ) {
+								echo '<div class="text">';
+									echo $cell->body()->kirbytext();
+								echo '</div>';
+							} else {
+								echo '<div class="event">';
+									echo '<h2>';
+							 			$title = $cell->title();
+							 			$safeTitle = $cell->safeTitle();
+							 			if( !$safeTitle || !$safeTitle->empty() ) {
+							 				echo $safeTitle;
+							 			} else {
+							 				echo $title;	
+							 			}
+						 			echo '</h2>';
+						 		echo '</div>';
+							}
+							echo '<div class="text">';
+					 			echo '<div class="meta">' . $published . '</div>';
+					 			echo '<div class="meta">';
+					 				echo $type;
+					 			echo '</div>';
+					 		echo '</div>';
 					 	echo '</div>';
 				 	echo '</a>';
-				 	echo '<div class="image">';
-				 		echo '<div class="texture"></div>';
-					 	echo $cell->image();
-					echo '</div>';	 	
 			 	echo '</div>';
 			}
 		}
