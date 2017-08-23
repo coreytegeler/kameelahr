@@ -1,4 +1,5 @@
 $ ->
+	$window = $(window)
 	$filters = $('.filters a')
 	$cells = $('#cells')
 	$cells.isotope
@@ -6,10 +7,9 @@ $ ->
 	  layoutMode: 'masonry',
 	  transitionDuration: 0,
 	  masonry:
-	    columnWidth: '.cell',
+	    columnWidth: '.cell'
 
-	$(window).resize () ->
-		$cells.isotope()
+	onResize = () ->
 		$cells.find('.cell').each (i, cell) ->
 			$cell = $(cell)
 			$cell.removeClass('left right center top')
@@ -24,6 +24,30 @@ $ ->
 				$cell.addClass 'center'
 			if( top == 0 )
 				$cell.addClass 'top'
+			if $cell.is('.text')
+				windowWidth = $window.innerWidth()
+				fontSize = windowWidth/200
+				$cell.find('.content').css
+					fontSize: fontSize + 'px'
+		$cells.isotope()
+
+	filterCells = () ->
+		query = []
+		$filters.each (i, filter) ->
+			if $(filter).is('.selected') && slug = $(filter).attr('data-filter')
+				query.push('.'+slug)
+		if query.length
+			query = query.join()
+		else
+			query = ''
+		$cells.isotope
+			filter: query
+		onResize()
+
+	filterCells()
+
+	$(window).resize () ->
+		onResize()
 	.resize()
 
 	$filters.on 'click', (e) ->
@@ -40,20 +64,6 @@ $ ->
 		else
 			$filter.toggleClass('selected')
 		filterCells()
-
-	filterCells = () ->
-		query = []
-		$filters.each (i, filter) ->
-			if $(filter).is('.selected') && slug = $(filter).attr('data-filter')
-				query.push('.'+slug)
-		if query.length
-			query = query.join()
-		else
-			query = ''
-		$cells.isotope
-			filter: query
-
-	filterCells()
 
 	# $(window).mousemove (e) ->
 	# 	# console.log e.screenX

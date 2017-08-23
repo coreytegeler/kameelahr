@@ -11,3 +11,44 @@ Description:
 ----
 
 Copyright: 
+
+All content © Kameelah Janan Rasheed 2008-2016.
+
+Please do not reproduce any of the content on this site without the expressed written consent of Kameelah Janan Rasheed.
+
+----
+
+Newsletter: 
+
+----
+
+Links: 
+
+- 
+  _title: Facebook
+  _url: http://facebook.com/kameelahr
+  _fieldset: link
+- 
+  _title: Twitter
+  _url: http://blog.kameelahr.com/
+  _fieldset: link
+- 
+  _title: Twitter
+  _url: http://twitter.com/_kameelahr
+  _fieldset: link
+- 
+  _title: Email
+  _url: kameelah.rasheed@gmail.com
+  _fieldset: link
+- 
+  _title: Instagram
+  _url: http://instagram.com/kameelahr
+  _fieldset: link
+- 
+  _title: Vimeo
+  _url: http://vimeo.com/kameelahr
+  _fieldset: link
+- 
+  _title: SoundCloud
+  _url: https://soundcloud.com/kameelahr
+  _fieldset: link

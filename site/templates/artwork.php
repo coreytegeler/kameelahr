@@ -10,12 +10,14 @@ echo '<div class="content">';
   echo '<div class="carousel">';
     echo '<div class="slides">';
       echo '<div class="slide intro current" data-slug="intro">';
-        echo '<div class="border">';
-          echo '<div class="texture"></div>';
-          echo '<div class="inner">';
-            echo '<h2>' . $title . '</h2>';
-            echo '<div class="body">';
-              echo $intro;
+        echo '<div class="scroll">';
+          echo '<div class="content">';
+            echo '<div class="texture"></div>';
+            echo '<div class="inner">';
+              echo '<h1>' . $title . '</h1>';
+              echo '<div class="body">';
+                echo $intro;
+              echo '</div>';
             echo '</div>';
           echo '</div>';      
         echo '</div>';
@@ -23,10 +25,10 @@ echo '<div class="content">';
       if( $images ) {
         foreach ( $images as $index => $image ) {
           echo '<div class="slide image" data-slug="' . $image->filename() . '">';
-            echo '<div class="border">';
+            echo '<div class="scroll">';
               echo '<div class="texture"></div>';
               echo '<div class="img" style="background-image:url(' . $image->url() . ')"></div>';
-              echo '<div class="caption">' . $image->caption() . '</div>';
+              echo '<div class="caption"><div class="inner">' . $image->caption() . '</div></div>';
             echo '</div>';
           echo '</div>';
         }

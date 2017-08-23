@@ -16,29 +16,30 @@ if( isset( $cells ) ) {
 				$published = $cell->date( 'M d, Y', 'published' );
 				$type = $cell->intendedTemplate();
 				$parent = $cell->parent()->slug();
+				$title = $cell->title();
+	 			$safeTitle = $cell->safeTitle();
+	 			if( !$safeTitle->empty() ) {
+	 				$title = $safeTitle;
+	 			}
 		 		echo '<div class="cell ' . $type . ' ' . $parent . '" data-length="' . $cellWidth . '" style="">';
 		 			echo '<a href="' . $cell->url() . '">';
 			 			echo '<div class="wrap">';
-			 				if( $cell->image() ) {
-				 				echo '<div class="artwork">';
+				 			echo '<div class="content">';
+				 				if( $type == 'artwork' ) {
 								 	echo $cell->image();
-							 		// echo '<div class="texture"></div>';
-								echo '</div>';
-							} else if( $cell->body() && !$cell->body()->empty() ) {
-								echo '<div class="text">';
-									$excerpt = str::excerpt( $cell->body()->kirbytext(), 1800, false );
-									echo $excerpt;
-								echo '</div>';
-							}
-							echo '<div class="title">';
+								} else if( $type == 'text' ) {
+									snippet( 'content/text', array( 'page' => $cell ) );
+								} else {
+									echo '<div class="title">';
+										echo '<h2>';
+								 			echo $title;
+							 			echo '</h2>';
+							 		echo '</div>';
+								}
+							echo '</div>';
+							echo '<div class="tooltip">';
 								echo '<h2>';
-						 			$title = $cell->title();
-						 			$safeTitle = $cell->safeTitle();
-						 			if( !$safeTitle || !$safeTitle->empty() ) {
-						 				echo $safeTitle;
-						 			} else {
-						 				echo $title;	
-						 			}
+						 			echo $title;
 					 			echo '</h2>';
 					 			echo '<div class="meta">';
 						 			echo '<span>' . $published . '</span>';

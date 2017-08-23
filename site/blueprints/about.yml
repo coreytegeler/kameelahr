@@ -1,0 +1,22 @@
+title: About
+
+fields:
+  title:
+    label: Title
+    type:  text
+
+  bio:
+    label: Bio
+    type:  wysiwyg
+
+  statement:
+    label: Statement
+    type:  wysiwyg
+
+  contact:
+    label: Contact
+    type:  wysiwyg
+
+  cv:
+    label: CV
+    type:  text

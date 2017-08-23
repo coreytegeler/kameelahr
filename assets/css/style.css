@@ -10,6 +10,8 @@ html, body {
 a {
   color: black;
   text-decoration: none; }
+  a:hover {
+    color: blue; }
 
 h1 {
   font-size: 3em;
@@ -26,6 +28,12 @@ h2 {
 h3 {
   font-size: 1.3em;
   line-height: 1.3em;
+  margin: 0;
+  font-weight: 400; }
+
+h4 {
+  font-size: 1em;
+  line-height: 1.2em;
   margin: 0;
   font-weight: 400; }
 
@@ -69,7 +77,8 @@ header {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
-  margin: auto; }
+  margin: auto;
+  padding: 0.5em 0 0 0; }
   .links.about {
     padding: 0.5em 0 0 0; }
   .links.filters {
@@ -77,7 +86,7 @@ header {
     align-items: flex-end; }
     .links.filters a {
       opacity: .5; }
-      .links.filters a h3 {
+      .links.filters a h3, .links.filters a h4 {
         float: left; }
       .links.filters a.selected {
         opacity: 1; }
@@ -90,15 +99,55 @@ header {
 
 #cells {
   width: 100%;
+  margin: 0 0 20em 0;
   min-height: 100%;
   overflow: hidden; }
   #cells .cell {
-    width: 33.3333%;
+    width: calc(100%/4 - 1px);
+    margin: 0;
     float: left;
-    position: relative; }
+    position: relative;
+    background: white;
+    margin: -1px -1px 0 0;
+    background: white;
+    border: 1px dotted black; }
     #cells .cell a {
-      width: 100%;
-      display: table; }
+      width: calc(100% - 2em);
+      padding: 1em;
+      display: table;
+      position: relative; }
+      #cells .cell a:hover {
+        color: blue; }
+        #cells .cell a:hover * {
+          color: blue !important; }
+      #cells .cell a .wrap {
+        width: 100%;
+        position: relative; }
+        #cells .cell a .wrap .title {
+          width: calc(100% - 1em);
+          position: absolute;
+          left: 0.5em;
+          top: 0.5em;
+          opacity: 0;
+          display: none; }
+          #cells .cell a .wrap .title.show {
+            opacity: 1;
+            position: static;
+            left: auto; }
+          #cells .cell a .wrap .title h2 {
+            font-weight: 100;
+            margin: 0; }
+      #cells .cell a .tooltip {
+        width: calc(100% - 4em);
+        position: fixed;
+        left: 2em;
+        bottom: 1em;
+        z-index: 100;
+        display: none;
+        border: 1px dotted black;
+        background: white; }
+      #cells .cell a h2 {
+        text-align: center; }
       #cells .cell a .meta {
         text-transform: capitalize;
         padding: .25em 0; }
@@ -107,57 +156,30 @@ header {
           text-transform: capitalize; }
           #cells .cell a .meta span:last-child {
             margin: 0; }
-      #cells .cell a .wrap {
-        width: calc(100% - 1em);
-        padding: 0 0.5em 1em 0.5em;
-        position: relative; }
-        #cells .cell a .wrap .title {
-          width: calc(100% - 1em);
-          position: absolute;
-          left: 0.5em;
-          top: 0;
-          opacity: 0; }
-          #cells .cell a .wrap .title h2 {
-            font-weight: 100;
-            margin: 0; }
-        #cells .cell a .wrap .artwork {
-          width: 100%;
-          height: auto;
-          pointer-events: none;
-          display: table; }
-          #cells .cell a .wrap .artwork img {
-            width: 100%;
-            filter: grayscale(1);
-            display: table; }
-        #cells .cell a .wrap .text {
-          width: calc(100% - 2em);
-          padding: 1em;
-          background-color: rgba(0, 0, 0, 0.03);
-          height: auto;
-          font-size: 11px;
-          line-height: 1em;
-          overflow: hidden; }
-          #cells .cell a .wrap .text p {
-            margin-top: 0;
-            pointer-events: none; }
-            #cells .cell a .wrap .text p:last-child {
-              margin: 0; }
-        #cells .cell a .wrap:hover .title {
-          opacity: 1; }
-        #cells .cell a .wrap:hover .text, #cells .cell a .wrap:hover .artwork {
-          opacity: 0; }
-    #cells .cell.top {
-      padding-top: 2em; }
-    @media (max-width: 768px) {
-      #cells .cell {
-        width: calc(100% - $padding);
-        margin: 0 2em; }
-        #cells .cell .cell {
-          width: 50%; } }
-    @media (max-width: 768px) and (max-width: 768px) {
-      #cells .cell .cell .wrap {
-        width: calc(100% - $padding);
-        padding: 2em; } }
+    #cells .cell.artwork .wrap {
+      padding: 2px; }
+    #cells .cell.artwork a:hover .wrap {
+      padding: 0;
+      border: 2px solid blue; }
+    #cells .cell.artwork .content {
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+      display: table; }
+      #cells .cell.artwork .content img {
+        width: 100%;
+        filter: grayscale(1);
+        display: table; }
+    #cells .cell.text .wrap {
+      max-height: 27em;
+      overflow: hidden; }
+    #cells .cell.text .content {
+      width: 100%; }
+      #cells .cell.text .content .inner {
+        margin-top: 0;
+        margin-bottom: 0; }
+        #cells .cell.text .content .inner .intro {
+          opacity: .9 !important; }
 
 .content {
   width: 100%;
@@ -168,13 +190,11 @@ header {
     max-width: 45em;
     display: table;
     margin: 2em auto; }
-    .content .inner h2 {
+    .content .inner h1 {
       width: 100%;
       text-align: center;
-      font-size: 5em;
+      font-size: 4em;
       font-weight: 100; }
-    .content .inner a {
-      text-decoration: underline; }
     .content .inner .meta {
       width: 100%;
       font-size: 1em;
@@ -189,6 +209,16 @@ header {
       width: 100%;
       font-size: 1.3em;
       line-height: 1.3em; }
+    .content .inner.full {
+      width: 100%;
+      max-width: 100%; }
+      .content .inner.full .column {
+        width: 50%;
+        float: left; }
+        .content .inner.full .column .body {
+          width: 80%;
+          display: table;
+          margin: auto; }
 
 .carousel {
   width: 100%;
@@ -216,15 +246,21 @@ header {
       position: relative;
       float: left;
       filter: grayscale(1); }
-      .carousel .slides .slide .border {
+      .carousel .slides .slide .scroll {
         height: 100%;
         border: dotted black;
         border-width: 0 1px;
         overflow-x: hidden;
         overflow-y: auto; }
+        .carousel .slides .slide .scroll:hover {
+          cursor: s-resize; }
+          .carousel .slides .slide .scroll:hover.bottom {
+            cursor: n-resize; }
       .carousel .slides .slide.intro {
         width: 100%;
         height: 100%; }
+        .carousel .slides .slide.intro .scroll {
+          cursor: default; }
       .carousel .slides .slide.image .img {
         width: 100%;
         height: 100%;
@@ -236,29 +272,32 @@ header {
         filter: grayscale(0); }
         .carousel .slides .slide.current .texture {
           display: none; }
-      .carousel .slides .slide.right .border, .carousel .slides .slide.left .border {
+      .carousel .slides .slide.right .scroll, .carousel .slides .slide.left .scroll {
         border: 0 dotted transparent; }
-      .carousel .slides .slide.right .border {
+      .carousel .slides .slide.right .scroll {
         border-left-color: black; }
       .carousel .slides .slide.right .img {
         background-position: left center; }
-      .carousel .slides .slide.left .border {
+      .carousel .slides .slide.left .scroll {
         border-right-color: black; }
       .carousel .slides .slide.left .img {
         background-position: right center; }
       .carousel .slides .slide .caption {
-        width: calc(100% - 1em);
-        padding: 0.5em;
+        width: 100%;
+        padding: 2em;
         display: table;
-        margin: auto;
-        text-align: center;
+        margin: 2em auto 0 auto;
+        border-top: 1px dotted black;
+        color: black;
         font-size: 1em;
         line-height: 1.2em; }
         .carousel .slides .slide .caption .inner {
-          width: 100%;
+          max-width: 768px;
+          width: calc(100% - 4em);
           max-width: 768px;
           display: table;
-          margin: auto; }
+          margin: auto;
+          text-align: left; }
   .carousel .arrow {
     width: 10%;
     height: 100%;
@@ -270,9 +309,32 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     z-index: 100; }
-    .carousel .arrow:hover {
-      cursor: pointer; }
     .carousel .arrow.left {
       left: 0; }
+      .carousel .arrow.left:hover {
+        cursor: w-resize; }
     .carousel .arrow.right {
       right: 0; }
+      .carousel .arrow.right:hover {
+        cursor: e-resize; }
+
+footer {
+  width: 100%;
+  border-top: 1px dotted black; }
+  footer .inner {
+    width: 80%;
+    max-width: 45em;
+    display: table;
+    margin: 2em auto; }
+    footer .inner ul {
+      flex-direction: row;
+      align-content: center; }
+      footer .inner ul li {
+        list-style: none;
+        margin: auto; }
+        footer .inner ul li a {
+          margin: 0; }
+    footer .inner .copyright {
+      margin: 2em 0 0 0;
+      text-align: center;
+      color: #707377; }

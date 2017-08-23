@@ -91,6 +91,30 @@ jQuery(function($) {
     direction = $arrow.attr('data-direction');
     return $carousel.slide(direction);
   });
+  $('body').on('click', '.carousel.loaded:not(.sliding) .slide.current', function(e) {
+    var $carousel, $scroll, $slide, top;
+    $slide = $(this);
+    $scroll = $slide.find('.scroll');
+    $carousel = $slide.parents('.carousel');
+    if ($scroll.is('.bottom')) {
+      top = 0;
+    } else {
+      top = $(document).height();
+    }
+    return $scroll.animate({
+      scrollTop: top
+    }, 500);
+  });
+  $('.carousel .slide .scroll').scroll(function(e) {
+    var $scroll, $slide;
+    $scroll = $(this);
+    $slide = $scroll.parents('.slide');
+    if (this.scrollHeight - $scroll.scrollTop() <= $slide.innerHeight()) {
+      return $scroll.addClass('bottom');
+    } else {
+      return $scroll.removeClass('bottom');
+    }
+  });
   $(document).keydown(function(e) {
     var $carousel;
     $carousel = $('.carousel');
@@ -121,6 +145,9 @@ jQuery(function($) {
     $lastSlide = $carousel.find('.slide').last();
     left = parseInt($slidesWrapper.css('x'));
     $slidesWrapper.removeClass('static');
+    $currentSlide.find('.scroll').animate({
+      scrollTop: 0
+    }, 500);
     switch (direction) {
       case 'left':
         $nextSlide = $currentSlide.prev('.slide');

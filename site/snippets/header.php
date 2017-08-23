@@ -18,11 +18,11 @@
       </a>
       <nav role="navigation">
         <?php
-        echo '<div class="links about">';
-          $links = array( 'bio', 'statement', 'cv', 'contact' );
+        echo '<div class="links">';
+          $links = array( 'about' );
           foreach ( $links as $key => $slug ) {
             if( $link_page = page( $slug ) ) { 
-              echo '<a href="' . $link_page->url() . '"><h3>' . $link_page->title() . '</h3></a>';
+              echo '<a href="' . $link_page->url() . '"><h4>' . $link_page->title() . '</h4></a>';
             }
           }
         echo '</div>';
@@ -42,7 +42,7 @@
                 $class = '';
               }
               echo '<a href="' . $filter_url . '" data-filter="' . $slug . '" class="' . $class . '">';
-                echo '<h3>' . $filter_page->title() . '</h3>';
+                echo '<h4>' . $filter_page->title() . '</h4>';
               echo '</a>';
             }
           }

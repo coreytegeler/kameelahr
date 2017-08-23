@@ -1,6 +1,22 @@
   <footer class="footer" role="contentinfo">
-    
-  </footer>
+  	<div class="inner">
+    <?php
+    $links = $site->links()->toStructure();
+    echo '<ul class="links">';
+	    foreach( $links as $i => $link ) {
+	    	echo '<li>';
+		    	echo '<a href="' . $link->_url() . '" target="_blank">';
+		    		echo $link->_title();
+		    	echo '</a>';
+	    	echo '</li>';
+	    }
+		echo '</ul>';
+		echo '<div class="copyright">';
+			echo $site->copyright();
+		echo '</div>';
+    ?>
+  </div>
+</footer>
 </main>
 </body>
 <?= js(array(
