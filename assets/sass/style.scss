@@ -264,16 +264,28 @@ header {
 			width: 100%;
 			@include mediumText;
 		}
-		&.full {
-			width: 100%;
-			max-width: 100%;
-			.column {
-				width: 50%;
-				float: left;
-				.body {
-					width: 80%;
-					display: table;
-					margin: auto;
+	}
+	.full {
+		width: 100%;
+		max-width: 100%;
+		margin: 2em auto;
+		.column {
+			width: 50%;
+			float: left;
+			.inner {
+				width: calc(100% - 4em);
+				max-width: $tabletWidth;
+				display: table;
+				margin: auto 2em;
+				@include mediumText;
+				h3 {
+					font-weight: 100;
+				}
+				span {
+
+				}
+				p {
+					margin-top: 0;
 				}
 			}
 		}

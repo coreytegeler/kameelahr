@@ -209,16 +209,24 @@ header {
       width: 100%;
       font-size: 1.3em;
       line-height: 1.3em; }
-    .content .inner.full {
-      width: 100%;
-      max-width: 100%; }
-      .content .inner.full .column {
-        width: 50%;
-        float: left; }
-        .content .inner.full .column .body {
-          width: 80%;
-          display: table;
-          margin: auto; }
+  .content .full {
+    width: 100%;
+    max-width: 100%;
+    margin: 2em auto; }
+    .content .full .column {
+      width: 50%;
+      float: left; }
+      .content .full .column .inner {
+        width: calc(100% - 4em);
+        max-width: 768px;
+        display: table;
+        margin: auto 2em;
+        font-size: 1.3em;
+        line-height: 1.3em; }
+        .content .full .column .inner h3 {
+          font-weight: 100; }
+        .content .full .column .inner p {
+          margin-top: 0; }
 
 .carousel {
   width: 100%;
