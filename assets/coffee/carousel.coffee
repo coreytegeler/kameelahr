@@ -22,10 +22,8 @@ jQuery ($) ->
 				width: slidesWidth
 				x: left
 			$slides.each (i, slide) ->
-				imageUrl = $(slide).find('.img').css('backgroundImage')
-				if imageUrl
-					imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '')
-				else 
+				imageUrl = $(slide).find('img').attr('src')
+				if !imageUrl
 					return fixIntro(slide)
 				image = new Image
 				$slide = $(this)
@@ -39,6 +37,7 @@ jQuery ($) ->
 						$slide.addClass 'portrait'
 					if !parseInt($slide.css('width'))
 						$slide.css width: slideWidth()
+				console.log imageUrl
 				image.src = imageUrl
 
 	fixIntro = (slide) ->

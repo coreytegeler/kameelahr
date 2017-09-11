@@ -124,12 +124,7 @@ header {
         width: 100%;
         position: relative; }
         #cells .cell a .wrap .title {
-          width: calc(100% - 1em);
-          position: absolute;
-          left: 0.5em;
-          top: 0.5em;
-          opacity: 0;
-          display: none; }
+          width: calc(100% - 1em); }
           #cells .cell a .wrap .title.show {
             opacity: 1;
             position: static;
@@ -157,6 +152,7 @@ header {
           #cells .cell a .meta span:last-child {
             margin: 0; }
     #cells .cell.artwork .wrap {
+      width: calc(100% - 4px);
       padding: 2px; }
     #cells .cell.artwork a:hover .wrap {
       padding: 0;
@@ -166,10 +162,18 @@ header {
       height: auto;
       pointer-events: none;
       display: table; }
-      #cells .cell.artwork .content img {
-        width: 100%;
-        filter: grayscale(1);
-        display: table; }
+      #cells .cell.artwork .content .image {
+        display: table;
+        background-color: rgba(112, 115, 119, 0.1); }
+        #cells .cell.artwork .content .image img {
+          width: 100%;
+          filter: grayscale(1);
+          display: table;
+          vertical-align: middle;
+          opacity: 0;
+          transition: opacity 50ms cubic-bezier(0.645, 0.045, 0.355, 1); }
+        #cells .cell.artwork .content .image.loaded img {
+          opacity: 1; }
     #cells .cell.text .wrap {
       max-height: 27em;
       overflow: hidden; }
@@ -180,6 +184,18 @@ header {
         margin-bottom: 0; }
         #cells .cell.text .content .inner .intro {
           opacity: .9 !important; }
+    #cells .cell.event h1, #cells .cell.event h2, #cells .cell.event h3, #cells .cell.event h4 {
+      text-align: center;
+      font-weight: 100; }
+    #cells .cell.event .date {
+      text-align: center; }
+      #cells .cell.event .date .month {
+        width: 100%; }
+      #cells .cell.event .date .day {
+        width: 100%;
+        font-size: 6em;
+        line-height: 1.2em;
+        font-weight: 100; }
 
 .content {
   width: 100%;
@@ -209,6 +225,11 @@ header {
       width: 100%;
       font-size: 1.3em;
       line-height: 1.3em; }
+    .content .inner .date {
+      padding: 2em; }
+      .content .inner .date h2.month {
+        text-align: center;
+        font-weight: 100; }
   .content .full {
     width: 100%;
     max-width: 100%;
@@ -269,13 +290,24 @@ header {
         height: 100%; }
         .carousel .slides .slide.intro .scroll {
           cursor: default; }
-      .carousel .slides .slide.image .img {
+      .carousel .slides .slide.image .wrap, .carousel .slides .slide.video .wrap {
         width: 100%;
         height: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        transition: background-position 700ms cubic-bezier(0.645, 0.045, 0.355, 1); }
+        display: flex;
+        align-items: center;
+        flex-direction: column; }
+      .carousel .slides .slide.image .wrap img {
+        max-width: 100%;
+        max-height: calc(100vh - 5em);
+        display: table;
+        margin: auto; }
+      .carousel .slides .slide.video .wrap iframe {
+        width: 100%;
+        height: calc(100vh - 5em);
+        display: table;
+        margin: auto; }
+      .carousel .slides .slide.text .inner {
+        transition: margin 700ms cubic-bezier(0.645, 0.045, 0.355, 1); }
       .carousel .slides .slide.current {
         filter: grayscale(0); }
         .carousel .slides .slide.current .texture {
@@ -291,7 +323,7 @@ header {
       .carousel .slides .slide.left .img {
         background-position: right center; }
       .carousel .slides .slide .caption {
-        width: 100%;
+        width: calc(100% - 4em);
         padding: 2em;
         display: table;
         margin: 2em auto 0 auto;
@@ -300,12 +332,12 @@ header {
         font-size: 1em;
         line-height: 1.2em; }
         .carousel .slides .slide .caption .inner {
+          width: 100%;
           max-width: 768px;
-          width: calc(100% - 4em);
           max-width: 768px;
           display: table;
           margin: auto;
-          text-align: left; }
+          text-align: center; }
   .carousel .arrow {
     width: 10%;
     height: 100%;

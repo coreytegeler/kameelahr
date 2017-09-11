@@ -43,10 +43,20 @@ gulp.task('compile-sass', function() {
     use: [rupture(), autoprefixer()],
     compress: argv.prod ? true : false
   };
-  return gulp.src('./assets/sass/style.scss')
+  gulp.src('./assets/sass/style.scss')
     .pipe(plumber())
     .pipe(sass(options))
     .pipe(gulpif(argv.prod, rename('style.min.css')))
+    .pipe(replace('images/', dest.images))
+    .pipe(gulp.dest(dest.css))
+  .on('end', function() {
+    log('Sass done');
+    if (argv.prod) log('CSS minified');
+  });
+  return gulp.src('./assets/sass/panel.scss')
+    .pipe(plumber())
+    .pipe(sass(options))
+    .pipe(gulpif(argv.prod, rename('panel.min.css')))
     .pipe(replace('images/', dest.images))
     .pipe(gulp.dest(dest.css))
   .on('end', function() {

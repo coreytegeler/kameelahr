@@ -138,11 +138,11 @@ header {
 				position: relative;
 				.title {
 					width: calc(100% - #{$gutter/2});
-					position: absolute;
-					left: #{$gutter/4};
-					top: #{$gutter/4};
-					opacity: 0;
-					display: none;
+					// position: absolute;
+					// left: #{$gutter/4};
+					// top: #{$gutter/4};
+					// opacity: 0;
+					// display: none;
 					&.show {
 						opacity: 1;
 						position: static;
@@ -181,6 +181,7 @@ header {
 		}
 		&.artwork {
 			.wrap {
+				width: calc(100% - 4px);
 				padding: 2px;
 			}
 			a:hover {
@@ -194,10 +195,24 @@ header {
 				height: auto;
 				pointer-events: none;
 				display: table;
-				img {
-					width: 100%;
-					filter: grayscale(1);
+				.image {
 					display: table;
+					background-color: rgba($medium, .1);
+					// transition: background-color 100ms $ease;
+					img {
+						width: 100%;
+						filter: grayscale(1);
+						display: table;
+						vertical-align: middle;
+						opacity: 0;
+						transition: opacity 50ms $ease;
+					}
+					&.loaded {
+						// background-color: transparent;
+						img {
+							opacity: 1;
+						}
+					}
 				}
 			}
 		}
@@ -216,6 +231,22 @@ header {
 					}
 				}
 				// background-color: rgba(0,0,0,.03);
+			}
+		}
+		&.event {
+			h1, h2, h3, h4 {
+				text-align: center;
+				font-weight: 100;
+			}
+			.date {
+				text-align: center;
+				.month {
+					width: 100%;
+				}
+				.day {
+					width: 100%;
+					@include xxLargeText;
+				}
 			}
 		}
 		// &.top {
@@ -263,6 +294,13 @@ header {
 		.body {
 			width: 100%;
 			@include mediumText;
+		}
+		.date {
+			padding: 2em;
+			h2.month {
+				text-align: center;
+				font-weight: 100;
+			}
 		}
 	}
 	.full {
@@ -340,14 +378,44 @@ header {
 					cursor: default;
 				}
 			}
-			&.image {
-				.img {
+			&.image, &.video {
+				.wrap {
 					width: 100%;
 					height: 100%;
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: contain;
-					transition: background-position 700ms $ease;
+					display: flex;
+			    align-items: center;
+			    flex-direction: column;
+				}
+			}
+			&.image {
+				.wrap {
+					img {
+						max-width: 100%;
+						max-height: calc(100vh - #{$headerHeight});
+				    display: table;
+				    margin: auto
+					}
+				}
+			}
+			&.video {
+				.wrap {
+					iframe {
+						width: 100%;
+						height: calc(100vh - #{$headerHeight});
+				    display: table;
+				    margin: auto
+					}
+				}
+			}
+			&.text {
+				.inner {
+					transition: margin 700ms $ease;
+				}
+				&:not(.current) {
+					.inner {
+						// width: calc(100% - 1em);
+						// max-width: 100%;
+					}
 				}
 			}
 			&.current {
@@ -376,7 +444,7 @@ header {
 				}
 			}
 			.caption {
-				width: 100%;
+				width: calc(100% - #{$gutter*2});
 				padding: $gutter;
 				display: table;
 				margin: $gutter auto 0 auto;
@@ -385,12 +453,12 @@ header {
 				color: black;
 				@include smallText;
 				.inner {
+					width: 100%;
 					max-width: $tabletWidth;
-					width: calc(100% - #{$gutter*2});
 					max-width: $tabletWidth;
 					display: table;
 					margin: auto;
-					text-align: left;
+					text-align: center;
 				}
 			}
 		}

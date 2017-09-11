@@ -2,13 +2,14 @@ title: Event
 
 pages: false
 
-preview: parent
-
 fields:
   title:
-    label: Name
+    label: Title
     type: title
-  published:
-    label: Published Date
+  date:
+    label: Date
     type: date
     default: now
+  location:
+    label: Location
+    type: text

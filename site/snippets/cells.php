@@ -26,14 +26,23 @@ if( isset( $cells ) ) {
 			 			echo '<div class="wrap">';
 				 			echo '<div class="content">';
 				 				if( $type == 'artwork' ) {
-								 	echo $cell->image();
+				 					$image = $cell->image();
+				 					echo '<div class="image load" data-width="'.$image->width().'" data-height="'.$image->height().'">';
+									 	echo $image;
+									echo '</div>';
 								} else if( $type == 'text' ) {
 									snippet( 'content/text', array( 'page' => $cell ) );
-								} else {
+								} else if( $type == 'event' ) {
+									echo '<div class="date">';
+										echo '<h3 class="month">' . $cell->date( 'F' ) . '</h3>';
+										echo '<h1 class="day">' . $cell->date( 'd' ) . '</h1>';
+							 		echo '</div>';
 									echo '<div class="title">';
-										echo '<h2>';
-								 			echo $title;
-							 			echo '</h2>';
+										echo '<h3>' . $title . '</h3>';
+										$location = $cell->location();
+										if( $location->isNotEmpty() ) {
+											echo '<h4>at ' . $location . '</h4>';
+										}
 							 		echo '</div>';
 								}
 							echo '</div>';

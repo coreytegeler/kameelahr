@@ -2,7 +2,7 @@ Title: How to Suffer Politely (And Other Etiquette)
 
 ----
 
-Safetitle: 
+Safetitle: How to Suff&shy;er Polite&shy;ly (And Other Etiq&shy;uette)
 
 ----
 
@@ -15,6 +15,40 @@ Intro: Blending satire and the structure of etiquette guides, this series of pub
 ----
 
 Slides: 
+
+- 
+  videoid: "223188763"
+  source: vimeo
+  title: ""
+  caption: >
+    Expanding Photography through
+    Collaboration
+  _fieldset: video
+- 
+  image: 5aac1d4cd8252777-LTP1.jpg
+  size: medium
+  _fieldset: image
+- 
+  image: >
+    5620dca0fcd3bc7a-FF-install-view-sized-for-exh-web-22.jpg
+  size: medium
+  _fieldset: image
+- 
+  image: b687fa3b8e2550c2-InstallPhoto2.jpg
+  size: medium
+  _fieldset: image
+- 
+  image: 831a2fc4860ed477-INSTALL-Photo.jpg
+  size: medium
+  _fieldset: image
+- 
+  image: 4738b81394074a5c-LTP2.jpg
+  size: large
+  _fieldset: image
+- 
+  image: 36ebf3915495b1cc-D81_3361.jpg
+  size: medium
+  _fieldset: image
 
 ----
 

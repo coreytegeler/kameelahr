@@ -26,10 +26,8 @@ jQuery(function($) {
       });
       return $slides.each(function(i, slide) {
         var $slide, image, imageUrl;
-        imageUrl = $(slide).find('.img').css('backgroundImage');
-        if (imageUrl) {
-          imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '');
-        } else {
+        imageUrl = $(slide).find('img').attr('src');
+        if (!imageUrl) {
           return fixIntro(slide);
         }
         image = new Image;
@@ -50,6 +48,7 @@ jQuery(function($) {
             });
           }
         };
+        console.log(imageUrl);
         return image.src = imageUrl;
       });
     });
