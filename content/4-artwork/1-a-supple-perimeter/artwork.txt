@@ -15,3 +15,11 @@ Intro:
 ----
 
 Slides: 
+
+----
+
+Showings: 
+
+----
+
+Featured: true

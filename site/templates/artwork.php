@@ -31,8 +31,8 @@ echo '<div class="content">';
             $image = $page->image( $image );
             $title = $image->filename();
             $caption = $image->caption();
-          } else if( $type == 'text' ) {
-            $text = $slide->text()->kirbytext();
+          } else if( $type == 'writing' ) {
+            $writing = $slide->text()->kirbytext();
           }
           echo '<div class="slide ' . $type . '" data-slug="' . $title . '">';
             echo '<div class="scroll">';
@@ -56,7 +56,7 @@ echo '<div class="content">';
                 if( $slide->caption()->isNotEmpty() ) {
                   echo '<div class="caption"><div class="inner">' . $slide->caption() . '</div></div>';
                 }
-              } else if( $type == 'text' ) {
+              } else if( $type == 'writing' ) {
                 echo '<div class="content">';
                   echo '<div class="inner">';
                     echo '<div class="body">';

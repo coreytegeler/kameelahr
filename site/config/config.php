@@ -39,6 +39,7 @@ Plugins Configuration
 Routes Configuration
 ---------------------------------------
 */
+
 c::set('routes', array(
   array(
     'pattern' => '(:any)',
@@ -46,7 +47,7 @@ c::set('routes', array(
 
       $page = page( $slug );
       if(!$page) $page = page( 'artwork/' . $slug );
-      if(!$page) $page = page( 'texts/' . $slug );
+      if(!$page) $page = page( 'writing/' . $slug );
       if(!$page) $page = site()->errorPage();
 
       return site()->visit( $page );

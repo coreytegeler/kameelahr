@@ -4,7 +4,65 @@ fields:
   title:
     label: Title
     type:  text
-
-  text:
-    label: Text
-    type:  wysiwyg
+  exhibitions:
+    label: Exhibitions
+    type: builder
+    fieldsets:
+      exhibition:
+        label: Exhibition
+        entry: >
+          {{title}}
+        fields:
+          title:
+            label: Title
+            type: text
+          start_date:
+            label: Start Date
+            type: date
+            width: 1/2
+          end_date:
+            label: End Date
+            type: date
+            width: 1/2
+          link:
+            label: Link
+            type: text
+  talks:
+    label: Talks & Readings
+    type: builder
+    fieldsets:
+      exhibition:
+        label: Talk/Reading
+        entry: >
+          {{title}}
+        fields:
+          title:
+            label: Title
+            type: text
+          date:
+            label: Date
+            type: date
+          link:
+            label: Link
+            type: text
+  press:
+    label: Press
+    type: builder
+    fieldsets:
+      item:
+        label: Press Item
+        entry: >
+          {{source}}: {{title}} 
+        fields:
+          source:
+            label: Source
+            type: text
+          title:
+            label: Title
+            type: text
+          date:
+            label: Date
+            type: date
+          link:
+            label: Link
+            type: text

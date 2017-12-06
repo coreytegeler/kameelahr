@@ -11,6 +11,25 @@ fields:
     label: Intro
     type:  textarea
 
-  text:
-    label: Text
-    type:  textarea
+  nodes:
+    label: Nodes
+    type: builder
+    fieldsets:
+      node:
+        label: Node
+        snippet: builder/node
+        fields:
+          title:
+            label: Title
+            type: text
+          # safeTitle:
+          #   label: Safe Title
+          #   help: 'Use &amp;shy; in the middle of words to allow a hyphen.'
+          #   type: text
+          # text:
+          #   label: Text
+          #   type: wysiwyg
+          image:
+            label: Images
+            type: multiselect
+            options: images

@@ -13,11 +13,12 @@ snippet( 'header' );
 				}
 			echo '</div>';
 
+			echo '<div class="date">';
+				echo '<h2 class="month">' . $page->date( 'F' ) . '</h2>';
+				echo '<h1 class="day">' . $page->date( 'd' ) . '</h1>';
+			echo '</div>';
+
 			echo '<div class="body">';
-				echo '<div class="date">';
-					echo '<h2 class="month">' . $page->date( 'F' ) . '</h2>';
-					echo '<h1 class="day">' . $page->date( 'd' ) . '</h1>';
-				echo '</div>';
 			echo '</div>';
 	 echo '</div>';
 snippet( 'footer' );

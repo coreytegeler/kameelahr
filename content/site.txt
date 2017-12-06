@@ -14,7 +14,7 @@ Copyright:
 
 All content © Kameelah Janan Rasheed 2008-2016.
 
-Please do not reproduce any of the content on this site without the expressed written consent of Kameelah Janan Rasheed.
+Please do not reproduce any of the content on this site without the expressed written consent of Kameelah Janan Rasheed.
 
 ----
 
@@ -27,10 +27,6 @@ Links:
 - 
   _title: Facebook
   _url: http://facebook.com/kameelahr
-  _fieldset: link
-- 
-  _title: Twitter
-  _url: http://blog.kameelahr.com/
   _fieldset: link
 - 
   _title: Twitter

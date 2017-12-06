@@ -1,5 +1,5 @@
 $(function() {
-  var $cells, $filters, $window, filterCells, onResize;
+  var $cells, $filters, $window, onResize;
   $window = $(window);
   $filters = $('.filters a');
   $cells = $('#cells');
@@ -49,56 +49,17 @@ $(function() {
       if (top === 0) {
         $cell.addClass('top');
       }
-      if ($cell.is('.text')) {
+      if ($cell.is('.writing')) {
         windowWidth = $window.innerWidth();
-        fontSize = windowWidth / 200;
-        return $cell.find('.content').css({
+        fontSize = windowWidth / 110;
+        return $cell.find('.wrap').css({
           fontSize: fontSize + 'px'
         });
       }
     });
     return $cells.isotope();
   };
-  filterCells = function() {
-    var query;
-    query = [];
-    $filters.each(function(i, filter) {
-      var slug;
-      if ($(filter).is('.selected') && (slug = $(filter).attr('data-filter'))) {
-        return query.push('.' + slug);
-      }
-    });
-    if (query.length) {
-      query = query.join();
-    } else {
-      query = '';
-    }
-    $cells.isotope({
-      filter: query
-    });
-    return onResize();
-  };
-  filterCells();
-  $(window).resize(function() {
+  return $(window).resize(function() {
     return onResize();
   }).resize();
-  return $filters.on('click', function(e) {
-    var $filter, $parent;
-    if (!$cells.length) {
-      return;
-    }
-    e.preventDefault();
-    $filter = $(this);
-    $parent = $filters.parent();
-    if ($parent.is(':not(.filtered)')) {
-      $filters.each(function() {
-        return $(this).removeClass('selected');
-      });
-      $parent.addClass('filtered');
-      $filter.addClass('selected');
-    } else {
-      $filter.toggleClass('selected');
-    }
-    return filterCells();
-  });
 });

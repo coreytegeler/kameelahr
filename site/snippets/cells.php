@@ -1,7 +1,6 @@
 <?php
 if( isset( $cells ) ) {
 	echo '<div id="cells">';
-		$cells = $cells->sortBy( 'published', 'desc' );
 		if( sizeof( $cells ) ) {
 			foreach( $cells as $index => $cell ) {
 				$title = $cell->title();
@@ -21,8 +20,14 @@ if( isset( $cells ) ) {
 	 			if( !$safeTitle->empty() ) {
 	 				$title = $safeTitle;
 	 			}
-		 		echo '<div class="cell ' . $type . ' ' . $parent . '" data-length="' . $cellWidth . '" style="">';
+	 			$classes = $type . ' ' . $parent;
+	 			if( $cell->featured() == 'true' ) {
+	 				$classes .= ' featured';
+	 			}
+
+		 		echo '<div class="cell ' . $classes . '" data-length="' . $cellWidth . '" style="">';
 		 			echo '<a href="' . $cell->url() . '">';
+			 			// echo '<div class="label">' . $type . '</div>';
 			 			echo '<div class="wrap">';
 				 			echo '<div class="content">';
 				 				if( $type == 'artwork' ) {
@@ -30,12 +35,13 @@ if( isset( $cells ) ) {
 				 					echo '<div class="image load" data-width="'.$image->width().'" data-height="'.$image->height().'">';
 									 	echo $image;
 									echo '</div>';
-								} else if( $type == 'text' ) {
-									snippet( 'content/text', array( 'page' => $cell ) );
+								} else if( $type == 'writing' ) {
+									snippet( 'content/writing', array( 'page' => $cell ) );
 								} else if( $type == 'event' ) {
 									echo '<div class="date">';
 										echo '<h3 class="month">' . $cell->date( 'F' ) . '</h3>';
 										echo '<h1 class="day">' . $cell->date( 'd' ) . '</h1>';
+										echo '<h3 class="year">' . $cell->date( 'Y' ) . '</h3>';
 							 		echo '</div>';
 									echo '<div class="title">';
 										echo '<h3>' . $title . '</h3>';

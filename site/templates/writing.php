@@ -1,7 +1,7 @@
 <?php
 snippet( 'header' );
 	echo '<div class="content">';
-	  snippet( 'content/text' );
+	  snippet( 'content/writing' );
 	 echo '</div>';
 snippet( 'footer' );
 ?>

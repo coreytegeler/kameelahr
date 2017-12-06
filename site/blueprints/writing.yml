@@ -22,3 +22,8 @@ fields:
   body:
     label: Body
     type: wysiwyg
+  featured:
+    label: Featured
+    type: toggle
+    text: yes/no
+    default: false

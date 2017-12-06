@@ -1,8 +1,8 @@
-Title: Home
+Title: Bismillah
 
 ----
 
-Intro: Yay! If you are seeing this, the installation of Kirby worked. :-)
+Intro: My name is Kameelah Janan Rasheed (b. 1985, East Palo Alto) and I am based in Brooklyn, NY. I am a learner with wide ranging interests and a desire to map the relationships between these wide ranging interests. I seek to make my learning visible through an ecosystem of iterative and inquiry-based
 
 ----
 
@@ -18,3 +18,87 @@ Text:
 - (link: http://getkirby.com/support text: Get in contact) if you need support.
 
 **Have fun with Kirby!**
+
+----
+
+Nodes: 
+
+- 
+  text: ""
+  safetitle: 'install&shy;ations'
+  _fieldset: node
+  title: installations
+  image: >
+    0bab438b88576ff6-kameelahrasheed-_71a5535-lowres.jpg,
+    18d74e96f3de9347-3_krinstallationshot.jpg,
+    1f79c8a5e8980940-img_3794.jpg
+- 
+  text: ""
+  safetitle: 'public&shy;ations'
+  _fieldset: node
+  title: publications
+  image: >
+    26235caffa13d076-img_3802.jpg,
+    3186fd40cb184bad-installation5.jpg,
+    3450fa687eb71958-installation4.jpg
+- 
+  text: ""
+  safetitle: ""
+  _fieldset: node
+  title: long-form essays
+  image: >
+    48f3f4239c32c609-installation1.jpg,
+    5aac1d4cd8252777-ltp1.jpg,
+    6523e4453b1177eb-6-0.jpg
+- 
+  text: ""
+  safetitle: 'sound experi&shy;ments'
+  _fieldset: node
+  title: sound experiments
+- 
+  text: ""
+  safetitle: ""
+  _fieldset: node
+  title: archival research projects
+  image: >
+    9a509f64d7285e81-d81_3314.jpg,
+    9e01bbdd0fdc08b1-sa_111415_5050_21.jpg,
+    cacbdb67cf85f5aa-img_1433.jpg
+- 
+  text: ""
+  _fieldset: node
+  title: large-scale public works
+  image: >
+    cacbdb67cf85f5aa-img_1433.jpg,
+    d5ed1287d039231b-installation22.jpg,
+    e160a1f0a737f023-28291bd568c8004a-kameelahrasheed-_71a5504-lowres1.jpg
+- 
+  text: ""
+  _fieldset: node
+  title: curriculum development projects
+  image: >
+    1f79c8a5e8980940-img_3794.jpg,
+    3450fa687eb71958-installation4.jpg,
+    3968bbcca0165c87-bam_20160309_67.jpg,
+    4442a278b445faff-installation3.jpg,
+    4738b81394074a5c-ltp2.jpg,
+    5aac1d4cd8252777-ltp1.jpg,
+    716ea978cdccc19a-727a3727.jpg
+- 
+  text: ""
+  _fieldset: node
+  title: >
+    poetic gestures / poems / words in the
+    proximity of poems
+  image: >
+    18d74e96f3de9347-3_krinstallationshot.jpg,
+    4738b81394074a5c-ltp2.jpg,
+    9e01bbdd0fdc08b1-sa_111415_5050_21.jpg
+- 
+  text: ""
+  _fieldset: node
+  title: secondary and postsecondary teaching
+  image: >
+    26235caffa13d076-img_3802.jpg,
+    3186fd40cb184bad-installation5.jpg,
+    4442a278b445faff-installation3.jpg

@@ -10,6 +10,8 @@ $body = $page->body()->kirbytext();
 // echo '<div class="texture"></div>';
 echo '<div class="inner">';
   echo '<h1>' . $title . '</h1>';
+echo '</div>';
+echo '<div class="inner max">';
   echo '<div class="meta">';
     echo strip_tags( $meta, $whitelist );
   echo '</div>';

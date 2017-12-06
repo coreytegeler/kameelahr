@@ -1,10 +1,10 @@
-title: Texts
+title: Writings
 
 files:
   sortable: true
 
 pages:
-  template: text
+  template: writing
 
 fields:
   title:

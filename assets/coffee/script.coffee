@@ -41,46 +41,46 @@ $ ->
 				$cell.addClass 'center'
 			if( top == 0 )
 				$cell.addClass 'top'
-			if $cell.is('.text')
+			if $cell.is('.writing')
 				windowWidth = $window.innerWidth()
-				fontSize = windowWidth/200
-				$cell.find('.content').css
+				fontSize = windowWidth/110
+				$cell.find('.wrap').css
 					fontSize: fontSize + 'px'
 		$cells.isotope()
 
-	filterCells = () ->
-		query = []
-		$filters.each (i, filter) ->
-			if $(filter).is('.selected') && slug = $(filter).attr('data-filter')
-				query.push('.'+slug)
-		if query.length
-			query = query.join()
-		else
-			query = ''
-		$cells.isotope
-			filter: query
-		onResize()
+	# filterCells = () ->
+	# 	query = []
+	# 	$filters.each (i, filter) ->
+	# 		if $(filter).is('.selected') && slug = $(filter).attr('data-filter')
+	# 			query.push('.'+slug)
+	# 	if query.length
+	# 		query = query.join()
+	# 	else
+	# 		query = ''
+	# 	$cells.isotope
+	# 		filter: query
+	# 	onResize()
 
-	filterCells()
+	# filterCells()
 
 	$(window).resize () ->
 		onResize()
 	.resize()
 
-	$filters.on 'click', (e) ->
-		if !$cells.length
-			return
-		e.preventDefault()
-		$filter = $(this)
-		$parent = $filters.parent()
-		if $parent.is(':not(.filtered)')
-			$filters.each () ->
-				$(this).removeClass('selected')
-			$parent.addClass('filtered')
-			$filter.addClass('selected')
-		else
-			$filter.toggleClass('selected')
-		filterCells()
+	# $filters.on 'click', (e) ->
+	# 	if !$cells.length
+	# 		return
+	# 	e.preventDefault()
+	# 	$filter = $(this)
+	# 	$parent = $filters.parent()
+	# 	if $parent.is(':not(.filtered)')
+	# 		$filters.each () ->
+	# 			$(this).removeClass('selected')
+	# 		$parent.addClass('filtered')
+	# 		$filter.addClass('selected')
+	# 	else
+	# 		$filter.toggleClass('selected')
+	# 	filterCells()
 
 	# $(window).mousemove (e) ->
 	# 	# console.log e.screenX

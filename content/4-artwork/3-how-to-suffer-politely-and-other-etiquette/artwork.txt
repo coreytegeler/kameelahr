@@ -65,3 +65,7 @@ Showings:
   location: New York, NY
   year: "2016"
   _fieldset: showing
+
+----
+
+Featured: true

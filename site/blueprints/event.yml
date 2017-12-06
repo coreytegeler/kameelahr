@@ -10,6 +10,12 @@ fields:
     label: Date
     type: date
     default: now
+    format: 'MM DD YYYY'
   location:
     label: Location
     type: text
+  featured:
+    label: Featured
+    type: toggle
+    text: yes/no
+    default: false
