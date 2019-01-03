@@ -1,45 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Chivo:300,300i,400,400i,700,700i,900,900i');
-$medium: #707377;
-$border: 1px;
-$gutter: 2em;
-$headerHeight: 5em;
-// $contentHeight: 90vh;
-$slideWidth: 80vw;
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400i);
+
 $ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+
 @mixin baseText {
-	font-size: 21px;
-	line-height: 1.3em;
+	font-size: 13px;
+	line-height: 1.8rem;
 	@include tablet {
 		font-size: 15px;
 	}
 }
-@mixin xSmallText {
-	font-size: .7em;
-	line-height: 1.2em;
-}
-@mixin smallText {
-	font-size: 1em;
-	line-height: 1.2em;
-}
-@mixin mediumText {
-	font-size: 1.3em;
-	line-height: 1.3em;
-}
-@mixin largeText {
-	font-size: 2em;
-	line-height: 1.2em;
-	font-weight: 900;
-}
-@mixin xLargeText {
-	font-size: 3em;
-	line-height: 1.2em;
-	font-weight: 100;
-}
-@mixin xxLargeText {
-	font-size: 6em;
-	line-height: 1.2em;
-	font-weight: 100;
-}
+
+
 $phoneWidth: 480px;
 $tabletWidth: 768px;
 $laptopWidth: 1024px;

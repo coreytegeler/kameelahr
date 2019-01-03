@@ -1,0 +1,44 @@
+title: Node
+
+files:
+	sortable: true
+	fields:
+		credit:
+			label: Credit
+			type: text
+		caption:
+			label: Caption
+			type: wysiwyg
+
+pages: false
+fields:
+	title:
+		label: Title
+		type:  text
+	year:
+		label: Year
+		type: text
+		# default: now
+	caption:
+		label: Caption
+		type: wysiwyg
+	# showings:
+	# 	label: Showings
+	# 	type: builder
+	# 	fieldsets:
+	# 		showing:
+	# 			label: Showing
+	# 			snippet: builder/showing
+	# 			fields:
+	# 				space:
+	# 					label: Space
+	# 					type: text
+	# 					width: 1/3
+	# 				year:
+	# 					label: Year
+	# 					type: text
+	# 					width: 1/3
+	# 				location:
+	# 					label: Location
+	# 					type: text
+	# 					width: 1/3

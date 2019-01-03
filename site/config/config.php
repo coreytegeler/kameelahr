@@ -25,7 +25,7 @@ c::set('license', 'put your license key here');
 c::set('debug', true);
 // c::set('panel.install', true);
 
-c::set('panel.stylesheet', 'assets/css/panel.css');
+// c::set('panel.stylesheet', 'assets/css/panel.css');
 
 /*
 ---------------------------------------
@@ -39,20 +39,20 @@ Plugins Configuration
 Routes Configuration
 ---------------------------------------
 */
-c::set('routes', array(
-  array(
-    'pattern' => '(:any)',
-    'action'  => function( $slug ) {
+// c::set('routes', array(
+//   array(
+//     'pattern' => '(:any)',
+//     'action'  => function( $slug ) {
 
-      $page = page( $slug );
-      if(!$page) $page = page( 'artwork/' . $slug );
-      if(!$page) $page = page( 'texts/' . $slug );
-      if(!$page) $page = site()->errorPage();
+//       $page = page( $slug );
+//       if(!$page) $page = page( 'artwork/' . $slug );
+//       if(!$page) $page = page( 'texts/' . $slug );
+//       if(!$page) $page = site()->errorPage();
 
-      return site()->visit( $page );
+//       return site()->visit( $page );
 
-    }
-  )
-));
+//     }
+//   )
+// ));
 
 

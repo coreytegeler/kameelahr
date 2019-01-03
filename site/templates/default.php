@@ -1,20 +1,39 @@
-<?php
-snippet('header');
-	$cells = new Pages();
-	if( $artworks = $pages->find( 'artwork' ) ) {
-		$cells->add( $artworks->children()->visible() );
-	}
-	if( $texts = $pages->find( 'texts' ) ) {
-		$cells->add( $texts->children()->visible() );
-	}
-	if( $posts = $pages->find( 'blog' ) ) {
-		$cells->add( $posts->children()->visible() );
-	}
-	if( $events = $pages->find( 'events' ) ) {
-		$cells->add( $events->children()->visible() );
-	}
-	if( $cells ) {
-		snippet( 'cells', array( 'cells' => $cells ) );
-	}
-snippet('footer');
-?>
+<?php snippet('header'); ?>
+	
+
+	<section>
+			
+		<?php snippet( 'carousel' ); ?>
+
+	</section>
+
+	<section>
+
+		<div class="inner">
+
+			<div class="max">
+
+				<?php if( $bismillah = $site->files()->first() ): ?>
+
+					<div class="bismillah">
+
+						<?php echo $bismillah->resize( 900, null, 100 ); ?>
+
+					</div>
+
+				<?php endif; ?>
+
+				<?php if( $about = $site->about()->kirbytext() ): ?>
+
+					<?php echo $about; ?>
+
+				<?php endif; ?>
+
+			</div>
+
+		</div>
+
+	</section>
+
+
+<?php snippet('footer'); ?>

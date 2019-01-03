@@ -1,16 +1,31 @@
+// var argv = require('yargs').argv;
+// var gulpif = require('gulp-if');
+// var rename = require('gulp-rename');
+// var gulp = require('gulp');
+// var gutil = require('gulp-util');
+// var plumber = require('gulp-plumber');
+// var sass = require('gulp-sass');
+// var coffee = require('gulp-coffee');
+// var rupture = require('rupture');
+// var autoprefixer = require('gulp-autoprefixer');
+// var htmlmin = require('gulp-htmlmin');
+// var replace = require('gulp-replace');
+// var htmlreplace = require('gulp-html-replace');
+
+
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
 var rename = require('gulp-rename');
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
+var pug = require('gulp-pug');
 var sass = require('gulp-sass');
-var coffee = require('gulp-coffee');
-var rupture = require('rupture');
 var autoprefixer = require('gulp-autoprefixer');
-var htmlmin = require('gulp-htmlmin');
-var replace = require('gulp-replace');
-var htmlreplace = require('gulp-html-replace');
+var sourcemaps = require('gulp-sourcemaps');
+var cleanCSS = require('gulp-clean-css');
+var coffee = require('gulp-coffee');
+var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
 var php = require('gulp-connect-php');
 
 var paths = {
@@ -26,89 +41,58 @@ var dest = {
   images: '../../assets/images/'
 }
 
-gulp.task('compile-templates', function() {
-  return gulp.src(paths.templates)
-    .pipe(plumber())
-    .pipe(gulpif(argv.prod, htmlmin({ collapseWhitespace: true })))
-    .pipe(gulpif(argv.prod, replace('style.css', 'style.min.css')))
-    .pipe(gulp.dest(dest.templates))
-
-  .on('end', function() {
-    log('HTML done');
-  });
-});
-
-gulp.task('compile-sass', function() {
-  var options = {
-    use: [rupture(), autoprefixer()],
+function compileSass()  {
+  var sassOptions = {
     compress: argv.prod ? true : false
   };
-  gulp.src('./assets/sass/style.scss')
+  var apOptions = {
+    browsers: ['> 0.5%', 'last 5 versions', 'Firefox ESR', 'not dead']
+  };
+  return gulp.src('./assets/sass/style.scss')
+    .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass(options))
-    .pipe(gulpif(argv.prod, rename('style.min.css')))
-    .pipe(replace('images/', dest.images))
-    .pipe(gulp.dest(dest.css))
+    .pipe(sass(sassOptions))
+    .pipe(autoprefixer(apOptions))
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./assets/css/'))
   .on('end', function() {
     log('Sass done');
     if (argv.prod) log('CSS minified');
   });
-  return gulp.src('./assets/sass/panel.scss')
-    .pipe(plumber())
-    .pipe(sass(options))
-    .pipe(gulpif(argv.prod, rename('panel.min.css')))
-    .pipe(replace('images/', dest.images))
-    .pipe(gulp.dest(dest.css))
-  .on('end', function() {
-    log('Sass done');
-    if (argv.prod) log('CSS minified');
-  });
-});
+}
 
-gulp.task('compile-coffee', function() {
-  gulp.src('./assets/coffee/carousel.coffee')
+function compileCoffee()  {
+  return gulp.src('./assets/coffee/*.coffee', { sourcemaps: true })
     .pipe(coffee({bare: true}))
-    .pipe(gulpif(argv.prod, rename('carousel.min.js')))
-    .pipe(gulp.dest(dest.js))
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./assets/js/'))
   .on('end', function() {
     log('Coffee done');
     if (argv.prod) log('JS minified');
   });
-  return gulp.src('./assets/coffee/script.coffee')
-    .pipe(coffee({bare: true}))
-    .pipe(gulpif(argv.prod, rename('script.min.js')))
-    .pipe(gulp.dest(dest.js))
-  .on('end', function() {
-    log('Coffee done');
-    if (argv.prod) log('JS minified');
-  });
-});
+}
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['compile-sass']);
-  gulp.watch(paths.coffee, ['compile-coffee']);
-});
+function watchFiles() {
+  gulp.watch(paths.sass, compileSass);
+  gulp.watch(paths.coffee, compileCoffee);
+}
 
-gulp.task('php', function() {
+function servePHP() {
   php.server({
     base: './',
     port: 8080,
     keepalive: true,
     stdio: 'ignore'
   });
-});
+}
 
-gulp.task('default', [
-  'compile-sass',
-  'compile-coffee',
-  'watch',
-  'php'
-]);
+gulp.task('watch', gulp.parallel(compileSass, compileCoffee, watchFiles, servePHP));
 
-gulp.task('prod', [
-  'compile-sass',
-  'compile-coffee'
-]);
+gulp.task('build', gulp.parallel(compileSass, compileCoffee));
+
 
 function log(message) {
   gutil.log(gutil.colors.bold.green(message));

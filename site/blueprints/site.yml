@@ -4,29 +4,9 @@ fields:
   title:
     label: Title
     type:  text
-
-  newsletter:
-    label: Newsletter
-    type: text
-    width: 1/2
-    
-  links:
-    label: Links
-    type: builder
-    fieldsets:
-      link:
-        label: Link
-        width: 1/2
-        fields:
-          _title:
-            label: Title
-            type: text
-            width: 1/2
-          _url:
-            label: URL
-            type: text
-            width: 1/2
-  
+  about:
+    label: About
+    type: wysiwyg
   copyright:
     label: Copyright
     type: wysiwyg

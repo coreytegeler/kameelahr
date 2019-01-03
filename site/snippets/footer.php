@@ -1,30 +1,9 @@
-  <footer class="footer" role="contentinfo">
-  	<div class="inner">
-    <?php
-    $links = $site->links()->toStructure();
-    echo '<ul class="links">';
-	    foreach( $links as $i => $link ) {
-	    	echo '<li>';
-		    	echo '<a href="' . $link->_url() . '" target="_blank">';
-		    		echo $link->_title();
-		    	echo '</a>';
-	    	echo '</li>';
-	    }
-		echo '</ul>';
-		echo '<div class="copyright">';
-			echo $site->copyright();
-		echo '</div>';
-    ?>
-  </div>
-</footer>
 </main>
 </body>
-<?= js(array(
-  'assets/js/jquery-3.2.1.min.js',
-  'assets/js/isotope.pkgd.min.js',
-  'assets/js/masonry-horizontal.js',
-  'assets/js/imagesloaded.js',
-  'assets/js/transit.js',
+<?= js( array(
+	'https://code.jquery.com/jquery-3.3.1.min.js',
+	'https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js',
+	'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js',
   'assets/js/carousel.js',
   'assets/js/script.js'
 ) ) ?>

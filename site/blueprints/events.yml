@@ -1,9 +1,0 @@
-title: Events
-
-pages:
-  template: event
-
-fields:
-  title:
-    label: Name
-    type: title
