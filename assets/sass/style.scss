@@ -11,16 +11,17 @@ main {
 	height: 100%;
 }
 section {
-	width: 50%;
-	height: 100%;
+	width: calc(50% - 10rem);
+	height: calc(100% - 10rem);
+	padding: 5rem;
 	float: left;
 	overflow: auto;
 }
-.inner {
+.text-inner {
 	width: 100%;
-	padding: 5rem 0 ;
+	// padding: 5rem;
 }
-.max {
+.text-max {
 	max-width: 25rem;
 	display: table;
 	margin: auto;
@@ -31,5 +32,105 @@ section {
 	img {
 		width: 100%;
 		height: auto;
+	}
+}
+
+.carousel {
+	width: 100%;
+	height: 100%;
+	display: table;
+	margin: auto;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+.slides {
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: left 200ms $ease;
+	// .carousel[data-direction="left"] & {
+	// 	left: .25em;
+	// }
+	// .carousel[data-direction="right"] & {
+	// 	left: -.25em;
+	// }
+}
+.slide {
+	width: calc(50vw - 10rem);
+	height: 100%;
+	position: relative;
+	float: left;
+	.scroll {
+		height: 100%;
+		overflow-x: hidden; 
+		overflow-y: auto;
+	}
+	.wrap {
+		width: 100%;
+		height: 100%;
+		display: flex;
+    align-items: center;
+    flex-direction: column;
+	}
+	img {
+		max-width: 100%;
+		max-height: 100vh;
+    display: table;
+    margin: auto
+	}
+	&.current {
+		
+	}	
+	&.right {
+		.img {
+			background-position: left center;
+		}
+	}
+	&.left {
+		.img {
+			background-position: right center;
+		}
+	}
+	.caption {
+		width: calc(100% - #{$gutter*2});
+		padding: $gutter;
+		display: table;
+		margin: $gutter auto 0 auto;
+		// background: black;
+		color: black;
+		.inner {
+			width: 100%;
+			max-width: $tabletWidth;
+			max-width: $tabletWidth;
+			display: table;
+			margin: auto;
+			text-align: center;
+		}
+	}
+}
+.arrow {
+	width: 10%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 100;
+	&.left {
+		left: 0;
+		&:hover {
+			cursor: w-resize;
+		}
+	}
+	&.right {
+		right: 0;
+		&:hover {
+			cursor: e-resize;
+		}
 	}
 }

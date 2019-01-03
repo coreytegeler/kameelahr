@@ -9,9 +9,9 @@
 
 	<section>
 
-		<div class="inner">
+		<div class="text-inner">
 
-			<div class="max">
+			<div class="text-max">
 
 				<?php if( $bismillah = $site->files()->first() ): ?>
 

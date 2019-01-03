@@ -1,45 +1,43 @@
-<div class="content">
-  <div class="carousel">
-    <div class="slides">
 
-      <?php if( $nodes = $pages->filterBy( 'intendedTemplate', 'node' ) ): ?>
+<div class="carousel">
+  <div class="slides">
 
-        <?php foreach ( $nodes as $index => $node ): ?>
+    <?php if( $nodes = $pages->filterBy( 'intendedTemplate', 'node' ) ): ?>
 
-        	<?php if( $image = $node->images()->first() ): ?>
-          
-	          <?php $title = $image->filename(); ?>
-	          <?php $caption = $image->caption(); ?>
+      <?php foreach ( $nodes as $index => $node ): ?>
 
-		          <div class="slide" data-slug="<?php $title ?>">
-		            <div class="scroll">
+      	<?php if( $image = $node->images()->first() ): ?>
+        
+          <?php $title = $image->filename(); ?>
+          <?php $caption = $image->caption(); ?>
 
-		              <div class="wrap">
-		                <img src="<?php echo $image->url(); ?>"/>
-		              </div>
+	          <div class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
+	            <div class="scroll">
 
-		              <?php if( $caption->isNotEmpty() ): ?>
+	              <div class="wrap">
+	                <img src="<?php echo $image->url(); ?>"/>
+	              </div>
 
-		                <div class="caption">
-		                	<div class="inner">
-		                		<?php echo $image->caption(); ?>
-		                	</div>
-		                </div>
+	              <?php if( $caption->isNotEmpty() ): ?>
 
-		              <?php endif; ?>
+	                <div class="caption">
+	                	<div class="inner">
+	                		<?php echo $image->caption(); ?>
+	                	</div>
+	                </div>
 
-		            </div>
-		          </div>
+	              <?php endif; ?>
 
-					<?php endif; ?>
+	            </div>
+	          </div>
 
-        <?php endforeach; ?>
+				<?php endif; ?>
 
-      <?php endif; ?>
+      <?php endforeach; ?>
 
-    </div>
-    <div class="arrow left" data-direction="left"></div>
-    <div class="arrow right" data-direction="right"></div>
+    <?php endif; ?>
+
   </div>
+  <div class="arrow left" data-direction="left"></div>
+  <div class="arrow right" data-direction="right"></div>
 </div>
-?>
