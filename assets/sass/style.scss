@@ -54,6 +54,8 @@ section {
 	img {
 		width: 100%;
 		height: auto;
+		pointer-events: none;
+		user-select: none;
 	}
 }
 
@@ -84,6 +86,8 @@ section {
 	height: 100%;
 	position: relative;
 	float: left;
+	// transition: opacity 200ms $ease;
+	// opacity: 0;
 	.scroll {
 		height: 100%;
 		overflow-x: hidden; 
@@ -103,7 +107,7 @@ section {
     margin: auto
 	}
 	&.current {
-		
+		// opacity: 1;
 	}	
 	&.right {
 		.img {

@@ -132,7 +132,7 @@ jQuery ($) ->
 		$nextSlide.addClass('current')
 		slidesWrapper.transition
 			x: left
-		, 500
+		, 0
 
 		carousel.removeClass('sliding')
 
