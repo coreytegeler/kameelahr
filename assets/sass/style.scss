@@ -11,21 +11,43 @@ main {
 	height: 100%;
 }
 section {
-	width: calc(50% - 10rem);
-	height: calc(100% - 10rem);
 	padding: 5rem;
 	float: left;
-	overflow: auto;
+	&:first-child {
+		width: calc(50% - 10rem);
+		height: calc(100% - 10rem);
+		position: fixed;
+		left: 0;
+		top: 0;
+	}
+	&:last-child {
+		width: calc(100% - 15rem);
+		padding-left: 10rem;
+	}
+	@include md {
+		width: calc(100% - 4rem) !important;
+		height: auto !important;
+		padding: 2rem !important;
+		position: static !important;
+	}
 }
 .text-inner {
-	width: 100%;
-	// padding: 5rem;
+	width: 50%;
+	float: right;
+	clear: both;
+	@include md {
+		width: 100%;
+		float: none;
+	}
 }
 .text-max {
 	max-width: 25rem;
 	display: table;
 	margin: auto;
 	text-align: justify;
+	@include md {
+		max-width: 100%;
+	}
 }
 .bismillah {
 	width: 100%;
@@ -102,8 +124,8 @@ section {
 		color: black;
 		.inner {
 			width: 100%;
-			max-width: $tabletWidth;
-			max-width: $tabletWidth;
+			max-width: $mdWidth;
+			max-width: $mdWidth;
 			display: table;
 			margin: auto;
 			text-align: center;

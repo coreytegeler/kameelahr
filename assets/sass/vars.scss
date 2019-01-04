@@ -5,39 +5,39 @@ $ease: cubic-bezier(0.645, 0.045, 0.355, 1);
 @mixin baseText {
 	font-size: 13px;
 	line-height: 1.8rem;
-	@include tablet {
+	@include md {
 		font-size: 15px;
 	}
 }
 
 $gutter: 1rem;
 
-$phoneWidth: 480px;
-$tabletWidth: 768px;
-$laptopWidth: 1024px;
-$desktopWidth: 1440px;
+$smWidth: 480px;
+$mdWidth: 768px;
+$lgWidth: 1024px;
+$xlWidth: 1440px;
 $maxWidth: 800px;
 
-@mixin phone {
-	@media (max-width: #{$phoneWidth}) {
+@mixin sm {
+	@media (max-width: #{$smWidth}) {
 		@content;
 	}
 }
 
-@mixin tablet {
-  @media (max-width: #{$tabletWidth}) {
+@mixin md {
+  @media (max-width: #{$mdWidth}) {
     @content;
   }
 }
 
-@mixin laptop {
-  @media (max-width: #{$laptopWidth}) {
+@mixin lg {
+  @media (max-width: #{$lgWidth}) {
     @content;
   }
 }
 
-@mixin desktop {
-  @media (max-width: #{$desktopWidth}) {
+@mixin xl {
+  @media (max-width: #{$xlWidth}) {
     @content;
   }
 }
