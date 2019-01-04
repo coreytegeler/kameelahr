@@ -2,36 +2,34 @@
 <div class="carousel">
   <div class="slides">
 
-    <?php if( $nodes = $pages->filterBy( 'intendedTemplate', 'node' ) ): ?>
+  	<?php if( $images = page( 'home' )->files() ): ?>
 
-      <?php foreach ( $nodes as $index => $node ): ?>
-
-      	<?php if( $image = $node->images()->first() ): ?>
+      <?php foreach ( $images as $index => $image ): ?>
         
-          <?php $title = $image->filename(); ?>
-          <?php $caption = $image->caption(); ?>
+        <?php $title = $image->filename(); ?>
+        <?php $caption = $image->caption(); ?>
 
-	          <div class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
-	            <div class="scroll">
+          <div class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
+          	
+            <div class="scroll">
 
-	              <div class="wrap">
-	                <img src="<?php echo $image->url(); ?>"/>
-	              </div>
+              <div class="wrap">
+                <img src="<?php echo $image->url(); ?>"/>
+              </div>
 
-	              <?php if( $caption->isNotEmpty() ): ?>
+              <?php if( $caption->isNotEmpty() ): ?>
 
-	                <div class="caption">
-	                	<div class="inner">
-	                		<?php echo $image->caption(); ?>
-	                	</div>
-	                </div>
+                <div class="caption">
+                	<div class="inner">
+                		<?php echo $image->caption(); ?>
+                	</div>
+                </div>
 
-	              <?php endif; ?>
+              <?php endif; ?>
 
-	            </div>
-	          </div>
+            </div>
 
-				<?php endif; ?>
+          </div>
 
       <?php endforeach; ?>
 
