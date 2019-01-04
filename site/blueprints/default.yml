@@ -5,9 +5,6 @@ pages: false
 files:
 	sortable: true
 	fields:
-		year:
-			label: Year
-			type: text
 		caption:
 			label: Caption
 			type: wysiwyg
