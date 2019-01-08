@@ -128,12 +128,12 @@ jQuery ($) ->
 
 		carousel.removeClass('sliding')
 
-		resizeCarousel()
+		# resizeCarousel()
 		
 
 	$ ->
 		setupCarousel()
-		resizeCarousel()
+		# resizeCarousel()
 
-	$(window).resize () ->
-		resizeCarousel()
+	# $(window).resize () ->
+	# 	resizeCarousel()

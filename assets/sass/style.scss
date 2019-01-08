@@ -41,6 +41,9 @@ section {
 		width: 50%;
 		margin-left: 50%;
 		.section-inner {
+			height: calc(100% - 8rem);
+			padding-top: 4rem;
+			padding-bottom: 4rem;
 			float: left;
 		}
 	}
@@ -55,8 +58,8 @@ section {
 .section-inner {
 	width: calc(100% - 8rem);
 	max-width: 30rem;
-	height: calc(100% - 6rem);
-	padding: 3rem 4rem;
+	height: 100%;
+	padding: 0 4rem;
 }
 .text-max {
 	// display: table;
@@ -108,32 +111,23 @@ figure.slide {
 	opacity: 0;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	transition: opacity 0ms $ease;
-	.scroll {
-		height: 100%;
-		overflow-x: hidden; 
-		overflow-y: auto;
-	}
-	.wrap {
+	img {
 		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
-	.img {
-		width: 100%;
-		height: 100%;
-		// display: table;
-		// margin: auto;
 		pointer-events: none;
-		background-size: contain;
-		background-position: center;
-		background-repeat: no-repeat;
+		user-select: none;
+	}
+	figcaption {
+		width: calc(100% - #{$gutter*2});
+		display: table;
+		padding: 0;
+		margin: 0;
+		color: black;
 	}
 	&.current {
 		opacity: 1;
-		display: block;
+		z-index: 200;
 	}	
 	&.right {
 		.img {
@@ -145,25 +139,9 @@ figure.slide {
 			background-position: right center;
 		}
 	}
-	figcaption {
-		width: calc(100% - #{$gutter*2});
-		padding: $gutter;
-		display: table;
-		margin: auto 0;
-		// background: black;
-		color: black;
-		.inner {
-			width: 100%;
-			max-width: $mdWidth;
-			max-width: $mdWidth;
-			display: table;
-			margin: auto;
-			text-align: center;
-		}
-	}
 }
 .arrow {
-	width: 10%;
+	width: 30%;
 	height: 100%;
 	position: absolute;
 	top: 0;
@@ -172,7 +150,7 @@ figure.slide {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	z-index: 100;
+	z-index: 300;
 	&.left {
 		left: 0;
 		&:hover {

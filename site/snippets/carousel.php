@@ -6,20 +6,16 @@
 
       <?php foreach ( $images as $index => $image ): ?>
         
-        <?php $title = $image->filename(); ?>
         <?php $caption = $image->caption(); ?>
 
           <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
           	
-            <div class="img" style="background-image:url(<?= $image->url() ?>)">
-            </div>
+            <?= $image; ?>
 
             <?php if( $caption->isNotEmpty() ): ?>
 
               <figcaption>
-              	<div class="inner">
-              		<?php echo $image->caption(); ?>
-              	</div>
+            		<?php echo $caption; ?>
               </figcaption>
 
             <?php endif; ?>
