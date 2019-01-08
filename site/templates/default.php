@@ -1,39 +1,46 @@
 <?php snippet('header'); ?>
 	
+	<div class="sections">
 
-	<section>
-			
-		<?php snippet( 'carousel' ); ?>
+		<section>
 
-	</section>
-
-	<section>
-
-		<div class="text-inner">
-
-			<div class="text-max">
-
-				<?php if( $bismillah = $site->files()->first() ): ?>
-
-					<div class="bismillah">
-
-						<?php echo $bismillah->resize( 900, null, 100 ); ?>
-
-					</div>
-
-				<?php endif; ?>
-
-				<?php if( $about = $site->about()->kirbytext() ): ?>
-
-					<?php echo $about; ?>
-
-				<?php endif; ?>
+			<div class="section-inner">
+				
+				<?php snippet( 'carousel' ); ?>
 
 			</div>
 
-		</div>
+		</section>
 
-	</section>
+		<section>
+
+			<div class="section-inner">
+
+				<div class="text-max">
+
+					<?php if( $bismillah = $site->files()->first() ): ?>
+
+						<div class="bismillah">
+
+							<?php echo $bismillah->resize( 900, null, 100 ); ?>
+
+						</div>
+
+					<?php endif; ?>
+
+					<?php if( $about = $site->about()->kirbytext() ): ?>
+
+						<?php echo $about; ?>
+
+					<?php endif; ?>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</div>
 
 
 <?php snippet('footer'); ?>

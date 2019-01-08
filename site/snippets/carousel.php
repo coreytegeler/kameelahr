@@ -9,27 +9,22 @@
         <?php $title = $image->filename(); ?>
         <?php $caption = $image->caption(); ?>
 
-          <div class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
+          <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
           	
-            <div class="scroll">
-
-              <div class="wrap">
-                <img src="<?php echo $image->url(); ?>"/>
-              </div>
-
-              <?php if( $caption->isNotEmpty() ): ?>
-
-                <div class="caption">
-                	<div class="inner">
-                		<?php echo $image->caption(); ?>
-                	</div>
-                </div>
-
-              <?php endif; ?>
-
+            <div class="img" style="background-image:url(<?= $image->url() ?>)">
             </div>
 
-          </div>
+            <?php if( $caption->isNotEmpty() ): ?>
+
+              <figcaption>
+              	<div class="inner">
+              		<?php echo $image->caption(); ?>
+              	</div>
+              </figcaption>
+
+            <?php endif; ?>
+
+          </figure>
 
       <?php endforeach; ?>
 

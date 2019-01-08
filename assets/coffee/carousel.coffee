@@ -1,45 +1,36 @@
 jQuery ($) ->
+	carousels = $('.carousel')
 	transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd'
 
 	slideWidth = ->
 		return $(window).innerWidth() * .8
 
 	resizeCarousel = ->
-		carousels = $('.carousel')
 		carousels.each ->
 			carousel = $(this)
+			carouselWidth = carousel.innerWidth()
 			slides = carousel.find('.slide')
 			slidesLength = slides.length
 			slidesWrapper = carousel.find('.slides')
-			currentSlide = carousel.find('.slide.current')
-			leftSlide = currentSlide.prev().addClass('left')
-			rightSlide = currentSlide.next().addClass('right') 
-			currentIndex = currentSlide.index()
-			left = currentIndex * -slideWidth()
-			slidesWrapper.addClass('static')
+			# currentSlide = carousel.find('.slide.current')
+			# currentIndex = currentSlide.index()
+			# left = currentIndex * -slideWidth()
+			# slidesWrapper.addClass('static')
 			slidesWidth = slidesLength * slideWidth()
-			slidesWrapper.css
-				width: slidesWidth
-			# 	x: left
-			slides.each (i, slide) ->
-				imageUrl = $(slide).find('img').attr('src')
-				image = new Image
-				slide = $(this)
-				image.onload = ->
-					width = image.width
-					height = image.height
-					ratio = width / height
-					if width >= height
-						slide.addClass('landscape')
-					else
-						slide.addClass('portrait')
-					if !parseInt(slide.css('width'))
-						slide.css width: slideWidth()
-				image.src = imageUrl
+			slidesHeight = slidesWrapper.innerHeight()
+			# slidesWrapper.css
+			# 	width: slidesWidth
+			# slides.each ->
+				# slide = $(this)
+				# console.log carouselWidth
+				# slide.css
+					# width: carouselWidth+'px'
+
+
 
 
 	setupCarousel = ->
-		$('.carousel').each (i, carousel) ->
+		carousels.each (i, carousel) ->
 			$(this).find('.slide:first-child').addClass('current')
 			$(carousel).imagesLoaded ->
 				$(carousel).addClass('loaded')
@@ -97,42 +88,43 @@ jQuery ($) ->
 
 	$.fn.slide = (direction) ->
 		carousel = $(this)
-		$arrow = carousel.find('.arrow.'+direction)
+		arrow = carousel.find('.arrow.'+direction)
 		carousel.addClass('sliding')
-		direction = $arrow.attr('data-direction')
-		carousel = $arrow.parents('.carousel')
+		direction = arrow.attr('data-direction')
+		carousel = arrow.parents('.carousel')
 		slidesWrapper = carousel.find('.slides')
 		currentSlide = carousel.find('.slide.current')
 		# currentIndex = currentSlide.index()
-		$firstSlide = carousel.find('.slide').first()
-		$lastSlide = carousel.find('.slide').last()
+		firstSlide = carousel.find('.slide').first()
+		lastSlide = carousel.find('.slide').last()
 		slidesWrapper.removeClass('static')
 		# currentSlide.find('.scroll').animate
 		# 	scrollTop: 0
 		# , 500
 		switch direction
 			when 'left'
-				$nextSlide = currentSlide.prev('.slide')
-				$resetSlide = carousel.find('.slide').last()
+				nextSlide = currentSlide.prev('.slide')
+				resetSlide = carousel.find('.slide').last()
 				# console.log $nextSlide
 				# left += slideWidth()
 			when 'right'
-				$nextSlide = currentSlide.next('.slide')
-				$resetSlide = carousel.find('.slide').first()
+				nextSlide = currentSlide.next('.slide')
+				resetSlide = carousel.find('.slide').first()
 				# console.log $nextSlide
 				# left -= slideWidth()
-		if !$nextSlide.length
-			$nextSlide = $resetSlide
-		left = $nextSlide[0].offsetLeft
-		if left != 0
-			left = -left
-		console.log left
+		if !nextSlide.length
+			nextSlide = resetSlide
+
+		# left = $nextSlide[0].offsetLeft
+		# if left != 0
+		# 	left = -left
+		# console.log left
 
 		currentSlide.removeClass('current')
-		$nextSlide.addClass('current')
-		slidesWrapper.transition
-			x: left
-		, 0
+		nextSlide.addClass('current')
+		# slidesWrapper.transition
+		# 	x: left
+		# , 0
 
 		carousel.removeClass('sliding')
 

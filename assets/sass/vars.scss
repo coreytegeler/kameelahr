@@ -4,7 +4,7 @@ $ease: cubic-bezier(0.645, 0.045, 0.355, 1);
 
 @mixin baseText {
 	font-size: 13px;
-	line-height: 1.8rem;
+	line-height: 1.5rem;
 	@include md {
 		font-size: 15px;
 	}
