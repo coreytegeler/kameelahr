@@ -28,15 +28,31 @@
 
 					<?php endif; ?>
 
-					<?php if( $about = $site->about()->kirbytext() ): ?>
+					
 						
-						<div class="about-text">
+					<div class="text-columns">
 
-							<?php echo $about; ?>
+						<?php if( $about = page( 'home' )->about()->kirbytext() ): ?>
 
-						</div>
+							<div class="about">
 
-					<?php endif; ?>
+								<?php echo $about; ?>
+
+							</div>
+
+						<?php endif; ?>
+
+						<?php if( $info = page( 'home' )->info()->kirbytext() ): ?>
+
+							<div class="info">
+
+								<?php echo $info; ?>
+
+							</div>
+
+						<?php endif; ?>
+
+					</div>
 
 				</div>
 

@@ -4,9 +4,6 @@ fields:
   title:
     label: Title
     type:  text
-  about:
-    label: About
-    type: wysiwyg
   copyright:
     label: Copyright
-    type: wysiwyg
+    type: textarea
