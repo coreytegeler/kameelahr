@@ -5,6 +5,13 @@
 		<section>
 
 			<div class="section-inner">
+
+				<h1>
+						
+					<?php echo $site->title(); ?>
+
+				</h1>
+
 				
 				<?php snippet( 'carousel' ); ?>
 
@@ -15,6 +22,9 @@
 		<section>
 
 			<div class="section-inner">
+
+				<h1>&nbsp;</h1>
+
 
 				<div class="text-max">
 

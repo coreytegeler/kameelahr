@@ -98,7 +98,7 @@ class HtmlConverter
      */
     private function createDOMDocument($html)
     {
-        $document = new \DOMDocument();
+        $document = new DOMDocument();
 
         if ($this->getConfig()->getOption('suppress_errors')) {
             // Suppress conversion errors (from http://bit.ly/pCCRSX)
