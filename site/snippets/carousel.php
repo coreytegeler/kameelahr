@@ -10,7 +10,7 @@
 
           <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
           	
-            <?= $image; ?>
+            <?= $image->resize( 900, 900, 100 ); ?>
 
             <?php if( $caption->isNotEmpty() ): ?>
 

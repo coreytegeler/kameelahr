@@ -29,8 +29,12 @@
 					<?php endif; ?>
 
 					<?php if( $about = $site->about()->kirbytext() ): ?>
+						
+						<div class="about-text">
 
-						<?php echo $about; ?>
+							<?php echo $about; ?>
+
+						</div>
 
 					<?php endif; ?>
 
