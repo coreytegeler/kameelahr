@@ -7,6 +7,10 @@ html, body {
 	font-family: 'Playfair Display', serif;
 	text-rendering: optimizeLegibility;
 	@include baseText;
+	@include md {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: scroll;
+	}
 }
 * {
 	box-sizing: border-box;
@@ -18,6 +22,12 @@ main {
 	position: fixed;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: scroll;
+	@include md {
+		height: unset;
+		position: unset;
+		overflow-y: unset;
+		display: table;
+	}
 }
 p {
 	&:first-child {
@@ -42,9 +52,9 @@ ul {
 .sections {
 	width: 100%;
 	height: 100%;
-	// max-width: 80rem;
-	// display: table;
-	// margin: auto;
+	@include md {
+		display: table;
+	}
 }
 section {
 	width: 50%;
@@ -71,6 +81,7 @@ section {
 	@include md {
 		width: 100% !important;
 		height: auto !important;
+		margin: 0 !important;
 		min-height: 100vh !important;
 		position: static !important;
 		padding: 1rem !important;
@@ -102,6 +113,9 @@ section {
 .text-columns {
 	column-count: 2;
 	column-gap: 1.5em;
+	@include sm {
+		column-count: 1;
+	}
 }
 .about {
 	text-align: justify;
@@ -117,19 +131,12 @@ section {
 	padding: 0;
 	position: relative;
 	overflow: hidden;
+	@include md {
+		height: 100vh;
+	}
 }
 .slides {
 	height: 100%;
-	// position: absolute;
-	// left: 0;
-	// top: 0;
-	// transition: left 200ms $ease;
-	// .carousel[data-direction="left"] & {
-	// 	left: .25em;
-	// }
-	// .carousel[data-direction="right"] & {
-	// 	left: -.25em;
-	// }
 }
 figure.slide {
 	width: 100%;
@@ -141,6 +148,7 @@ figure.slide {
 	opacity: 0;
 	display: flex;
 	flex-direction: column;
+	overflow-y: scroll;
 	justify-content: center;
 	transition: opacity 0ms $ease;
 	img {
@@ -149,7 +157,7 @@ figure.slide {
 		user-select: none;
 	}
 	figcaption {
-		width: calc(100% - #{$gutter*2});
+		width: 100%;
 		display: table;
 		padding: 0;
 		margin: 0;
