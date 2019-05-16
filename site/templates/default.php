@@ -9,12 +9,6 @@ $text = $page->text()->kirbytext();
 
 			<div class="section-inner">
 
-				<!-- <h1> -->
-						
-					<?#php echo $site->title(); ?>
-
-				<!-- </h1> -->
-
 				
 				<?php snippet( 'carousel' ); ?>
 
@@ -43,37 +37,14 @@ $text = $page->text()->kirbytext();
 
 						<?php foreach( $pages->visible() as $nav_page ): ?>
 
-							<?php $active = $nav_page->is( $page ); ?>
+							<a class="nav-link<?= $nav_page->is( $page ) ? ' active' : '' ?>" href="<?= $nav_page->url() ?>"><?= $nav_page->title() ?> </a>
 
-							<a class="nav-link<?= $active ? ' active' : '' ?>" href="<?= $nav_page->url() ?>"><?= $nav_page->title() ?> </a>
 						<?php endforeach; ?>
 
 					</nav>
 						
 
-					<?php if( $page->is( 'work' ) && $images = $page->files() ): ?>
-
-						<?php $index = 0; ?>
-
-			      <?php foreach( $images as $image ): ?>
-			        
-			        <?php $caption = $image->caption(); ?>
-
-		          <figcaption class="caption<?= ( !$index ? ' current' : '' ) ?>">
-
-		            <?php if( $caption->isNotEmpty() ): ?>
-
-	            		<?php echo $caption->kirbytext(); ?>
-
-            		<?php endif; ?>
-		                
-              </figcaption>
-
-              <?php $index++; ?>
-
-			      <?php endforeach; ?>
-
-					<?php endif; ?>
+					<?php snippet( 'captions' ); ?>
 
 
 					<div class="text">
@@ -82,9 +53,6 @@ $text = $page->text()->kirbytext();
 
 					</div>
 
-
-
-					<!-- </div> -->
 
 				</div>
 

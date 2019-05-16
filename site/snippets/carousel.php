@@ -1,4 +1,3 @@
-
 <div id="carousel">
   <div class="slides">
 
@@ -14,16 +13,6 @@
           	
             <?= $image->resize( 900, 900, 100 ); ?>
 
-            <?#php if( $caption->isNotEmpty() ): ?>
-
-              <!-- <figcaption> -->
-
-            		<?#php echo $caption->kirbytext(); ?>
-
-              <!-- </figcaption> -->
-
-            <?#php endif; ?>
-
           </figure>
 
           <?php $index++; ?>
@@ -33,9 +22,7 @@
     <?php endif; ?>
 
   </div>
-
   <div class=""><?= $site->copyright()->kirbytext() ?></div>
-
   <div class="arrow left" data-direction="left"></div>
   <div class="arrow right" data-direction="right"></div>
 </div>
