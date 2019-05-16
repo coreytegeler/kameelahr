@@ -1,4 +1,7 @@
-<?php snippet('header'); ?>
+<?php
+snippet('header');
+$text = $page->text()->kirbytext();
+?>
 	
 	<div class="sections">
 
@@ -6,11 +9,11 @@
 
 			<div class="section-inner">
 
-				<h1>
+				<!-- <h1> -->
 						
-					<?php echo $site->title(); ?>
+					<?#php echo $site->title(); ?>
 
-				</h1>
+				<!-- </h1> -->
 
 				
 				<?php snippet( 'carousel' ); ?>
@@ -22,8 +25,6 @@
 		<section>
 
 			<div class="section-inner">
-
-				<h1>&nbsp;</h1>
 
 
 				<div class="text-max">
@@ -38,31 +39,52 @@
 
 					<?php endif; ?>
 
-					
+					<nav role="navigation">
+
+						<?php foreach( $pages->visible() as $nav_page ): ?>
+
+							<?php $active = $nav_page->is( $page ); ?>
+
+							<a class="nav-link<?= $active ? ' active' : '' ?>" href="<?= $nav_page->url() ?>"><?= $nav_page->title() ?> </a>
+						<?php endforeach; ?>
+
+					</nav>
 						
-					<div class="text-columns">
 
-						<?php if( $about = page( 'home' )->about()->kirbytext() ): ?>
+					<?php if( $page->is( 'work' ) && $images = $page->files() ): ?>
 
-							<div class="about">
+						<?php $index = 0; ?>
 
-								<?php echo $about; ?>
+			      <?php foreach( $images as $image ): ?>
+			        
+			        <?php $caption = $image->caption(); ?>
 
-							</div>
+		          <figcaption class="caption<?= ( !$index ? ' current' : '' ) ?>">
 
-						<?php endif; ?>
+		            <?php if( $caption->isNotEmpty() ): ?>
 
-						<?php if( $info = page( 'home' )->info()->kirbytext() ): ?>
+	            		<?php echo $caption->kirbytext(); ?>
 
-							<div class="info">
+            		<?php endif; ?>
+		                
+              </figcaption>
 
-								<?php echo $info; ?>
+              <?php $index++; ?>
 
-							</div>
+			      <?php endforeach; ?>
 
-						<?php endif; ?>
+					<?php endif; ?>
+
+
+					<div class="text">
+
+						<?php echo $text; ?>
 
 					</div>
+
+
+
+					<!-- </div> -->
 
 				</div>
 

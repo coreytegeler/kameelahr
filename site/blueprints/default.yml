@@ -3,19 +3,16 @@ title: Page
 pages: false
 
 files:
-	sortable: true
-	fields:
-		caption:
-			label: Caption
-			type: textarea
+  sortable: true
+  fields:
+    caption:
+      label: Caption
+      type: wysiwyg
 
 fields:
 	title:
 		label: Title
 		type:  text
-	about:
-		label: About
+	text:
+		label: Text
 		type:  wysiwyg
-	info:
-		label: Info
-		type: wysiwyg

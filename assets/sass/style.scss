@@ -29,6 +29,16 @@ main {
 		display: table;
 	}
 }
+a, a:visited, a:hover, a:focus {
+	color: black;
+}
+strong {
+	font-weight: 700;
+}
+ul {
+	margin: 1em 0 1em .5em;
+	padding: 0 0 0 2em;
+}
 p {
 	&:first-child {
 		margin-top: 0;
@@ -37,17 +47,21 @@ p {
 		margin-bottom: 0;
 	}
 }
-a, a:visited, a:hover, a:focus {
-	color: black;
-}
 h1 {
 	font-size: 2.5em;
 	line-height: 1.5em;
 	margin: 0 0 .5em 0;
 }
-ul {
-	margin: 1em 0 1em .5em;
-	padding: 0 0 0 2em;
+nav {
+	display: flex;
+	margin: 1rem auto 2rem auto;
+}
+a.nav-link {
+	margin: auto;
+	&:not(.active):not(:hover) {
+		text-decoration: none;
+		opacity: .5;
+	}
 }
 .sections {
 	width: 100%;
@@ -117,25 +131,24 @@ section {
 		column-count: 1;
 	}
 }
-.about {
+.text {
 	text-align: justify;
 }
-.info {
-	margin-top: 1em;
-	padding-top: 1em;
-	border-top: 1px solid black;
-}
-.carousel {
+#carousel {
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
+  overflow-y: auto;
+	display: flex;
+	flex-direction: column;
 	@include md {
 		height: 100vh;
 	}
 }
 .slides {
+	width: 100%;
 	height: 100%;
 }
 figure.slide {
@@ -155,13 +168,6 @@ figure.slide {
 		width: 100%;
 		pointer-events: none;
 		user-select: none;
-	}
-	figcaption {
-		width: 100%;
-		display: table;
-		padding: 0;
-		margin: 0;
-		color: black;
 	}
 	&.current {
 		opacity: 1;
@@ -200,5 +206,11 @@ figure.slide {
 		&:hover {
 			cursor: e-resize;
 		}
+	}
+}
+figcaption.caption {
+	margin-bottom: 2rem;
+	&:not(.current) {
+		display: none;
 	}
 }
