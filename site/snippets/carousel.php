@@ -23,6 +23,8 @@
 
   </div>
   <div class=""><?= $site->copyright()->kirbytext() ?></div>
-  <div class="arrow left" data-direction="left"></div>
-  <div class="arrow right" data-direction="right"></div>
+  <?php if( sizeof( $images ) > 1 ): ?>
+    <div class="arrow left" data-direction="left"></div>
+    <div class="arrow right" data-direction="right"></div>
+  <?php endif; ?>
 </div>
