@@ -5,18 +5,7 @@ $text = $page->text()->kirbytext();
 	
 	<div class="sections">
 
-		<section>
-
-			<div class="section-inner">
-
-				
-				<?php snippet( 'carousel' ); ?>
-
-			</div>
-
-		</section>
-
-		<section>
+		<section id="text">
 
 			<div class="section-inner">
 
@@ -42,7 +31,6 @@ $text = $page->text()->kirbytext();
 						<?php endforeach; ?>
 
 					</nav>
-						
 
 					<?php snippet( 'captions' ); ?>
 
@@ -55,6 +43,17 @@ $text = $page->text()->kirbytext();
 
 
 				</div>
+
+			</div>
+
+		</section>
+
+		<section id="images">
+
+			<div class="section-inner">
+
+				
+				<?php snippet( 'carousel' ); ?>
 
 			</div>
 

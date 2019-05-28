@@ -9,11 +9,13 @@
         
         <?php $caption = $image->caption(); ?>
 
-          <figure class="slide <?= ( !$index ? 'current' : '' ) ?>">
+          <div class="slide <?= ( !$index ? 'current' : '' ) ?>">
           	
-            <?= $image->resize( 900, 900, 100 ); ?>
+            <figure><?= $image->resize( 900, 900, 100 ); ?></figure>
 
-          </figure>
+            <figcaption><?= $site->copyright()->kirbytext() ?></figcaption>
+
+          </div>
 
           <?php $index++; ?>
 
@@ -22,7 +24,7 @@
     <?php endif; ?>
 
   </div>
-  <div class=""><?= $site->copyright()->kirbytext() ?></div>
+  
   <?php if( sizeof( $images ) > 1 ): ?>
     <div class="arrow left" data-direction="left"></div>
     <div class="arrow right" data-direction="right"></div>
