@@ -7,7 +7,7 @@
 
   <title><?= $site->title()->html() ?></title>
   <meta name="description" content="<?= $site->description()->html() ?>">
-  <?= css('assets/css/style.css?version=1.2') ?>
+  <?= css('assets/css/style.css?version=1.3') ?>
 
 </head>
 <body>
