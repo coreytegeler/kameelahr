@@ -12,7 +12,6 @@
           <div class="slide <?= ( !$index ? 'current' : '' ) ?>">
           	
             <figure style="background-image:url(<?= $image->resize( 900, 900, 100 )->url(); ?>)">
-              <?#= $image->resize( 900, 900, 100 ); ?>
             </figure>
 
             <figcaption><?= $site->copyright()->kirbytext() ?></figcaption>
