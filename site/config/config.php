@@ -1,58 +1,12 @@
 <?php
 
-/*
-
----------------------------------------
-License Setup
----------------------------------------
-
-Please add your license key, which you've received
-via email after purchasing Kirby on http://getkirby.com/buy
-
-It is not permitted to run a public website without a
-valid license key. Please read the End User License Agreement
-for more information: http://getkirby.com/license
-
-*/
-
-/*
----------------------------------------
-Kirby Configuration
----------------------------------------
-*/
-
-c::set('license', 'put your license key here');
-c::set('debug', false);
-// c::set('panel.install', true);
-
-// c::set('panel.stylesheet', 'assets/css/panel.css');
-
-/*
----------------------------------------
-Plugins Configuration
----------------------------------------
-*/
-// c::set('autopublish.templates', array('artwork', 'text'));
-
-/*
----------------------------------------
-Routes Configuration
----------------------------------------
-*/
-// c::set('routes', array(
-//   array(
-//     'pattern' => '(:any)',
-//     'action'  => function( $slug ) {
-
-//       $page = page( $slug );
-//       if(!$page) $page = page( 'artwork/' . $slug );
-//       if(!$page) $page = page( 'texts/' . $slug );
-//       if(!$page) $page = site()->errorPage();
-
-//       return site()->visit( $page );
-
-//     }
-//   )
-// ));
-
-
+/**
+ * The config file is optional. It accepts a return array with config options
+ * Note: Never include more than one return statement, all options go within this single return array
+ * In this example, we set debugging to true, so that errors are displayed onscreen. 
+ * This setting must be set to false in production.
+ * All config options: https://getkirby.com/docs/reference/system/options
+ */
+return [
+    'debug' => true,
+];

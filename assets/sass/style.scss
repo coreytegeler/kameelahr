@@ -4,8 +4,7 @@ html, body {
 	height: 100%;
 	margin: 0;
 	overflow: hidden;
-	font-family: 'Barlow', sans-serif;
-	font-weight: 500;
+	font-family: 'Space Mono', monospace;
 	text-rendering: optimizeLegibility;
 	@include baseText;
 	@include md {
@@ -16,11 +15,18 @@ html, body {
 * {
 	box-sizing: border-box;
 }
+#page {
+	width: 90%;
+	max-width: 1200px;
+	height: 100%;
+	display: table;
+	margin: auto;
+}
 main {
 	width: 100%;
 	height: 100%;
 	margin: auto;
-	position: fixed;
+	// position: fixed;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: scroll;
 	@include md {
@@ -30,16 +36,6 @@ main {
 		display: table;
 	}
 }
-a, a:visited, a:hover, a:focus {
-	color: black;
-}
-strong {
-	font-weight: 700;
-}
-ul {
-	margin: 1em 0 1em .5em;
-	padding: 0 0 0 2em;
-}
 p {
 	&:first-child {
 		margin-top: 0;
@@ -48,57 +44,32 @@ p {
 		margin-bottom: 0;
 	}
 }
+a, a:visited, a:hover, a:focus {
+	color: black;
+}
 h1 {
 	font-size: 2.5em;
 	line-height: 1.5em;
 	margin: 0 0 .5em 0;
 }
-nav {
-	display: flex;
-	margin: 1rem auto 2rem auto;
+ul {
+	margin: 1em 0 1em .5em;
+	padding: 0 0 0 2em;
 }
-a.nav-link {
-	margin: auto;
-	&:not(.active):not(:hover) {
-		text-decoration: none;
-		opacity: .5;
-	}
+figure {
+	margin: 0;
 }
 .sections {
 	width: 100%;
 	height: 100%;
-	// display: flex;
-	// flex-direction: row-reverse;
 	@include md {
-		height: auto;
+		display: table;
 	}
 }
 section {
 	width: 50%;
-	float: right;
-	&#text {
-		margin-left: 50%;
-		padding-bottom: 4rem;
-		.section-inner {
-			height: 100%;
-			float: left;
-		}
-		@include md {
-			padding-bottom: 2rem;
-		}
-		@include md {
-			padding-bottom: 1rem;
-		}
-	}
-	@include md {
-		width: 100% !important;
-		height: auto !important;
-		margin: 0 !important;
-		min-height: 100vh !important;
-		position: static !important;
-		padding: 1rem !important;
-	}
-	&#images {
+	float: left;
+	&:first-child {
 		height: 100%;
 		position: fixed;
 		left: 0;
@@ -109,21 +80,31 @@ section {
 			float: right;
 		}
 	}
+	&:last-child {
+		width: 50%;
+		margin-left: 50%;
+		.section-inner {
+			height: 100%;
+			float: left;
+		}
+	}
+	@include md {
+		width: 100% !important;
+		height: auto !important;
+		margin: 0 !important;
+		min-height: 100vh !important;
+		position: static !important;
+		padding: 1rem !important;
+	}
 }
 .section-inner {
 	width: 100%;
-	max-width: 45rem;
+	max-width: 47rem;
 	height: 100%;
-	padding: 4rem 4rem 0 4rem;
-	@include md {
-		padding: 2rem 2rem 0 2rem;
-	}
-	@include sm {
-		padding: 1rem 1rem 0 1rem;
-	}
+	padding: 1rem;
 }
 .text-max {
-	margin: 0 auto;
+	margin: auto;
 	@include md {
 		max-width: 100%;
 	}
@@ -146,31 +127,30 @@ section {
 		column-count: 1;
 	}
 }
-.text {
+.about {
 	text-align: justify;
 }
-#carousel {
+.info {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid black;
+}
+.carousel {
 	width: 100%;
-	height: calc(100vh - 8rem);
+	height: 100%;
 	padding: 0;
 	position: relative;
-	overflow-x: hidden;
-  overflow-y: auto;
-	display: flex;
-	flex-direction: column;
+	overflow: hidden;
 	@include md {
 		height: 100vh;
 	}
 }
 .slides {
+	height: 100%;
+}
+figure.slide {
 	width: 100%;
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
-}
-.slide {
-	width: 100%;
-	height: calc(100vh - 8rem);
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -181,21 +161,17 @@ section {
 	overflow-y: scroll;
 	justify-content: center;
 	transition: opacity 0ms $ease;
-	figure {
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		background-size: contain;
-		background-position: center;
-		background-repeat: no-repeat;
-	}
 	img {
 		width: 100%;
 		pointer-events: none;
 		user-select: none;
 	}
 	figcaption {
-		padding: 1rem 0;
+		width: 100%;
+		display: table;
+		padding: 0;
+		margin: 0;
+		color: black;
 	}
 	&.current {
 		opacity: 1;
@@ -211,13 +187,6 @@ section {
 			background-position: right center;
 		}
 	}
-	&::-webkit-scrollbar {
-	  width: 0;
-	}
-	@include md {
-		height: 100%;
-		overflow-y: hidden;
-	}
 }
 .arrow {
 	width: 30%;
@@ -225,7 +194,7 @@ section {
 	position: absolute;
 	top: 0;
 	font-family: Helvetica, Arial, sans-serif;
-	font-weight: 700;
+	font-weight: bold;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -243,23 +212,24 @@ section {
 		}
 	}
 }
-figcaption.caption {
-	margin-bottom: 2rem;
-	&:not(.current) {
-		display: none;
-	}
+
+
+.thumbs {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: -1rem;
+	margin-right: -1rem;
 }
-
-.mobile {
-	display: none;
-}
-
-@include md {
-	.desktop {
-		display: none;
+.thumb {
+	margin: 1rem;
+	img {
+		width: 100%;
 	}
-
-	.mobile {
-		display: block;
+	&.work-single {
+		width: 25%;
+	}
+	&.pub-single, &.project-single {
+		width: 33.33%;
 	}
 }

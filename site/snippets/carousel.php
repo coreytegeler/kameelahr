@@ -1,33 +1,33 @@
-<div id="carousel">
-  <div class="slides">
+<?php if( $images = $page->files() ): ?>
+  <div class="carousel">
+    <div class="slides">
 
-  	<?php if( $images = $page->files() ): ?>
+        <?php foreach ( $images as $index => $image ):
+          
+          $caption = $image->caption(); ?>
 
-      <?php $index = 0; ?>
+            <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
+            	
+              <?php echo $image->resize( 900, 900, 100 );
 
-      <?php foreach ( $images as $image ): ?>
-        
-        <?php $caption = $image->caption(); ?>
+              if( $caption->isNotEmpty() ): ?>
 
-          <div class="slide <?= ( !$index ? 'current' : '' ) ?>">
-          	
-            <figure style="background-image:url(<?= $image->resize( 900, 900, 100 )->url(); ?>)">
+                <figcaption>
+              		<?php echo $caption; ?>
+                </figcaption>
+
+              <?php endif; ?>
+
             </figure>
 
-            <figcaption><?= $site->copyright()->kirbytext() ?></figcaption>
+        <?php endforeach; ?>
 
-          </div>
+    </div>
 
-          <?php $index++; ?>
-
-      <?php endforeach; ?>
-
+    <?php if( sizeof( $images ) > 1 ): ?>
+      <div class="arrow left" data-direction="left"></div>
+      <div class="arrow right" data-direction="right"></div>
     <?php endif; ?>
 
   </div>
-  
-  <?php if( sizeof( $images ) > 1 ): ?>
-    <div class="arrow left" data-direction="left"></div>
-    <div class="arrow right" data-direction="right"></div>
-  <?php endif; ?>
-</div>
+<?php endif; ?>

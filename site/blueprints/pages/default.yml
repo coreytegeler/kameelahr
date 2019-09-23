@@ -1,0 +1,16 @@
+title: Page
+
+create:
+  - work-single
+
+fields:
+  title:
+    label: Title
+    type:  text
+  text:
+    label: Text
+    type: editor
+  image:
+    label: Image
+    type: files
+    max: 1

@@ -2,67 +2,37 @@ Title: Kameelah Janan Rasheed
 
 ----
 
-Author: 
+About:
 
-----
-
-Description: 
-
-----
-
-Copyright: All content © Kameelah Janan Rasheed 2010-2019. Please do not reproduce any of the content on this site without the expressed written consent of Kameelah Janan Rasheed.
-
-----
-
-Newsletter: 
-
-----
-
-Links: 
-
-- 
-  _title: Facebook
-  _url: http://facebook.com/kameelahr
-  _fieldset: link
-- 
-  _title: Twitter
-  _url: http://blog.kameelahr.com/
-  _fieldset: link
-- 
-  _title: Twitter
-  _url: http://twitter.com/_kameelahr
-  _fieldset: link
-- 
-  _title: Email
-  _url: kameelah.rasheed@gmail.com
-  _fieldset: link
-- 
-  _title: Instagram
-  _url: http://instagram.com/kameelahr
-  _fieldset: link
-- 
-  _title: Vimeo
-  _url: http://vimeo.com/kameelahr
-  _fieldset: link
-- 
-  _title: SoundCloud
-  _url: https://soundcloud.com/kameelahr
-  _fieldset: link
-
-----
-
-About: 
-
-My name is Kameelah Janan Rasheed (b.1985) and I am a learner from East Palo Alto, CA, based in Brooklyn, NY with brief stints in Johannesburg, South Africa. I spent my early youth collecting water samples with my science teacher, identifying the contents of owl scat, and publishing almost a dozen books at my elementary school’s publishing center housed in a portable trailer.
-
-As an artist, I am still a learner first and as such, I seek to make my thinking (somewhat) visible through an ecosystem of iterative and provisional projects/processes. This includes sprawling xerox-based “architecturally-scaled collages” (Frieze Magazine, Winter 2018), long-form essays, publications, large-scale public installations, textile banners, digital archives, lecture performances, stand up comedy, and other forms yet to be determined.
-
-In my work, I am most interested in ecology - shifting ecosystems of Black epistemologies, or the agile relationships between the varied modes of reading, writing, archiving, editing, translating, publishing, reflecting upon, and arranging narratives about lived Black experiences.
-
-With this interest in ecosystems and epistemology, I consider the precarity of knowledge itself - what we think we know today can be reversed, challenged, or expanded; the limits of narration itself given that much of language is a fitful approximation; and the sheer impossibility of creating a “comprehensive” narrative of such a sprawling set of lived Black experiences that gracefully betray any sort of linearity, theoretical finality, or conceptual girdle. As such, the work I create doesn’t position a fixed truth, and instead is more invested in creating environments to consider how we tell stories about Black folks. In telling these stories, opacity (Édouard Glissant, Poetics of Relation and my mama), “evasiveness” (Zora Neale Hurston, Mules and Men and my mama), the quiet or private (Kevin Quashie, The Sovereignty of Quiet: Beyond Resistance in Black Culture and my mama), and selective legibility given the context of state violence and centuries-long state surveillance (Simone Browne, Dark Matters: On Surveillance of Blackness) are necessary. Naturally, I am curious about the political potential of different narrative modes and epistemological positionings. Beyond the adoption of existing narrative templates and epistemological frameworks, I want to explore how Black folks develop syncretic, experimental, transdisciplinary ways of knowing and narrating this knowing. I strive to balance an attentiveness to the spectrum of knowledge producers to include thinkers from within academia to my mother. In particular, I am grateful to my mother who introduced me to ideas of safety via reticence, quietude, and strategic engagement with institutions.
-
-In considering these I am also invested in the modes of archiving lived Black experiences as well as the histories (and futures) of Black publishing and dissemination. To that end, in 2016, I created Mapping the Spirit, which documents the texture of spiritual life amongst people of African descent in the United States through an evolving digital archive including photographs, video, interviews and ephemera. The first chapter of this project featuring the Moorish Science Temple of America was published through a Magnum Foundation grant in 2017 with research support from Triple Canopy.
-
-My evolving body of work has been exhibited nationally and internationally at the 2017 Venice Biennale, Institute of Contemporary Art - Philadelphia, Portland Institute of Contemporary Art, Brooklyn Museum, Queens Museum, Bronx Museum, New Museum, Studio Museum in Harlem, Printed Matter, The Kitchen, Jack Shainman Gallery, Schomburg Center for Research in Black Culture, Brooklyn Academy of Music, Project Row Houses, Pinchuk Art Centre, and others. Additionally, I am the author of two forthcoming books: No New Theories (2019, Printed Matter) and An Alphabetical Accumulation of Approximate Observations (2019, Endless Editions).
-
-In 2018, I created the Primitive Hypertext Lab (after Octavia Butler), an agile pedagogical project that nurtures a learning ethos that honors slowness, tangents, interdisciplinary relationships, and non-hierarchical modes of knowledge production and dissemination. The Primitive Hypertext Lab hosts workshops, houses archives of rare Black printed matter as well as Black vernacular photographs, and publishes annual broadsheets. The first public project of the Primitive Hypertext Lab will debut at Pioneer Works during my residency. 
+[
+    {
+        "attrs": [],
+        "content": "I am a <em>learner</em> and interdisciplinary artist<em> </em>from East Palo Alto, California.",
+        "id": "_2nsyetqfj",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "I live in Brooklyn, NY.",
+        "id": "_9aq20j0us",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "<br>I explore the processes of learning/unlearning as well as the relationships between language, literacies, and power.",
+        "id": "_vuvgbfgsw",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "<br>I create sprawling xerox-based \u201carchitecturally scaled [text] collage[s]\u201d (frieze 2018), library interventions that integrate gentle choreography, lecture-performances that weave together stand up comedy and personal history, public installations of large-scale text banners, publications, digital and analog archives, discursive programming, and and other forms yet to be determined.",
+        "id": "_95bvl5fdi",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "<br>I am the founder of Mapping the Spirit and the Primitive Hypertext Lab.<br>In my free time, I enjoy improv.<br>",
+        "id": "_bkolmez7r",
+        "type": "paragraph"
+    }
+]

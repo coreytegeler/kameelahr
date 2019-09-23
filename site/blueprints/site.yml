@@ -1,9 +1,16 @@
 title: Site
 
-fields:
-  title:
-    label: Title
-    type:  text
-  copyright:
-    label: Copyright
-    type: textarea
+sections:
+	pages:
+		type: pages
+		create:
+			- default
+			- home
+			- bio
+			- statement
+			- gallery
+			- events
+	# fields:
+	#   about:
+	#     label: About
+	#     type: editor

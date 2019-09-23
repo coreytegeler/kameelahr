@@ -1,0 +1,9 @@
+title: Gallery
+
+sections:
+  pages:
+    type: pages
+    create:
+      - project-single
+      - work-single
+      - pub-single
