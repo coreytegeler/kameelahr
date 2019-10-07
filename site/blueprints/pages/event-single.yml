@@ -1,0 +1,19 @@
+title: Event
+
+pages: false
+
+files: false
+
+fields:
+	title:
+		label: Title
+		type:  text
+	date:
+		label: Date
+		type:  date
+	location:
+		label: Location
+		type:  text
+	link:
+		label: Link
+		type:  text

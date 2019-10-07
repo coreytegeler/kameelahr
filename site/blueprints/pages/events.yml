@@ -1,0 +1,7 @@
+title: Events
+
+sections:
+  pages:
+    type: pages
+    create:
+      - event-single

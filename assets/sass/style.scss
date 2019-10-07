@@ -45,6 +45,7 @@ header {
 		display: flex;
 		margin: auto;
 		@include md {
+			width: 100%;
 			flex-direction: column;
 		}
 	}
@@ -291,5 +292,33 @@ figcaption {
 	}
 	@include md {
 		width: 50% !important;	
+	}
+}
+
+
+#events {
+	padding: 5rem 0 0 0;
+	.row {
+		display: flex;
+		@include md {
+			display: block;
+		}
+	}
+	.col {
+		&.labels {
+			width: 15%;
+		}
+		&.events {
+			width: 85%;	
+		}
+		@include md {
+			width: 100% !important
+		}
+	}
+	ul {
+		margin: 0 0 1rem 0;
+	}
+	li {
+
 	}
 }
