@@ -14,5 +14,5 @@ fields:
 		label: Title
 		type:  text
 	images:
-		label: Files
+		label: Images
 		type:  files

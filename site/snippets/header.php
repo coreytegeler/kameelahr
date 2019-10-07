@@ -13,6 +13,20 @@
 <body>
 	<div id="page">
 		<header>
-			<h1><?= $site->title()->html() ?></h1>
+			<div class="row">
+				<div class="col" id="title">
+					<h1><?= $site->title()->html() ?></h1>
+				</div>
+				<div class="col" id="nav">
+					<nav>
+						<?php
+						$pages = $site->pages()->listed();
+						foreach ( $pages as $slug ) {
+							$page = page( $slug ); ?>
+							<a href="<?= $page->url() ?>"><?= $page->title() ?></a>
+						<?php } ?>
+					</nav>
+				</div>
+			</div>
 		</header>
 		<main class="main" role="main">

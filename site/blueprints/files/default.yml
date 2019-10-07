@@ -3,12 +3,6 @@ title: Work Image
 pages: false
 
 fields:
-  title:
-    label: Title
-    type:  text
-  year:
-    label: Year
-    type:  text
-  desc:
-    label: Description
+  caption:
+    label: Caption
     type:  editor

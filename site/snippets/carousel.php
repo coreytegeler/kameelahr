@@ -2,25 +2,19 @@
   <div class="carousel">
     <div class="slides">
 
-        <?php foreach ( $images as $index => $image ):
+        <?php $index = 0;
+        foreach ( $images as $image ):
           
           $caption = $image->caption(); ?>
 
-            <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-slug="<?php $title ?>">
+            <figure class="slide <?= ( !$index ? 'current' : '' ) ?>" data-index="<?= $index ?>">
             	
-              <?php echo $image->resize( 900, 900, 100 );
-
-              if( $caption->isNotEmpty() ): ?>
-
-                <figcaption>
-              		<?php echo $caption; ?>
-                </figcaption>
-
-              <?php endif; ?>
+              <?php echo $image->resize( 900, 900, 100 ); ?>
 
             </figure>
 
-        <?php endforeach; ?>
+        <?php $index++;
+        endforeach; ?>
 
     </div>
 

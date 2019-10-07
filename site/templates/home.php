@@ -1,6 +1,6 @@
 <?php snippet( 'header' ); ?>
 	
-	<center>
+	<center class="text-max">
 		<?= $site->about()->blocks() ?>
 	</center>
 

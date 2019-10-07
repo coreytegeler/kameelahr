@@ -1,6 +1,13 @@
 title: Site
 
 sections:
+	content:
+	  type: fields
+		fields:
+			about:
+				label: About
+				type: editor
+
 	pages:
 		type: pages
 		create:
@@ -10,7 +17,3 @@ sections:
 			- statement
 			- gallery
 			- events
-	# fields:
-	#   about:
-	#     label: About
-	#     type: editor

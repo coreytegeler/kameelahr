@@ -4,28 +4,41 @@ Title: Kameelah Janan Rasheed
 
 About:
 
-- 
-  attrs: [ ]
-  content: 'I am a <em>learner</em> and interdisciplinary artist<em> </em>from East Palo Alto, California.'
-  id: _2nsyetqfj
-  type: paragraph
-- 
-  attrs: [ ]
-  content: I live in Brooklyn, NY.
-  id: _9aq20j0us
-  type: paragraph
-- 
-  attrs: [ ]
-  content: '<br>I explore the processes of learning/unlearning as well as the relationships between language, literacies, and power.'
-  id: _vuvgbfgsw
-  type: paragraph
-- 
-  attrs: [ ]
-  content: '<br>I create sprawling xerox-based “architecturally scaled [text] collage[s]” (frieze 2018), library interventions that integrate gentle choreography, lecture-performances that weave together stand up comedy and personal history, public installations of large-scale text banners, publications, digital and analog archives, discursive programming, and and other forms yet to be determined.'
-  id: _95bvl5fdi
-  type: paragraph
-- 
-  attrs: [ ]
-  content: '<br>I am the founder of Mapping the Spirit and the Primitive Hypertext Lab.<br>In my free time, I enjoy improv.<br>'
-  id: _bkolmez7r
-  type: paragraph
+[
+    {
+        "attrs": [],
+        "content": "I am a <em>learner</em> and interdisciplinary artist<em> </em>from East Palo Alto, California.",
+        "id": "_k7fxury3t",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "I live in Brooklyn, NY.",
+        "id": "_ujeup0qnp",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "I explore the processes of learning/unlearning as well as the relationships between language, literacies, and power.",
+        "id": "_7rgs4c1o9",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "I create sprawling xerox-based \u201carchitecturally scaled [text] collage[s]\u201d (frieze 2018), library interventions that integrate gentle choreography, lecture-performances that weave together stand up comedy and personal history, public installations of large-scale text banners, publications, digital and analog archives, discursive programming, and and other forms yet to be determined.",
+        "id": "_qb7pldu8a",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "I am the founder of Mapping the Spirit and the Primitive Hypertext Lab.",
+        "id": "_wphccx03d",
+        "type": "paragraph"
+    },
+    {
+        "attrs": [],
+        "content": "In my free time, I enjoy improv<br>",
+        "id": "_bsfry5zrk",
+        "type": "paragraph"
+    }
+]

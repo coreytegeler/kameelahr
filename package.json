@@ -1,0 +1,41 @@
+{
+  "name": "kameelahr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "gulp watch --dev",
+    "build": "gulp build --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreytegeler/kameelahr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coreytegeler/kameelahr/issues"
+  },
+  "homepage": "https://github.com/coreytegeler/kameelahr#readme",
+  "devDependencies": {
+    "browsersync": "0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-coffee": "^2.3.5",
+    "gulp-connect-php": "^1.0.3",
+    "gulp-if": "^2.0.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.2.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "merge": ">=1.2.1",
+    "node-sass": "^4.12.0",
+    "npm": "^6.11.3",
+    "yargs": "^6.6.0"
+  }
+}

@@ -21,8 +21,21 @@
 			<div class="section-inner">
 
 				<div class="text-max">
+					<?php if( strpos( $page->intendedTemplate(), 'single' ) !== false ): ?>
+						<?php $images = $page->images() ?>
+					    <div class="slide-captions">
 
-					<?php if( $text = $page->text()->blocks() ): ?>
+					        <?php $index = 0;
+					        foreach ( $images as $image ):
+								$caption = $image->caption()->blocks(); ?>
+								<figcaption class="<?= ( !$index ? 'current' : '' ) ?>" data-index="<?= $index ?>">
+				              		<?php echo $caption; ?>
+				                </figcaption>
+					        <?php $index++;
+						    endforeach; ?>
+
+					    </div>
+					<?php elseif( $text = $page->text()->blocks() ): ?>
 
 						<?php echo $text; ?>
 
