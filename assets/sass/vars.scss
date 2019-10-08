@@ -12,11 +12,15 @@ $ease: cubic-bezier(0.645, 0.045, 0.355, 1);
 
 $gutter: 1rem;
 
+$headerHeight: 6rem;
+
 $smWidth: 480px;
 $mdWidth: 768px;
 $lgWidth: 1024px;
 $xlWidth: 1440px;
 $maxWidth: 800px;
+
+
 
 @mixin sm {
 	@media (max-width: #{$smWidth}) {

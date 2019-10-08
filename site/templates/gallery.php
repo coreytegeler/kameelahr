@@ -3,11 +3,14 @@
 
 	<?php $subs = $page->children();
 	foreach ( $subs as $index => $sub ):
+		$link = $sub->ext_link();
 		$thumb = $sub->images()->first(); ?>
 		<figure class="<?= $sub->intendedTemplate() ?> thumb">
-			<a href="<?=  $sub->url() ?>">
-				<?= $thumb; ?>
-			</a>
+			<?php
+			echo $link->isNotEmpty() ? '<a href="' .  $link . '" target="_blank">' : null;
+				echo $thumb;
+			echo $link->isNotEmpty() ? '</a>' : null;
+			?>
 		</figure>
 	<?php endforeach; ?>
 

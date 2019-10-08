@@ -10,6 +10,7 @@
 	$new_section = '';
 	$last_section = '';
 	foreach( $events as $index => $event ):
+		$link = $event->ext_link();
 		$past = strtotime( $event->date()->toDate( 'Y-m-d' ) ) < strtotime( $today );
 		if( $past ):
 			$new_section = 'Past';
@@ -33,7 +34,13 @@
 		<?php endif; ?>
 
 		<li class="">
-			<?= $event->title() ?>, <?= $event->date()->toDate( 'F d, Y' ) ?>, <?= $event->location() ?>
+			<?php
+			$date = $event->date()->toDate( 'F d, Y' );
+			echo $link->isNotEmpty() ? '<a href="' .  $link . '" target="_blank">' : null;
+				echo $event->title();
+			echo $link->isNotEmpty() ? '</a>' : null;
+			echo ', ' . $date . ', ' . $event->location();
+			?>
 		</li>
 
 		<?php $last_section = $new_section;

@@ -19,14 +19,15 @@ html {
 	max-width: 1200px;
 	height: 100%;
 	display: table;
-	margin: 5rem auto 0 auto;
+	margin: $headerHeight auto 0 auto;
 	@include md {
-		margin-top: 0;
+		margin-top: 0 !important;
 	}
 }
-header {
+header#header {
 	width: 100%;
-	height: 5rem;
+	height: $headerHeight;
+	display: table;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -52,9 +53,9 @@ header {
 	.col {
 		width: 100%;
 		&#title {
-
+			padding-right: 1rem;
 		}
-		&#nav {
+		&#menu {
 			display: flex;
 			flex-direction: row-reverse;
 			align-content: center;
@@ -69,8 +70,11 @@ header {
 		@include md {
 			white-space: unset;
 		}
+		a {
+			text-decoration: none;
+		}
 	}
-	nav {
+	nav#nav {
 		display: table;
 		margin: auto 0;
 		a {
@@ -82,7 +86,7 @@ header {
 		}
 	}
 }
-main {
+main#main {
 	// width: 100%;
 	// height: 100%;
 	margin: auto;
@@ -123,10 +127,10 @@ section {
 	width: 50%;
 	float: left;
 	&:first-child {
-		height: calc(100% - 5rem);
+		height: calc(100% - #{$headerHeight});
 		position: fixed;
 		left: 0;
-		top: 5rem;
+		top: $headerHeight;
 		.section-inner {
 			display: flex;
 			flex-direction: column;
@@ -297,7 +301,7 @@ figcaption {
 
 
 #events {
-	padding: 5rem 0 0 0;
+	padding: $headerHeight 0 0 0;
 	.row {
 		display: flex;
 		@include md {
@@ -306,10 +310,10 @@ figcaption {
 	}
 	.col {
 		&.labels {
-			width: 15%;
+			width: 15rem;
 		}
 		&.events {
-			width: 85%;	
+			width: 100%;	
 		}
 		@include md {
 			width: 100% !important

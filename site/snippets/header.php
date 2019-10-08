@@ -12,21 +12,27 @@
 </head>
 <body>
 	<div id="page">
-		<header>
+		<header id="header">
 			<div class="row">
 				<div class="col" id="title">
-					<h1><?= $site->title()->html() ?></h1>
+					<h1>
+						<a href="<?= $site->url() ?>">
+							<?= $site->title()->html() ?>
+						</a>
+					</h1>
 				</div>
-				<div class="col" id="nav">
-					<nav>
+				<div class="col" id="menu">
+					<nav id="nav">
 						<?php
 						$pages = $site->pages()->listed();
 						foreach ( $pages as $slug ) {
 							$page = page( $slug ); ?>
-							<a href="<?= $page->url() ?>"><?= $page->title() ?></a>
+							<a href="<?= $page->url() ?>">
+								<?= $page->title() ?>
+							</a>
 						<?php } ?>
 					</nav>
 				</div>
 			</div>
 		</header>
-		<main class="main" role="main">
+		<main id="main" role="main">

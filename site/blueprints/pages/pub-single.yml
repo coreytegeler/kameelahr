@@ -16,3 +16,6 @@ fields:
 	images:
 		label: Images
 		type:  files
+	ext_link:
+		label: Link
+		type:  url
